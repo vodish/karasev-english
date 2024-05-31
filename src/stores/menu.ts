@@ -1,9 +1,9 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { pages } from '../router/pagesPath'
+import { routes } from '../router/routes'
 
 export const useMenuStore = defineStore('menu', () => {
-  const menu = ref(pages)
+  const menu = ref(routes)
 
   function byCategories() {
     menu.value.reduce(el => el, [])

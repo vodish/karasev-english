@@ -1,4 +1,4 @@
-export type TPage = {
+export type TRoute = {
   src: string
   path: string
   name: string
@@ -6,7 +6,7 @@ export type TPage = {
   title: string
 }
 
-export const pages: TPage[] = [
+export const routes: TRoute[] = [
   {
     path: '/',
     name: 'PageMain',
