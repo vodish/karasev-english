@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useMenuStore } from '@/stores/menu';
-import { RouterLink, RouterView } from 'vue-router'
+import { useMenuStore } from '@/stores/store.menu';
+import { RouterView } from 'vue-router'
 import MainMenu from './main/MainMenu.vue';
 const menu = useMenuStore()
 
@@ -9,24 +9,21 @@ const menu = useMenuStore()
 <template>
   <header>
     <div class="title">
-      <div>Название страницы</div>
-      <div>переключалка страниц: {{ $route.fullPath }}</div>
+      <div class="title">{{ menu.category }}</div>
+      <div>переключалка страниц: </div>
       <div>Карта</div>
     </div>
-
-    <div class="menu">
-      <div class="category">
-        <div class="name">Название</div>
-        <nav>
-          <MainMenu category="subject" name="Субъекты" />
-          <MainMenu category="verb" name="Глаголы" />
-          <MainMenu category="sentence" name="Предложения" />
-        </nav>
-      </div>
-    </div>
-
   </header>
-
+  <div class="menu">
+    <div class="category">
+      <div class="name">Название</div>
+      <nav>
+        <MainMenu category="subject" name="Субъекты" />
+        <MainMenu category="verb" name="Глаголы" />
+        <MainMenu category="sentence" name="Предложения" />
+      </nav>
+    </div>
+  </div>
 
   <RouterView />
 
@@ -55,6 +52,4 @@ nav {
   display: flex;
   gap: 10%;
 }
-
-
 </style>

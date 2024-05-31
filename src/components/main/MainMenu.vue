@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useMenuStore } from '@/stores/menu';
+import { useMenuStore } from '@/stores/store.menu';
 import { defineProps } from "vue";
 
 const props = defineProps<{
@@ -9,6 +9,7 @@ const props = defineProps<{
 
 const menu = useMenuStore()
 const list = menu.filterCategory(props.category)
+
 </script>
 
 
