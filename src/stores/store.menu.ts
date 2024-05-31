@@ -4,7 +4,7 @@ import { routes } from '../router/routes'
 
 
 const categoryList = new Map
-categoryList.set('page', 'Страница')
+categoryList.set('page', 'Страницы')
 categoryList.set('subject', 'Субъекты')
 categoryList.set('verb', 'Глаголы')
 categoryList.set('sentence', 'Предложения')
