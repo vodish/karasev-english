@@ -1,9 +1,9 @@
 <script setup lang="ts">
-// import { useMenuStore } from '@/stores/menu';
+import { useMenuStore } from '@/stores/menu';
 import { RouterLink, RouterView } from 'vue-router'
 
 
-// const store = useMenuStore()
+const menu = useMenuStore()
 </script>
 
 <template>
@@ -18,8 +18,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <div class="category">
         <div class="name">Название</div>
         <nav>
-          <RouterLink to="/">Main</RouterLink>
-          <RouterLink to="/subject/what">/subject/what</RouterLink>
+          <RouterLink :to="page.path" v-for="page in menu.menu" :key="page.name">{{page.title}}</RouterLink>
         </nav>
       </div>
     </div>
@@ -51,23 +50,24 @@ header {
 
 nav {
   width: 100%;
-  font-size: 12px;
-  text-align: center;
+  /* font-size: 12px; */
+  /* text-align: center; */
   margin-top: 2rem;
+  gap: 5px;
+}
+
+nav a {
+  display: block;
+  padding: 0 1rem;
 }
 
 nav a.router-link-exact-active {
   color: var(--color-text);
+  cursor: default;
 }
 
 nav a.router-link-exact-active:hover {
   background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
 }
 
 nav a:first-of-type {

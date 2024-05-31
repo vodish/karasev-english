@@ -1,23 +1,16 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { menuSource } from './menuSource'
-
-export type TMenu = {
-  category: string
-  url: string
-  component: string
-  name: string
-}
+import { pages } from '../router/pagesPath'
 
 export const useMenuStore = defineStore('menu', () => {
-  const menu = ref(menuSource)
+  const menu = ref(pages)
 
   function byCategories() {
-    menu.value.reduce( el => el, [] )
+    menu.value.reduce(el => el, [])
   }
 
   function getByUrl(url: string) {
-    return menu.value.filter(el => el.url == url)
+    return menu.value.filter(el => el.path == url)
   }
 
   return { menu, byCategories, getByUrl }
