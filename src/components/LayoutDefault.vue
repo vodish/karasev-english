@@ -22,8 +22,9 @@ const show = ref(false)
     <MainMenu category="sentence" name="Предложения" />
   </nav>
 
-
-  <RouterView />
+  <main>
+    <RouterView />
+  </main>
 
   <footer>
     <div>footer</div>
@@ -36,11 +37,12 @@ header {
   gap: 40px;
   line-height: 1.5;
   max-height: 100vh;
-  padding-bottom: 20px;
-  border-bottom: solid 1px #eee;
+  padding-bottom: 15px;
+  border-bottom: solid 1px #ccc;
   margin-bottom: 20px;
 }
-header > .title {
+
+header>.title {
   font-size: 28px;
 }
 
@@ -53,7 +55,13 @@ nav {
   display: flex;
   gap: 7%;
   border-bottom: solid 1px #ccc;
-  padding: 0 2em 1.5em 2em;
+  padding: 0 15px 20px 0;
   margin-bottom: 20px;
 }
+
+main {
+  min-height: 50vh;
+}
+
+
 </style>

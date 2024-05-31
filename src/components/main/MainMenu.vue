@@ -27,12 +27,15 @@ const list = menu.filterCategory(props.category)
 
 <style scoped>
 .name {
-  border-bottom: solid 1px #ccc;
-  margin-bottom: 0.5em;
+  font-size: 13px;
+  border-bottom: solid 1px #eee;
+  margin-bottom: 0.3em;
 }
 
 a {
   display: block;
+  font-size: 14px;
+  margin-top: 2px;
 }
 
 a.router-link-exact-active {
