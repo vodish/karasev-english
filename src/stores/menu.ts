@@ -5,13 +5,13 @@ import { routes } from '../router/routes'
 export const useMenuStore = defineStore('menu', () => {
   const menu = ref(routes)
 
-  function byCategories() {
-    menu.value.reduce(el => el, [])
+  function filterCategory(catName: string) {
+    return menu.value.filter(el => el.category===catName)
   }
 
   function getByUrl(url: string) {
     return menu.value.filter(el => el.path == url)
   }
 
-  return { menu, byCategories, getByUrl }
+  return { menu, filterCategory, getByUrl }
 })

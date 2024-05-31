@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useMenuStore } from '@/stores/menu';
 import { RouterLink, RouterView } from 'vue-router'
-
-
+import MainMenu from './main/MainMenu.vue';
 const menu = useMenuStore()
+
 </script>
 
 <template>
@@ -18,7 +18,9 @@ const menu = useMenuStore()
       <div class="category">
         <div class="name">Название</div>
         <nav>
-          <RouterLink :to="page.path" v-for="page in menu.menu" :key="page.name">{{page.title}}</RouterLink>
+          <MainMenu category="subject" name="Субъекты" />
+          <MainMenu category="verb" name="Глаголы" />
+          <MainMenu category="sentence" name="Предложения" />
         </nav>
       </div>
     </div>
@@ -50,27 +52,9 @@ header {
 
 nav {
   width: 100%;
-  /* font-size: 12px; */
-  /* text-align: center; */
-  margin-top: 2rem;
-  gap: 5px;
+  display: flex;
+  gap: 10%;
 }
 
-nav a {
-  display: block;
-  padding: 0 1rem;
-}
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-  cursor: default;
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a:first-of-type {
-  border: 0;
-}
 </style>
