@@ -3,6 +3,7 @@
 </script>
 
 <template>
-  <div>- иконка меню</div>
-  <div>- фавиконка</div>
+  <div>Привет!</div>
+  
+  <p>Жми внизу кнопку <b>Дальше</b>.</p>
 </template>

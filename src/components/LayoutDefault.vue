@@ -2,6 +2,7 @@
 import { useMenuStore } from '@/stores/store.menu';
 import { RouterLink, RouterView } from 'vue-router'
 import MainMenu from './main/MainMenu.vue';
+import IconMenu from '@/assets/IconMenu.vue';
 
 const menu = useMenuStore()
 </script>
@@ -17,10 +18,10 @@ const menu = useMenuStore()
         <RouterLink v-for="{ path, title } in menu.points" :key="path" :to="path" :title="title" />
       </div>
     </template>
-    <button @click="menu.show = !menu.show">&nbsp;</button>
+    <IconMenu :class="['iconmenu', menu.show ? 'active' : '']" @click="menu.show = !menu.show" />
   </header>
 
-  <nav class="menu" v-if="menu.show">
+  <nav v-if="menu.show">
     <MainMenu category="page" name="Страницы" />
     <MainMenu category="subject" name="Субъекты" />
     <MainMenu category="verb" name="Глаголы" />
@@ -57,6 +58,17 @@ header>*:last-child {
   margin-left: auto;
 }
 
+header .iconmenu {
+  cursor: pointer;
+  stroke: #888;
+  stroke-width: 2;
+  transform: scale(1.5, 1.5);
+}
+
+header .iconmenu.active {
+  stroke: var(--color-link);
+}
+
 .points {
   display: flex;
   gap: 10px;
@@ -67,7 +79,6 @@ header>*:last-child {
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
-  /* background-color: #eee; */
   border: solid 1px #ccc;
   line-height: 0;
 }
