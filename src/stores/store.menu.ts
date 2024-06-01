@@ -12,7 +12,7 @@ categoryList.set('sentence', 'Предложения')
 
 export const useMenuStore = defineStore('menu', () => {
   const menu = ref(routes)
-  const show = ref(true)
+  const show = ref(false)
 
   const category = ref(menu.value[0].category);
   const title = ref(menu.value[0].title);
@@ -20,20 +20,20 @@ export const useMenuStore = defineStore('menu', () => {
   const back = ref('');
 
   const pathMap = new Map;
-  const catList: { [key: string]: string[] } = {};
+  const catList: { [key: string]: { path: string, title: string }[] } = {};
 
   for (let i = 0, el; i < menu.value.length; i++) {
     el = menu.value[i]
     pathMap.set(el.path, i)
 
     catList[el.category] = catList[el.category] || [];
-    catList[el.category].push(el.path)
+    catList[el.category].push({ path: el.path, title: el.title })
   }
 
   const points = ref(catList[category.value]);
   // console.log(catList)
 
-  
+
   function click(path: string) {
     const key = pathMap.get(path)
     const el = menu.value[key]

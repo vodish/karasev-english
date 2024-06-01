@@ -10,7 +10,7 @@ const menu = useMenuStore()
   <header>
     <div class="title">{{ menu.category }}</div>
     <div class="points">
-      <RouterLink v-for="path in menu.points" :key="path" :to="path">O</RouterLink>
+      <RouterLink v-for="{path, title} in menu.points" :key="path" :to="path" :title="title" />
     </div>
     <button @click="menu.show = !menu.show">&nbsp;</button>
   </header>
@@ -28,13 +28,14 @@ const menu = useMenuStore()
 
   <footer>
     <RouterLink :to="menu.back" class="btn back">&larr;</RouterLink>
-    <RouterLink :to="menu.next" class="btn next">Дальше</RouterLink>
+    <RouterLink :to="menu.next" class="btn next">Дальше &rarr;</RouterLink>
   </footer>
 </template>
 
 <style scoped>
 header {
   display: flex;
+  align-items: baseline;
   gap: 40px;
   line-height: 1.5;
   max-height: 100vh;
@@ -51,8 +52,22 @@ header>*:last-child {
   margin-left: auto;
 }
 
+.points {
+  display: flex;
+  gap: 10px;
+}
+.points > a {
+  --size: 15px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  /* background-color: #eee; */
+  border: solid 1px #ccc;
+  line-height: 0;
+}
 .points > a.router-link-exact-active {
-  color: var(--color-text);
+  background-color: #888;
+  border-color: #888;
   cursor: default;
 }
 
