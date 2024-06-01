@@ -22,6 +22,9 @@
 
   --color-link: hsla(160, 100%, 37%, 1);
   --color-link-hover: rgb(1, 165, 110);
+
+  --color-time: #FF6F42;
+  --color-select: #000;
 }
 
 /* semantic color variables for this project */
@@ -50,6 +53,8 @@
 
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
+
+    --color-select: #fff;
   }
 }
 
