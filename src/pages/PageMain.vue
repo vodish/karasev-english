@@ -3,5 +3,6 @@
 </script>
 
 <template>
-  Main Main Main Main Main Main Main Main Main Main Main Main Main Main Main Main 
+  <div>- иконка меню</div>
+  <div>- фавиконка</div>
 </template>

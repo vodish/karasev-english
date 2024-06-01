@@ -129,7 +129,7 @@ footer {
   border-color: #888;
 }
 
-.next:active {
+.btn.next:active {
   background-color: var(--color-link);
   border-color: transparent;
 }
