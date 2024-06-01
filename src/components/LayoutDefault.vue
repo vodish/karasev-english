@@ -1,21 +1,19 @@
 <script setup lang="ts">
 import { useMenuStore } from '@/stores/store.menu';
-import { RouterView } from 'vue-router'
+import { RouterLink, RouterView } from 'vue-router'
 import MainMenu from './main/MainMenu.vue';
-import { ref } from 'vue';
 
 const menu = useMenuStore()
-const show = ref(false)
 </script>
 
 <template>
   <header>
     <div class="title">{{ menu.category }}</div>
     <div>&bull; &bull; &bull; &bull; &bull; &bull; </div>
-    <button @click="show = !show">&nbsp;</button>
+    <button @click="menu.show = !menu.show">&nbsp;</button>
   </header>
 
-  <nav class="menu" v-if="show">
+  <nav class="menu" v-if="menu.show">
     <MainMenu category="page" name="Страницы" />
     <MainMenu category="subject" name="Субъекты" />
     <MainMenu category="verb" name="Глаголы" />
@@ -27,7 +25,8 @@ const show = ref(false)
   </main>
 
   <footer>
-    <div>footer</div>
+    <RouterLink :to="menu.back" class="back">Назад</RouterLink>
+    <RouterLink :to="menu.next" class="next">Дальше</RouterLink>
   </footer>
 </template>
 
@@ -60,8 +59,11 @@ nav {
 }
 
 main {
-  min-height: 50vh;
+  min-height: 30vh;
 }
 
-
+footer {
+  border-top: solid 1px #ccc;
+  padding: 15px 0;
+}
 </style>
