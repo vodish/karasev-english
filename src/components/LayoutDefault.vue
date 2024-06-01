@@ -8,10 +8,15 @@ const menu = useMenuStore()
 
 <template>
   <header>
-    <div class="title">{{ menu.category }}</div>
-    <div class="points">
-      <RouterLink v-for="{path, title} in menu.points" :key="path" :to="path" :title="title" />
-    </div>
+    <template v-if="menu.category == 'Страницы'">
+      <div class="title">Тренажер по английскому</div>
+    </template>
+    <template v-else>
+      <div class="title">{{ menu.category }}</div>
+      <div class="points">
+        <RouterLink v-for="{ path, title } in menu.points" :key="path" :to="path" :title="title" />
+      </div>
+    </template>
     <button @click="menu.show = !menu.show">&nbsp;</button>
   </header>
 
@@ -27,8 +32,8 @@ const menu = useMenuStore()
   </main>
 
   <footer>
-    <RouterLink :to="menu.back" class="btn back">&larr;</RouterLink>
-    <RouterLink :to="menu.next" class="btn next">Дальше &rarr;</RouterLink>
+    <RouterLink :to="menu.back" class="btn back" v-if="menu.back">&larr;</RouterLink>
+    <RouterLink :to="menu.next" class="btn next" v-if="menu.next">Дальше &rarr;</RouterLink>
   </footer>
 </template>
 
@@ -44,7 +49,7 @@ header {
   margin-bottom: 20px;
 }
 
-header>.title {
+header .title {
   font-size: 28px;
 }
 
@@ -56,7 +61,8 @@ header>*:last-child {
   display: flex;
   gap: 10px;
 }
-.points > a {
+
+.points>a {
   --size: 15px;
   width: var(--size);
   height: var(--size);
@@ -65,7 +71,8 @@ header>*:last-child {
   border: solid 1px #ccc;
   line-height: 0;
 }
-.points > a.router-link-exact-active {
+
+.points>a.router-link-exact-active {
   background-color: #888;
   border-color: #888;
   cursor: default;
@@ -106,13 +113,17 @@ footer {
   border-color: transparent;
 }
 
-.next {
+.btn.end {
+  opacity: 0;
+}
+
+.btn.next {
   flex-basis: 200px;
   background-color: #eee;
   text-align: center;
 }
 
-.next:hover {
+.btn.next:hover {
   color: var(--vt-c-white-mute);
   background-color: var(--color-link-hover);
   border-color: #888;
