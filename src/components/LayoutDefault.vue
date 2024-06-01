@@ -9,7 +9,9 @@ const menu = useMenuStore()
 <template>
   <header>
     <div class="title">{{ menu.category }}</div>
-    <div>&bull; &bull; &bull; &bull; &bull; &bull; </div>
+    <div class="points">
+      <RouterLink v-for="path in menu.points" :key="path" :to="path">O</RouterLink>
+    </div>
     <button @click="menu.show = !menu.show">&nbsp;</button>
   </header>
 
@@ -25,8 +27,8 @@ const menu = useMenuStore()
   </main>
 
   <footer>
-    <RouterLink :to="menu.back" class="back">Назад</RouterLink>
-    <RouterLink :to="menu.next" class="next">Дальше</RouterLink>
+    <RouterLink :to="menu.back" class="btn back">&larr;</RouterLink>
+    <RouterLink :to="menu.next" class="btn next">Дальше</RouterLink>
   </footer>
 </template>
 
@@ -49,6 +51,11 @@ header>*:last-child {
   margin-left: auto;
 }
 
+.points > a.router-link-exact-active {
+  color: var(--color-text);
+  cursor: default;
+}
+
 nav {
   width: 100%;
   display: flex;
@@ -59,11 +66,45 @@ nav {
 }
 
 main {
-  min-height: 30vh;
+  min-height: 40vh;
 }
 
 footer {
   border-top: solid 1px #ccc;
   padding: 15px 0;
+  display: flex;
+  gap: 30px;
+}
+
+.btn {
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: solid 1px #ccc;
+  color: inherit;
+}
+
+.btn:hover {
+  background-color: #eee;
+}
+
+.btn:active {
+  border-color: transparent;
+}
+
+.next {
+  flex-basis: 200px;
+  background-color: #eee;
+  text-align: center;
+}
+
+.next:hover {
+  color: var(--vt-c-white-mute);
+  background-color: var(--color-link-hover);
+  border-color: #888;
+}
+
+.next:active {
+  background-color: var(--color-link);
+  border-color: transparent;
 }
 </style>

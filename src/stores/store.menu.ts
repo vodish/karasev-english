@@ -13,16 +13,27 @@ categoryList.set('sentence', 'Предложения')
 export const useMenuStore = defineStore('menu', () => {
   const menu = ref(routes)
   const show = ref(true)
+
   const category = ref(menu.value[0].category);
   const title = ref(menu.value[0].title);
   const next = ref(menu.value[1].path);
   const back = ref('');
 
   const pathMap = new Map;
-  for (let i = 0; i < menu.value.length; i++) {
-    pathMap.set(menu.value[i].path, i);
+  const catList: { [key: string]: string[] } = {};
+
+  for (let i = 0, el; i < menu.value.length; i++) {
+    el = menu.value[i]
+    pathMap.set(el.path, i)
+
+    catList[el.category] = catList[el.category] || [];
+    catList[el.category].push(el.path)
   }
 
+  const points = ref(catList[category.value]);
+  // console.log(catList)
+
+  
   function click(path: string) {
     const key = pathMap.get(path)
     const el = menu.value[key]
@@ -32,6 +43,7 @@ export const useMenuStore = defineStore('menu', () => {
     document.title = el.title
     next.value = menu.value[key + 1] ? menu.value[key + 1].path : ''
     back.value = menu.value[key - 1] ? menu.value[key - 1].path : ''
+    points.value = catList[el.category];
   }
 
 
@@ -41,7 +53,7 @@ export const useMenuStore = defineStore('menu', () => {
 
 
   return {
-    menu, show, category, title, next, back,
+    menu, show, category, title, next, back, points,
     click, filterCategory,
   }
 })
