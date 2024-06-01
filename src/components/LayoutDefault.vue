@@ -75,7 +75,7 @@ header .iconmenu.active {
 }
 
 .points>a {
-  --size: 15px;
+  --size: 13px;
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
@@ -100,6 +100,7 @@ nav {
 
 main {
   min-height: 40vh;
+  padding-bottom: 40px;
 }
 
 main > p {
