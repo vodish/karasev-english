@@ -94,13 +94,18 @@ nav {
   display: flex;
   gap: 7%;
   border-bottom: solid 1px #ccc;
-  padding: 0 15px 20px 0;
+  padding: 0 15px 40px 0;
   margin-bottom: 20px;
 }
 
 main {
   min-height: 40vh;
 }
+
+main > p {
+  margin-bottom: 1.2em;
+}
+
 
 footer {
   border-top: solid 1px #ccc;

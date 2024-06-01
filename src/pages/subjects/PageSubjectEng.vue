@@ -3,5 +3,5 @@
 </script>
 
 <template>
-  <div>Subject 01</div>
+  <p>Впиши английское слово в третью колонку "по-английски".</p>
 </template>
