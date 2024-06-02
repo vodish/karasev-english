@@ -3,5 +3,5 @@
 </script>
 
 <template>
-  <div>Subject 01</div>
+  Тернажер предложений, ради которого все и затевалось.
 </template>

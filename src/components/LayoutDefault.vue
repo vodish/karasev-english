@@ -38,7 +38,7 @@ const menu = useMenuStore()
   </footer>
 </template>
 
-<style scoped>
+<style>
 header {
   display: flex;
   align-items: baseline;
@@ -69,12 +69,12 @@ header .iconmenu.active {
   stroke: var(--color-link);
 }
 
-.points {
+header .points {
   display: flex;
   gap: 10px;
 }
 
-.points>a {
+header .points>a {
   --size: 13px;
   width: var(--size);
   height: var(--size);
@@ -83,7 +83,7 @@ header .iconmenu.active {
   line-height: 0;
 }
 
-.points>a.router-link-exact-active {
+header .points>a.router-link-exact-active {
   background-color: #888;
   border-color: #888;
   cursor: default;
@@ -99,12 +99,17 @@ nav {
 }
 
 main {
-  min-height: 40vh;
+  min-height: 50vh;
   padding-bottom: 40px;
 }
 
-main > p {
-  margin-bottom: 1.2em;
+main p {
+  margin-top: 0;
+  margin-bottom: 0.4em;
+  width: 80%;
+}
+main ul {
+  margin: 0.1em 0 0.4em 0;
 }
 
 
