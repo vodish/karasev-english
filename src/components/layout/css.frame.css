@@ -4,7 +4,7 @@ main .frame1 {
 }
 
 main .frame1>div .border {
-    width: 200px;
+    width: 170px;
 }
 
 main .frame1>div .border {
@@ -18,4 +18,9 @@ main .frame1>div .note {
     padding: 10px 20px 15px 18px;
     font-size: 0.9em;
     line-height: 1.1em;
+}
+
+
+main .frame1>div .subject {
+    width: 80px;
 }
