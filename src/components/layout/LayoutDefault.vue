@@ -1,6 +1,8 @@
 <style>
 @import './css.header.css';
 @import './css.main.css';
+@import './css.table.css';
+@import './css.frame.css';
 @import './css.footer.css';
 </style>
 

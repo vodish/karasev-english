@@ -9,4 +9,9 @@
     Например, возьмём один глагол &nbsp;&mdash; ожидать. 
     <b>Кто</b> ожидать? <b class="time">Когда</b> ожидать? Ничего не&nbsp;понятно...
   </p>
+
+  <div class="col1 frame1">
+    <div class="brd">ожидать</div>
+    <div class="note">действие (глагол)</div>
+  </div>
 </template>
