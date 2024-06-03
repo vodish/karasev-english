@@ -24,7 +24,9 @@ const subject = [
       <td>По-русски</td>
       <td>Проверка</td>
     </thead>
-    <tr><td></td></tr>
+    <tr>
+      <td></td>
+    </tr>
     <tbody>
       <template v-for="({ en, ru }) in subject" :key="ru">
         <tr>
