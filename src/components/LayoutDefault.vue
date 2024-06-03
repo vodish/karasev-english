@@ -46,7 +46,7 @@ header {
   line-height: 1.5;
   max-height: 100vh;
   padding-bottom: 15px;
-  border-bottom: solid 1px #ccc;
+  border-bottom: solid 1px var(--color-border);
   margin-bottom: 20px;
 }
 
@@ -79,7 +79,7 @@ header .points>a {
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
-  border: solid 1px #ccc;
+  border: solid 1px var(--color-border);
   line-height: 0;
 }
 
@@ -93,7 +93,7 @@ nav {
   width: 100%;
   display: flex;
   gap: 7%;
-  border-bottom: solid 1px #ccc;
+  border-bottom: solid 1px var(--color-border);
   padding: 0 15px 40px 0;
   margin-bottom: 20px;
 }
@@ -114,7 +114,7 @@ main ul {
 
 
 footer {
-  border-top: solid 1px #ccc;
+  border-top: solid 1px var(--color-border);
   padding: 15px 0;
   display: flex;
   gap: 30px;
@@ -123,7 +123,7 @@ footer {
 .btn {
   padding: 5px 10px;
   border-radius: 4px;
-  border: solid 1px #ccc;
+  border: solid 1px var(--color-border);
   color: inherit;
 }
 
@@ -141,7 +141,7 @@ footer {
 
 .btn.next {
   flex-basis: 200px;
-  background-color: #eee;
+  background-color: var(--color-link);
   text-align: center;
 }
 
