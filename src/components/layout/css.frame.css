@@ -1,3 +1,11 @@
 main .frame1 {
-    border: solid 1px red;
+    display: flex;
+    gap: 20px;
+}
+
+main .frame1>div .border {
+    border: solid 1px var(--color-text);;
+    font-size: 24px;
+    padding: 10px 20px 15px 20px;
+    width: 200px;
 }

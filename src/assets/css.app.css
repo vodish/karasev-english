@@ -129,10 +129,12 @@ a,
 
 .time {
     color: var(--color-time);
+    text-decoration: none;
 }
 
-.select {
+.sel {
     color: var(--color-select);
+    text-decoration: none;
 }
 
 .bold {

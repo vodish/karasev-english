@@ -6,12 +6,20 @@
   <p>
     Глаголы&nbsp;&mdash; это такие слова, которые указывают <b>действия</b>.
     Если оставить глагол сам по&nbsp;себе, то&nbsp;он ничего обозначать не&nbsp;будет. <br />
-    Например, возьмём один глагол &nbsp;&mdash; ожидать. 
-    <b>Кто</b> ожидать? <b class="time">Когда</b> ожидать? Ничего не&nbsp;понятно...
+    Например, возьмём один глагол &nbsp;&mdash; ожидать.
+    <b>Кто</b> ожидать? <u class="time">Когда</u> ожидать? Ничего не&nbsp;понятно...
   </p>
 
   <div class="col1 frame1">
-    <div class="brd">ожидать</div>
-    <div class="note">действие (глагол)</div>
+    <div>
+      <div class="border"><u class="sel">ожидать</u></div>
+      <div class="note">действие (глагол)</div>
+    </div>
+    <div>
+      <div class="border"><span class="sel">ожид</span><b class="time">ал</b></div>
+      <div class="note">действие (глагол)</div>
+    </div>
+    
   </div>
+  
 </template>
