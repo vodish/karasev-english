@@ -24,6 +24,7 @@
   --color-link: hsla(160, 100%, 37%, 1);
   --color-link-hover: rgb(1, 165, 110);
 
+
   --color-time: #FF6F42;
   --color-select: #000;
 }
@@ -41,6 +42,7 @@
   --color-text: var(--vt-c-text-light-1);
 
   --section-gap: 160px;
+  --color-select: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -68,3 +70,59 @@
 
 *::-webkit-scrollbar        { width: 8px; height: 8px; background-color: inherit; }
 *::-webkit-scrollbar-thumb  { border-radius: 1px; background: #ccc; }
+
+
+
+
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
+}
+
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  font-weight: normal;
+}
+
+p {
+  margin: 0 0 0.5em 0;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: var(--color-link);
+  transition: 0.2s;
+}
+
+.time {
+  color: var(--color-time);
+}
+
+.select {
+  color: var(--color-select);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: var(--color-link-hover);
+  }
+}
+

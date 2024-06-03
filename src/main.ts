@@ -1,4 +1,4 @@
-import './assets/css.main.css'
+import './assets/css.app.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { useMenuStore } from './stores/store.menu'

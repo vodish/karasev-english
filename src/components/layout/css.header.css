@@ -1,0 +1,59 @@
+
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 40px;
+  line-height: 1.5;
+  max-height: 100vh;
+  padding-bottom: 15px;
+  border-bottom: solid 1px var(--color-border);
+  margin-bottom: 20px;
+}
+
+header .title {
+  font-size: 28px;
+}
+
+header>*:last-child {
+  margin-left: auto;
+}
+
+header .iconmenu {
+  cursor: pointer;
+  stroke: #888;
+  stroke-width: 2;
+  transform: scale(1.5, 1.5);
+}
+
+header .iconmenu.active {
+  stroke: var(--color-link);
+}
+
+header .points {
+  display: flex;
+  gap: 10px;
+}
+
+header .points>a {
+  --size: 13px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  border: solid 1px var(--color-border);
+  line-height: 0;
+}
+
+header .points>a.router-link-exact-active {
+  background-color: #888;
+  border-color: #888;
+  cursor: default;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  gap: 7%;
+  border-bottom: solid 1px var(--color-border);
+  padding: 0 15px 40px 0;
+  margin-bottom: 20px;
+}

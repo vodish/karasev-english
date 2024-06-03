@@ -1,0 +1,42 @@
+footer {
+  border-top: solid 1px var(--color-border);
+  padding: 15px 0;
+  display: flex;
+  gap: 30px;
+}
+
+footer .btn {
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: solid 1px var(--color-border);
+  color: inherit;
+}
+
+footer .btn:hover {
+  background-color: #eee;
+}
+
+footer .btn:active {
+  border-color: transparent;
+}
+
+footer .btn.end {
+  opacity: 0;
+}
+
+footer .btn.next {
+  flex-basis: 200px;
+  background-color: var(--color-link);
+  text-align: center;
+}
+
+footer .btn.next:hover {
+  color: var(--vt-c-white-mute);
+  background-color: var(--color-link-hover);
+  border-color: #888;
+}
+
+footer .btn.next:active {
+  background-color: var(--color-link);
+  border-color: transparent;
+}
