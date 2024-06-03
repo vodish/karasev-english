@@ -28,7 +28,7 @@ const list = menu.filterCategory(props.category)
 <style scoped>
 .name {
   font-size: 13px;
-  border-bottom: solid 1px #eee;
+  border-bottom: solid 1px var(--color-border);
   margin-bottom: 0.3em;
 }
 

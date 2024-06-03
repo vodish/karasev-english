@@ -17,27 +17,19 @@ const subject = [
 
   <p>It&nbsp;обозначает все, что не&nbsp;является человеком (стул, животное, ветер).</p>
 
-  <div class="col1">
-    <table class="tbl1">
-      <thead>
-        <td>Субъект</td>
-        <td>Перевод</td>
-      </thead>
-      <tbody>
-        <template v-for="({ en, ru }) in subject" :key="ru">
-          <tr>
-            <td>{{ en }}</td>
-            <td>{{ ru }}</td>
-          </tr>
-        </template>
-      </tbody>
-    </table>
-  </div>
+  <table class="col1 tbl1">
+    <thead>
+      <td>Субъект</td>
+      <td>Перевод</td>
+    </thead>
+    <tbody>
+      <template v-for="({ en, ru }) in subject" :key="ru">
+        <tr>
+          <td>{{ en }}</td>
+          <td>{{ ru }}</td>
+        </tr>
+      </template>
+    </tbody>
+  </table>
 </template>
-
-<style scoped>
-tbody {
-  color: var(--color-select);
-}
-</style>
 

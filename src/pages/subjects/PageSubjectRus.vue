@@ -1,5 +1,13 @@
 <script setup lang="ts">
-// sdvsd
+const subject = [
+  { en: 'I', ru: 'я' },
+  { en: 'you', ru: 'ты' },
+  { en: 'we', ru: 'мы' },
+  { en: 'they', ru: 'они' },
+  { en: 'he', ru: 'он' },
+  { en: 'she', ru: 'она' },
+  { en: 'it', ru: 'это' },
+]
 </script>
 
 <template>
@@ -8,4 +16,24 @@
       style="font-family: Times;">I</span>. <br />
     Впиши русское слово в&nbsp;третью колонку &laquo;по-русски&raquo;.
   </p>
+
+  <table class="col1 tbl1">
+    <thead>
+      <td>Субъект</td>
+      <td>Перевод</td>
+      <td>По-русски</td>
+      <td>Проверка</td>
+    </thead>
+    <tr><td></td></tr>
+    <tbody>
+      <template v-for="({ en, ru }) in subject" :key="ru">
+        <tr>
+          <td>{{ en }}</td>
+          <td>{{ ru }}</td>
+          <td><input type="text" class="subject" maxlength="4" /></td>
+          <td>...</td>
+        </tr>
+      </template>
+    </tbody>
+  </table>
 </template>

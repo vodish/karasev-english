@@ -25,8 +25,11 @@
   --color-link-hover: rgb(1, 165, 110);
 
 
+  --color-hover: rgba(235, 235, 235, 0.64);
   --color-time: #FF6F42;
   --color-select: #000;
+
+
 }
 
 /* semantic color variables for this project */
@@ -41,8 +44,16 @@
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
 
+  --color-hover: #333;
+
+  --color-border: var(--vt-c-divider-dark-1);
+
   --section-gap: 160px;
   --color-select: #fff;
+
+  --input-background: #111;
+  --input-outline: var(--color-text);
+  --input-border: var(--vt-c-indigo);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -68,8 +79,16 @@
 }
 
 
-*::-webkit-scrollbar        { width: 8px; height: 8px; background-color: inherit; }
-*::-webkit-scrollbar-thumb  { border-radius: 1px; background: #ccc; }
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: inherit;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 1px;
+  background: #ccc;
+}
 
 
 
@@ -120,9 +139,22 @@ a,
   font-weight: bold;
 }
 
+input {
+  color: var(--color-text);
+  border: solid 2px var(--input-border);
+  background-color: var(--input-background);
+  outline: none;
+  font-size: inherit;
+  padding: 5px;
+  border-radius: 3px;
+}
+input:focus {
+  
+  border-color: var(--input-outline);
+}
+
 @media (hover: hover) {
   a:hover {
     color: var(--color-link-hover);
   }
 }
-

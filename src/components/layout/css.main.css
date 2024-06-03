@@ -14,15 +14,20 @@ main ul {
 }
 
 main .col1 {
-  margin: 3em 0 2em 10%;
+  margin: 2.3em 0 2em 10%;
 }
 
 main .tbl1 {
   border-collapse: collapse;
+  font-size: 18px;
 }
 
 main .tbl1 thead {
   border-bottom: solid 1px var(--color-border);
+  font-size: 0.8em;
+}
+main .tbl1 > tr > td {
+  height: 0.6em;
 }
 
 main .tbl1 td {
@@ -32,7 +37,19 @@ main .tbl1 td {
 main .tbl1 td:first-child {
   padding-left: 7px;
 }
+main .tbl1 td:last-child {
+  padding-right: 4px;
+}
 
 main .tbl1 tr:hover {
-  background-color: #333;
+  background-color: var(--color-hover);
+}
+
+main .tbl1 tbody {
+  color: var(--color-select);
+}
+
+
+input.subject {
+  width: 8ch;
 }
