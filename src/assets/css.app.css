@@ -43,17 +43,16 @@
 
     --color-heading: var(--vt-c-text-light-1);
     --color-text: var(--vt-c-text-light-1);
-
     --color-hover: #333;
-
     --color-border: var(--vt-c-divider-dark-1);
 
-    --section-gap: 160px;
-    --color-select: #fff;
+    --btn-color: var(--vt-c-black);
+    --btn-background: transparent;
+    --btn-background-hover: var(--vt-c-text-dark-2);
 
-    --input-background: #111;
+    --input-background: var(--vt-c-white-soft);
+    --input-border: var(--vt-c-divider-light-1);
     --input-outline: var(--color-text);
-    --input-border: var(--vt-c-indigo);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -65,10 +64,15 @@
         --color-border: var(--vt-c-divider-dark-2);
         --color-border-hover: var(--vt-c-divider-dark-1);
 
+        --color-select: var(--vt-c-white);
         --color-heading: var(--vt-c-text-dark-1);
         --color-text: var(--vt-c-text-dark-2);
 
         --color-border: #444;
+
+        --input-background: var(--color-hover);
+        --input-outline: var(--color-text);
+        --input-border: var(--vt-c-indigo);
     }
 }
 
@@ -95,7 +99,7 @@
 
 
 body {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     color: var(--color-text);
     background: var(--color-background);
     transition: color 0.5s, background-color 0.5s;
@@ -127,6 +131,15 @@ a,
     transition: 0.2s;
 }
 
+a:hover {
+    color: var(--color-link-hover);
+}
+
+
+
+
+
+
 .time {
     color: var(--color-time);
     text-decoration: none;
@@ -152,12 +165,5 @@ input {
 }
 
 input:focus {
-
     border-color: var(--input-outline);
-}
-
-@media (hover: hover) {
-    a:hover {
-        color: var(--color-link-hover);
-    }
 }

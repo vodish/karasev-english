@@ -4,8 +4,17 @@ main .frame1 {
 }
 
 main .frame1>div .border {
-    border: solid 1px var(--color-text);;
+    width: 200px;
+}
+
+main .frame1>div .border {
+    border: solid 1px var(--color-text);
+    border-radius: 2px;
     font-size: 24px;
     padding: 10px 20px 15px 20px;
-    width: 200px;
+}
+
+main .frame1>div .note {
+    padding: 10px 20px 15px 20px;
+    font-size: 0.9em;
 }

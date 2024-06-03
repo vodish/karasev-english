@@ -15,11 +15,6 @@
       <div class="border"><u class="sel">ожидать</u></div>
       <div class="note">действие (глагол)</div>
     </div>
-    <div>
-      <div class="border"><span class="sel">ожид</span><b class="time">ал</b></div>
-      <div class="note">действие (глагол)</div>
-    </div>
-    
   </div>
-  
+
 </template>
