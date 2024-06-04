@@ -1,9 +1,5 @@
 <script setup lang="ts">
 const subject = ['я', 'вы', 'мы', 'они', 'он', 'она', 'это']
-
-function simpleTime() {
-
-}
 </script>
 
 <template>
@@ -40,53 +36,14 @@ function simpleTime() {
     </div>
     <div>
       <div class="border">
-
         <table>
           <tr v-for="subj in subject" :key="subj">
             <td>
-              <u class="time" v-if="subject">Do</u>
+              <u class="time" v-if="['я', 'вы', 'мы', 'они'].includes(subj)">Do</u>
               <u class="time" v-else>Does</u>
             </td>
             <td>{{ subj }}</td>
             <td>expect?</td>
-          </tr>
-        </table>
-
-        <table>
-          <tr>
-            <td>я</td>
-            <td><u class="time">do</u> <u class="sel">not</u></td>
-            <td>expect.</td>
-          </tr>
-          <tr>
-            <td>Вы</td>
-            <td><u class="time">do</u> <u class="sel">not</u></td>
-            <td>expect.</td>
-          </tr>
-          <tr>
-            <td>Мы</td>
-            <td><u class="time">do</u> <u class="sel">not</u></td>
-            <td>expect.</td>
-          </tr>
-          <tr>
-            <td>Они</td>
-            <td><u class="time">do</u> <u class="sel">not</u></td>
-            <td>expect.</td>
-          </tr>
-          <tr>
-            <td>Он</td>
-            <td><u class="time">does</u> <u class="sel">not</u></td>
-            <td>expect.</td>
-          </tr>
-          <tr>
-            <td>Она</td>
-            <td><u class="time">does</u> <u class="sel">not</u></td>
-            <td>expect.</td>
-          </tr>
-          <tr>
-            <td>Это</td>
-            <td><u class="time">does</u> <u class="sel">not</u></td>
-            <td>expect.</td>
           </tr>
         </table>
       </div>
@@ -120,7 +77,7 @@ function simpleTime() {
 
 <style scoped>
 .border {
-  width: 260px !important;
+  width: 220px !important;
 }
 
 .rus {
