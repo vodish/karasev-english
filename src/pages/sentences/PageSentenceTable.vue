@@ -1,7 +1,3 @@
-<script setup lang="ts">
-// sdvsd
-</script>
-
 <template>
   <p>
     Сводная табличка с&nbsp;предложениями будет выглядеть следующим образом.
@@ -13,7 +9,6 @@
     <li>частицы &laquo;не&raquo;&nbsp;&mdash; для отрицания</li>
     <li>и&nbsp;вопросительного знака&nbsp;&mdash; для вопроса</li>
   </ul>
-
 
   <div class="col1 tbl2">
     <div class="top">
@@ -42,7 +37,3 @@
     </div>
   </div>
 </template>
-
-<style scoped>
-@import '@/components/layout/css.tbl2.css';
-</style>

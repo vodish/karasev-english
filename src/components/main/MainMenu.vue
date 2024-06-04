@@ -39,7 +39,7 @@ a {
 }
 
 a.router-link-exact-active {
-  color: var(--color-text);
+  color: var(--color-select);
   cursor: default;
 }
 

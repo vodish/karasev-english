@@ -2,6 +2,7 @@
 @import './css.header.css';
 @import './css.main.css';
 @import './css.table.css';
+@import './css.tbl2.css';
 @import './css.frame.css';
 @import './css.footer.css';
 </style>
