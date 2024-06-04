@@ -13,7 +13,7 @@ footer .btn {
 }
 
 footer .btn:hover {
-    background-color: var(--btn-background-hover);
+    background-color: var(--color-hover);
 }
 
 footer .btn:active {
