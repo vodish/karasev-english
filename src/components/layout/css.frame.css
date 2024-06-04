@@ -24,7 +24,15 @@ main .frame1>div .note {
     line-height: 1.4em;
 }
 
-
 main .frame1>div .subject {
     width: 80px;
+}
+
+
+main .frame1 table {
+    font-size: 1rem;
+}
+
+main .frame1 table td {
+    padding: 3px 6px;
 }
