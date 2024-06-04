@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const subject = ['Я', 'Вы', 'Мы', 'Они', 'Он', 'Она', 'Это']
+const rus = ['ю', 'eте', 'ем', 'ют', 'ет', 'ет', 'ет']
 </script>
 
 <template>
@@ -31,43 +32,20 @@ const subject = ['Я', 'Вы', 'Мы', 'Они', 'Он', 'Она', 'Это']
     </div>
     <div>
       <div class="border">
+
         <table>
-          <tr>
-            <td>Я</td>
-            <td><u class="time">expect</u>.</td>
-            <td class="rus">(ожида<u class="time">ю</u>)</td>
-          </tr>
-          <tr>
-            <td>Вы</td>
-            <td><u class="time">expect</u>.</td>
-            <td class="rus">(ожида<u class="time">eте</u>)</td>
-          </tr>
-          <tr>
-            <td>Мы</td>
-            <td><u class="time">expect</u>.</td>
-            <td class="rus">(ожида<u class="time">ем</u>)</td>
-          </tr>
-          <tr>
-            <td>Они</td>
-            <td><u class="time">expect</u>.</td>
-            <td class="rus">(ожида<u class="time">ют</u>)</td>
-          </tr>
-          <tr>
-            <td>Он</td>
-            <td>expect<u class="time">s</u>.</td>
-            <td class="rus">(ожида<u class="time">ет</u>)</td>
-          </tr>
-          <tr>
-            <td>Она</td>
-            <td>expect<u class="time">s</u>.</td>
-            <td class="rus">(ожида<u class="time">ет</u>)</td>
-          </tr>
-          <tr>
-            <td>Это</td>
-            <td>expect<u class="time">s</u>.</td>
-            <td class="rus">(ожида<u class="time">ет</u>)</td>
+          <tr v-for="(subj, i) in subject" :key="subj">
+            <td>{{ subj }}</td>
+            <td v-if="i < 4">
+              <u class="time">expect</u>.
+            </td>
+            <td v-else>
+              expect<u class="time">s</u>.
+            </td>
+            <td class="rus">(ожида<u class="time">{{rus[i]}}</u>)</td>
           </tr>
         </table>
+
       </div>
       <div class="note">
         субъект (он, она, это); <br />

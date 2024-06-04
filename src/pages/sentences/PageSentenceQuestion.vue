@@ -37,9 +37,9 @@ const subject = ['я', 'вы', 'мы', 'они', 'он', 'она', 'это']
     <div>
       <div class="border">
         <table>
-          <tr v-for="subj in subject" :key="subj">
+          <tr v-for="(subj, i) in subject" :key="subj">
             <td>
-              <u class="time" v-if="['я', 'вы', 'мы', 'они'].includes(subj)">Do</u>
+              <u class="time" v-if="i < 4">Do</u>
               <u class="time" v-else>Does</u>
             </td>
             <td>{{ subj }}</td>

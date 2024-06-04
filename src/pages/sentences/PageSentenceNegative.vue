@@ -5,8 +5,8 @@ const subject = ['Я', 'Вы', 'Мы', 'Они', 'Он', 'Она', 'Это']
 <template>
   <p>
     <b>Отрицательное предложение</b> образуется с&nbsp;помощью вспомогательного глагола&nbsp;<b class="sel">do</b>,
-    который никак не&nbsp;переводится, но&nbsp;выполняет две задачи: 
-    (1.) показывает <span class="time">время</span> действия 
+    который никак не&nbsp;переводится, но&nbsp;выполняет две задачи:
+    (1.) показывает <span class="time">время</span> действия
     и&nbsp;(2.) присоединяет к&nbsp;себе частицу &laquo;<b class="sel">не</b>&raquo; (not)
   </p>
   <p>
@@ -39,42 +39,16 @@ const subject = ['Я', 'Вы', 'Мы', 'Они', 'Он', 'Она', 'Это']
     <div>
       <div class="border">
         <table>
-          <tr>
-            <td>Я</td>
-            <td><u class="time">do</u> <u class="sel">not</u></td>
-            <td>expect.</td>
-          </tr>
-          <tr>
-            <td>Вы</td>
-            <td><u class="time">do</u> <u class="sel">not</u></td>
-            <td>expect.</td>
-          </tr>
-          <tr>
-            <td>Мы</td>
-            <td><u class="time">do</u> <u class="sel">not</u></td>
-            <td>expect.</td>
-          </tr>
-          <tr>
-            <td>Они</td>
-            <td><u class="time">do</u> <u class="sel">not</u></td>
-            <td>expect.</td>
-          </tr>
-          <tr>
-            <td>Он</td>
-            <td><u class="time">does</u> <u class="sel">not</u></td>
-            <td>expect.</td>
-          </tr>
-          <tr>
-            <td>Она</td>
-            <td><u class="time">does</u> <u class="sel">not</u></td>
-            <td>expect.</td>
-          </tr>
-          <tr>
-            <td>Это</td>
-            <td><u class="time">does</u> <u class="sel">not</u></td>
+          <tr v-for="(subj, i) in subject" :key="subj">
+            <td>{{ subj }}</td>
+            <td>
+              <u class="time" v-if="i < 4"><u class="time">do</u> <u class="sel">not</u></u>
+              <u class="time" v-else><u class="time">does</u> <u class="sel">not</u></u>
+            </td>
             <td>expect.</td>
           </tr>
         </table>
+
       </div>
       <div class="note">
         субъект (он, она, это); <br />
@@ -88,7 +62,7 @@ const subject = ['Я', 'Вы', 'Мы', 'Они', 'Он', 'Она', 'Это']
         <table>
           <tr v-for="subj in subject" :key="subj">
             <td>{{ subj }}</td>
-            <td><u class="time">will</u>  <u class="sel">not</u></td>
+            <td><u class="time">will</u> <u class="sel">not</u></td>
             <td>expect.</td>
           </tr>
         </table>
