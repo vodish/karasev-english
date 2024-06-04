@@ -9,7 +9,7 @@ footer .btn {
     padding: 8px 10px;
     border-radius: 4px;
     border: solid 1px var(--color-border);
-    color: var(--btn-color);
+    color: inherit;
 }
 
 footer .btn:hover {

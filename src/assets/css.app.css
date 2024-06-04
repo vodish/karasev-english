@@ -23,8 +23,7 @@
     --color-border: #ccc;
     --color-link: hsla(160, 100%, 37%, 1);
     --color-link-hover: rgb(1, 165, 110);
-
-
+    
     --color-hover: rgba(235, 235, 235, 0.64);
     --color-time: #FF6F42;
     --color-select: #000;
@@ -43,7 +42,7 @@
 
     --color-heading: var(--vt-c-text-light-1);
     --color-text: var(--vt-c-text-light-1);
-    --color-hover: #333;
+    
     --color-border: var(--vt-c-divider-dark-1);
 
     --btn-color: var(--vt-c-black);
@@ -60,10 +59,12 @@
         --color-background: var(--vt-c-black);
         --color-background-soft: var(--vt-c-black-soft);
         --color-background-mute: var(--vt-c-black-mute);
-
+        
+        
         --color-border: var(--vt-c-divider-dark-2);
         --color-border-hover: var(--vt-c-divider-dark-1);
-
+        
+        --color-hover: #333;
         --color-select: var(--vt-c-white);
         --color-heading: var(--vt-c-text-dark-1);
         --color-text: var(--vt-c-text-dark-2);
@@ -134,9 +135,6 @@ a,
 a:hover {
     color: var(--color-link-hover);
 }
-
-
-
 
 
 
