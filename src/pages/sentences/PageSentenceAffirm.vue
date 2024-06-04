@@ -19,7 +19,7 @@ const subject = ['Я', 'Вы', 'Мы', 'Они', 'Он', 'Она', 'Это']
         <table>
           <tr v-for="subj in subject" :key="subj">
             <td>{{ subj }}</td>
-            <td>expect<u class="time">ed</u></td>
+            <td>expect<u class="time">ed</u>.</td>
           </tr>
         </table>
       </div>
@@ -35,37 +35,37 @@ const subject = ['Я', 'Вы', 'Мы', 'Они', 'Он', 'Она', 'Это']
           <tr>
             <td>Я</td>
             <td><u class="time">expect</u>.</td>
-            <td class="rus">(ожидаю)</td>
+            <td class="rus">(ожида<u class="time">ю</u>)</td>
           </tr>
           <tr>
             <td>Вы</td>
             <td><u class="time">expect</u>.</td>
-            <td class="rus">(ожидаeте)</td>
+            <td class="rus">(ожида<u class="time">eте</u>)</td>
           </tr>
           <tr>
             <td>Мы</td>
             <td><u class="time">expect</u>.</td>
-            <td class="rus">(ожидаем)</td>
+            <td class="rus">(ожида<u class="time">ем</u>)</td>
           </tr>
           <tr>
             <td>Они</td>
             <td><u class="time">expect</u>.</td>
-            <td class="rus">(ожидают)</td>
+            <td class="rus">(ожида<u class="time">ют</u>)</td>
           </tr>
           <tr>
             <td>Он</td>
             <td>expect<u class="time">s</u>.</td>
-            <td class="rus">(ожидает)</td>
+            <td class="rus">(ожида<u class="time">ет</u>)</td>
           </tr>
           <tr>
             <td>Она</td>
             <td>expect<u class="time">s</u>.</td>
-            <td class="rus">(ожидает)</td>
+            <td class="rus">(ожида<u class="time">ет</u>)</td>
           </tr>
           <tr>
             <td>Это</td>
             <td>expect<u class="time">s</u>.</td>
-            <td class="rus">(ожидает)</td>
+            <td class="rus">(ожида<u class="time">ет</u>)</td>
           </tr>
         </table>
       </div>
@@ -106,7 +106,10 @@ const subject = ['Я', 'Вы', 'Мы', 'Они', 'Он', 'Она', 'Это']
   min-width: 210px;
   width: fit-content !important;
 }
+
 .rus {
+  opacity: 0.8;
   font-size: 0.8em;
+  padding-left: 20px;
 }
 </style>

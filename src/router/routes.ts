@@ -88,6 +88,12 @@ export const routes: TRoute[] = [
   },
 
   {
+    path: '/sentence/order',
+    src: '../pages/sentences/PageSentenceOrder.vue',
+    category: 'sentence',
+    title: 'Строгий порядок слов',
+  },
+  {
     path: '/sentence/table',
     src: '../pages/sentences/PageSentenceTable.vue',
     category: 'sentence',

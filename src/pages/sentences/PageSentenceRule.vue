@@ -41,7 +41,7 @@
       </div>
       <div class="big">
         <div>Я <u class="sel">не</u> ожид<u class="time">аю</u>.</div>
-        <div class="eng">I do <u class="sel">not</u> <u class="time">expect</u>.</div>
+        <div class="eng">I <u class="time">do</u> <u class="sel">not</u> expect.</div>
       </div>
       <div class="big">
         <div>Я <u class="sel">не</u> <u class="time">буду</u> ожидать.</div>
