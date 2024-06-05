@@ -1,11 +1,12 @@
 <script setup lang="ts">
 const subject = ['Я', 'Вы', 'Мы', 'Они', 'Он', 'Она', 'Это']
+const rus = ['ю', 'ете', 'ем', 'ют', 'ет', 'ет', 'ет']
 </script>
 
 
 <template>
   <p>
-    <b>Глаголы делятся на&nbsp;два типа</b> в&nbsp;английском языке:
+    <b>Глаголы делятся на&nbsp;два типа</b>, в&nbsp;английском языке:
   <ul>
     <li>правильные (в&nbsp;прошедшем времени добавляется окончание "<u class="time">ed</u>", а&nbsp;в&nbsp;настоящем
       "<b class="time">s</b>")</li>
@@ -16,7 +17,7 @@ const subject = ['Я', 'Вы', 'Мы', 'Они', 'Он', 'Она', 'Это']
     Смысловой глагол&nbsp;<u class="sel">do</u> (делать) &mdash; неправильный.
     Ещё у него есть особая роль: он&nbsp;является вспомогательным глаголом и употребляется в&nbsp;отрицательных
     предложениях.
-    Когда глагол do&nbsp;появляется в&nbsp;предложении как вспомогательный то&nbsp;он&nbsp;никак не&nbsp;переводится.
+    Когда глагол do&nbsp;появляется в&nbsp;предложении как вспомогательный, то&nbsp;он&nbsp;никак не&nbsp;переводится.
   </p>
 
   <div class="col1 frame1">
@@ -32,53 +33,24 @@ const subject = ['Я', 'Вы', 'Мы', 'Они', 'Он', 'Она', 'Это']
       <div class="note">
         субъект (я, вы, мы, они...); <br />
         форма смыслового глагола;
-        <div>Прошедшее время (было)</div>
+        <div><u class="time">Прошедшее</u> время (было)</div>
       </div>
     </div>
     <div>
       <div class="border">
         <table>
-          <tr>
-            <td>Я</td>
-            <td><u class="time">do</u>.</td>
-            <td class="rus">(дела<u class="time">л</u>)</td>
-          </tr>
-          <tr>
-            <td>Вы</td>
-            <td><u class="time">do</u>.</td>
-            <td class="rus">(дела<u class="time">ли</u>)</td>
-          </tr>
-          <tr>
-            <td>Мы</td>
-            <td><u class="time">do</u>.</td>
-            <td class="rus">(дела<u class="time">ли</u>)</td>
-          </tr>
-          <tr>
-            <td>Они</td>
-            <td><u class="time">do</u>.</td>
-            <td class="rus">(дела<u class="time">ли</u>)</td>
-          </tr>
-          <tr>
-            <td>Он</td>
-            <td><u class="time">does</u>.</td>
-            <td class="rus">(дела<u class="time">л</u>)</td>
-          </tr>
-          <tr>
-            <td>Она</td>
-            <td><u class="time">does</u>.</td>
-            <td class="rus">(дела<u class="time">ла</u>)</td>
-          </tr>
-          <tr>
-            <td>Это</td>
-            <td><u class="time">does</u>.</td>
-            <td class="rus">(дела<u class="time">ло</u>)</td>
+          <tr v-for="(subj, i) in subject" :key="subj">
+            <td>{{ subj }}</td>
+            <td v-if="i < 4"><u class="time">do</u>.</td>
+            <td v-else><u class="time">does</u>.</td>
+            <td class="rus">(дела<u class="time">{{rus[i]}}</u>)</td>
           </tr>
         </table>
       </div>
       <div class="note">
         субъект (он, она, это); <br />
         форма смыслового глагола;
-        <div>Настоящее время (сейчас)</div>
+        <div><u class="time">Настоящее</u> время (сейчас)</div>
       </div>
     </div>
     <div>
@@ -95,7 +67,7 @@ const subject = ['Я', 'Вы', 'Мы', 'Они', 'Он', 'Она', 'Это']
       <div class="note">
         субъект (это); <br />
         форма модального глагола; <br />
-        <p>Будущее время (будет)</p>
+        <p><u class="time">Будущее</u> время (будет)</p>
       </div>
     </div>
   </div>
