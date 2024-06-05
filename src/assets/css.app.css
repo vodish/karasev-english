@@ -43,7 +43,6 @@
     --color-heading: var(--vt-c-text-light-1);
     --color-text: var(--vt-c-text-light-1);
     
-    --color-border: var(--vt-c-divider-dark-1);
 
     --btn-color: var(--vt-c-black);
     --btn-background: transparent;
@@ -68,8 +67,7 @@
         --color-select: var(--vt-c-white);
         --color-heading: var(--vt-c-text-dark-1);
         --color-text: var(--vt-c-text-dark-2);
-
-        --color-border: #444;
+        
 
         --input-background: var(--color-hover);
         --input-outline: var(--color-text);

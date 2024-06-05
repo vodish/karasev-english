@@ -1,6 +1,7 @@
 export type TRoute = {
   src: string
   path: string
+  url?: string
   category: string
   title: string
   isPipe?: boolean
@@ -21,8 +22,9 @@ export const routes: TRoute[] = [
     title: 'Список глаголов',
   },
   {
-    path: '/verb/admin',
+    path: '/verb/admin/:verb?',
     src: '../pages/verbs/PageVerbAdmin.vue',
+    url: '/verb/admin',
     category: 'page',
     title: 'Админка глаголов',
   },

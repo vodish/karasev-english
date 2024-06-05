@@ -17,7 +17,7 @@ const list = menu.filterCategory(props.category)
   <div>
     <div class="name">{{ props.name }}</div>
     <div>
-      <RouterLink v-for="page in list" :key="page.path" :to="page.path" @click="menu.show = false">
+      <RouterLink v-for="page in list" :key="page.path" :to="page.url || page.path" @click="menu.show = false">
         {{ page.title }}
       </RouterLink>
     </div>
@@ -28,7 +28,6 @@ const list = menu.filterCategory(props.category)
 <style scoped>
 .name {
   font-size: 13px;
-  /* border-bottom: solid 1px var(--color-border); */
   margin-bottom: 0.3em;
 }
 
