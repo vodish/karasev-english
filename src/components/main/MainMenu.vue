@@ -17,7 +17,7 @@ const list = menu.filterCategory(props.category)
   <div>
     <div class="name">{{ props.name }}</div>
     <div>
-      <RouterLink v-for="page in list" :key="page.path" :to="page.url || page.path" @click="menu.show = false">
+      <RouterLink v-for="page in list" :key="page.path" :to="page.url || page.path" @click="menu.show = false" activeClass="active">
         {{ page.title }}
       </RouterLink>
     </div>
@@ -37,12 +37,12 @@ a {
   margin-top: 2px;
 }
 
-a.router-link-exact-active {
+a.active {
   color: var(--color-select);
   cursor: default;
 }
 
-a.router-link-exact-active:hover {
+a.active:hover {
   background-color: transparent;
 }
 </style>
