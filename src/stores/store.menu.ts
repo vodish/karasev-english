@@ -11,49 +11,62 @@ categoryList.set('sentence', 'Предложения')
 
 
 export const useMenuStore = defineStore('menu', () => {
-  const menu = ref(routes)
-  const show = ref(false)
-
-  const category = ref(menu.value[0].category);
-  const title = ref(menu.value[0].title);
-  const next = ref(menu.value[1].path);
-  const back = ref('');
-
+  // конфигурация
   const pathMap = new Map;
+  const pipeline: string[] = [];
   const catList: { [key: string]: { path: string, title: string }[] } = {};
 
-  for (let i = 0, el; i < menu.value.length; i++) {
-    el = menu.value[i]
+  for (let i = 0, pi = 0, el; i < routes.length; i++) {
+    el = routes[i]
     pathMap.set(el.path, i)
 
-    catList[el.category] = catList[el.category] || [];
-    catList[el.category].push({ path: el.path, title: el.title })
+    if (!catList[el.category]) catList[el.category] = [];
+
+    if (el.isPipe) {
+      pipeline.push(el.path);
+      catList[el.category].push({ path: el.path, title: el.title });
+    }
   }
 
-  const points = ref(catList[category.value]);
-  // console.log(catList)
+
+  // установки
+  const show = ref(false)
+  const category = ref(routes[0].category);
+  const title = ref(routes[0].title);
+  const next = ref('');
+  const back = ref('');
+  const points = ref();
 
 
+
+  // изменение адреса
   function click(path: string) {
     const key = pathMap.get(path)
-    const el = menu.value[key]
+    const el = routes[key]
 
+    points.value = catList[el.category];
     category.value = categoryList.get(el.category) || el.category
     title.value = el.title
     document.title = el.title
-    next.value = menu.value[key + 1] ? menu.value[key + 1].path : ''
-    back.value = menu.value[key - 1] ? menu.value[key - 1].path : ''
-    points.value = catList[el.category];
+
+    let cur = pipeline.indexOf(path)
+    cur = cur < 0 ? -99 : cur
+    next.value = pipeline[cur + 1] || ''
+    back.value = pipeline[cur - 1] || ''
+
+    // console.log(path)
+    // console.log(cur)
+    // console.log(pipeline)
   }
 
 
   function filterCategory(catName: string) {
-    return menu.value.filter(el => el.category === catName)
+    return routes.filter(el => el.category === catName)
   }
 
 
   return {
-    menu, show, category, title, next, back, points,
+    show, category, title, next, back, points,
     click, filterCategory,
   }
 })
