@@ -16,7 +16,7 @@ export const useMenuStore = defineStore('menu', () => {
   const pipeline: string[] = [];
   const catList: { [key: string]: { path: string, title: string }[] } = {};
 
-  for (let i = 0, pi = 0, el; i < routes.length; i++) {
+  for (let i = 0, el; i < routes.length; i++) {
     el = routes[i]
     pathMap.set(el.path, i)
 
