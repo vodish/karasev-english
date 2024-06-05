@@ -18,9 +18,7 @@ const menu = useMenuStore()
 
 <template>
   <header>
-    <template v-if="menu.category == 'Страницы'">
-      <div class="title">Тренажер по английскому</div>
-    </template>
+    <div class="title" v-if="menu.category == 'Страницы'">{{ menu.title }}</div>
     <template v-else>
       <div class="title">{{ menu.category }}</div>
       <div class="points">

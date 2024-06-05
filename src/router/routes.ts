@@ -11,7 +11,7 @@ export const routes: TRoute[] = [
     path: '/',
     src: '../pages/PageMain.vue',
     category: 'page',
-    title: 'Главная',
+    title: 'Тренажер по английскому',
     isPipe: true,
   },
   {

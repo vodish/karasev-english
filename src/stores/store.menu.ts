@@ -53,10 +53,6 @@ export const useMenuStore = defineStore('menu', () => {
     cur = cur < 0 ? -99 : cur
     next.value = pipeline[cur + 1] || ''
     back.value = pipeline[cur - 1] || ''
-
-    // console.log(path)
-    // console.log(cur)
-    // console.log(pipeline)
   }
 
 
