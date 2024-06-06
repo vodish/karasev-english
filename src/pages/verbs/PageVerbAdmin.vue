@@ -8,18 +8,6 @@ const enPastSimple = ['expected', 'expected', 'expected', 'expected', 'expected'
 const enPresentSimple = ['expect', 'expect', 'expect', 'expect', 'expects', 'expects', 'expects']
 
 
-function rand() {
-  const sentence = ['affirmative', 'negative', 'question']
-  const time = ['affirmative', 'negative', 'question']
-  const subject = ['I', 'you', 'we', 'they', 'hi', 'shi', 'it']
-
-}
-
-// function change(e?: any) {
-//   console.log('change')
-//   console.log((e.target as HTMLTableCellElement).textContent)
-// }
-
 
 
 // console.log(route.params);
