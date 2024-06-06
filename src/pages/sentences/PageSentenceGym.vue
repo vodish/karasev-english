@@ -67,6 +67,6 @@ const sentence = useSentenceStore()
   flex-basis: 250px;
 }
 .flex > div:nth-child(2) {
-  flex-basis: 350px;
+  flex-grow: 1;
 }
 </style>
