@@ -1,14 +1,6 @@
 export const be = {
   'ru infinitive': 'быть',
   
-  'ru I presentSimple': 'буду',
-  'ru you presentSimple': 'будете',
-  'ru we presentSimple': 'будем',
-  'ru they presentSimple': 'будут',
-  'ru he presentSimple': 'будет',
-  'ru she presentSimple': 'будет',
-  'ru it presentSimple': 'будет',
-
   'ru I pastSimple': 'был',
   'ru you pastSimple': 'были',
   'ru we pastSimple': 'были',
@@ -17,6 +9,14 @@ export const be = {
   'ru she pastSimple': 'была',
   'ru it pastSimple': 'было',
   
+  'ru I presentSimple': 'буду',
+  'ru you presentSimple': 'будете',
+  'ru we presentSimple': 'будем',
+  'ru they presentSimple': 'будут',
+  'ru he presentSimple': 'будет',
+  'ru she presentSimple': 'будет',
+  'ru it presentSimple': 'будет',
+
   'ru I futureSimple': 'буду',
   'ru you futureSimple': 'будете',
   'ru we futureSimple': 'будем',
@@ -25,16 +25,9 @@ export const be = {
   'ru she futureSimple': 'будет',
   'ru it futureSimple': 'будет',
   
+
   'en infinitive': 'be',
   
-  'en I presentSimple': 'am',
-  'en you presentSimple': 'are',
-  'en we presentSimple': 'are',
-  'en they presentSimple': 'are',
-  'en he presentSimple': 'is',
-  'en she presentSimple': 'is',
-  'en it presentSimple': 'is',
-
   'en I pastSimple': 'was',
   'en you pastSimple': 'were',
   'en we pastSimple': 'were',
@@ -42,4 +35,12 @@ export const be = {
   'en he pastSimple': 'was',
   'en she pastSimple': 'was',
   'en it pastSimple': 'was',
+
+  'en I presentSimple': 'am',
+  'en you presentSimple': 'are',
+  'en we presentSimple': 'are',
+  'en they presentSimple': 'are',
+  'en he presentSimple': 'is',
+  'en she presentSimple': 'is',
+  'en it presentSimple': 'is',
 };

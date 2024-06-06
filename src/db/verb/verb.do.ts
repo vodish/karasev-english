@@ -1,14 +1,6 @@
 export const _do = {
   'ru infinitive': 'делать',
 
-  'ru I presentSimple': 'делаю',
-  'ru you presentSimple': 'делаете',
-  'ru we presentSimple': 'ожидаем',
-  'ru they presentSimple': 'ожидают',
-  'ru he presentSimple': 'ожидет',
-  'ru she presentSimple': 'ожидет',
-  'ru it presentSimple': 'ожидает',
-
   'ru I pastSimple': 'ожидал',
   'ru you pastSimple': 'ожидали',
   'ru we pastSimple': 'ожидали',
@@ -17,15 +9,16 @@ export const _do = {
   'ru she pastSimple': 'ожидала',
   'ru it pastSimple': 'ожидало',
 
-  'en infinitive': 'do',
+  'ru I presentSimple': 'делаю',
+  'ru you presentSimple': 'делаете',
+  'ru we presentSimple': 'ожидаем',
+  'ru they presentSimple': 'ожидают',
+  'ru he presentSimple': 'ожидет',
+  'ru she presentSimple': 'ожидет',
+  'ru it presentSimple': 'ожидает',
 
-  'en I presentSimple': 'do',
-  'en you presentSimple': 'do',
-  'en we presentSimple': 'do',
-  'en they presentSimple': 'do',
-  'en he presentSimple': 'does',
-  'en she presentSimple': 'does',
-  'en it presentSimple': 'does',
+  
+  'en infinitive': 'do',
 
   'en I pastSimple': 'did',
   'en you pastSimple': 'did',
@@ -34,4 +27,12 @@ export const _do = {
   'en he pastSimple': 'did',
   'en she pastSimple': 'did',
   'en it pastSimple': 'did',
+
+  'en I presentSimple': 'do',
+  'en you presentSimple': 'do',
+  'en we presentSimple': 'do',
+  'en they presentSimple': 'do',
+  'en he presentSimple': 'does',
+  'en she presentSimple': 'does',
+  'en it presentSimple': 'does',
 }
