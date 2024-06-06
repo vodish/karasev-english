@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
+
 export const useSentenceStore = defineStore('sentence', () => {
   const sentence = ref(['affirmative', 'negative', 'question'])
   const time = ref(['pastSimple', 'presentSimple', 'futureSimple'])
@@ -10,15 +11,15 @@ export const useSentenceStore = defineStore('sentence', () => {
   const pattern: { [k: string]: { ru: string, en: string } } = {
     'affirmative pastSimple': { ru: '{subject} {verb}.', en: '{subject} {verb}.' },
     'affirmative presentSimple': { ru: '{subject} {verb}.', en: '{subject} {verb}.' },
-    'affirmative futureSimple': { ru: '{subject} {mod:быть} {verb}.', en: '{subject} will {verb}.' },
+    'affirmative futureSimple': { ru: '{subject} {быть} {verb}.', en: '{subject} will {verb}.' },
 
-    'negative pastSimple': { ru: '{subject} не {verb}', en: '{subject} {aux:do} not {verb}.' },
-    'negative presentSimple': { ru: '{subject} не {verb}', en: '{subject} {aux:do} not {verb}.' },
+    'negative pastSimple': { ru: '{subject} не {verb}', en: '{subject} {do} not {verb}.' },
+    'negative presentSimple': { ru: '{subject} не {verb}', en: '{subject} {do} not {verb}.' },
     'negative futureSimple': { ru: '{subject} не {mod:быть} {verb}', en: '{subject} will not {verb}.' },
 
-    'question pastSimple': { ru: '{subject} {verb}?', en: '{aux:do} {subject} {verb}?' },
-    'question presentSimple': { ru: '{subject} {verb}?', en: '{aux:do} {subject} {verb}?' },
-    'question futureSimple': { ru: '{subject} {mod:быть} {verb}?', en: 'Will {subject} {verb}?' },
+    'question pastSimple': { ru: '{subject} {verb}?', en: '{do} {subject} {verb}?' },
+    'question presentSimple': { ru: '{subject} {verb}?', en: '{do} {subject} {verb}?' },
+    'question futureSimple': { ru: '{subject} {быть} {verb}?', en: 'Will {subject} {verb}?' },
   }
 
 
