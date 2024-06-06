@@ -21,7 +21,12 @@ export const useSentenceStore = defineStore('sentence', () => {
     'question presentSimple': 'Aux subject verb?',
     'question futureSimple': 'Mod subject verb?',
   }
+
+
+
   const tth = ref(random(true))
+
+
 
   function randList(list: string[]) {
     const rand = Math.floor(Math.random() * list.length)
@@ -47,7 +52,7 @@ export const useSentenceStore = defineStore('sentence', () => {
 
 
   return {
-    sentence, time, subject, verb,
+    sentence, time, subject, verb, mod, aux,
     tth,
     random,
   }

@@ -13,6 +13,8 @@ const sentence = useSentenceStore()
       <p>Предложение: {{ sentence.tth?.sentence }}</p>
       <p>Время: {{ sentence.tth?.time }}</p>
       <p>Глагол: {{ sentence.tth?.verb }}</p>
+      <p>Мод: {{ sentence.tth?.mod }}</p>
+      <p>Всп: {{ sentence.tth?.aux }}</p>
     </div>
     <div>
       <p>Шаблон: <span style="font-size: 1.4em;">{{ sentence.tth?.pattern }}</span></p>
