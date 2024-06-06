@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import { dbVerb } from '@/db/verb'
 
 
 export const useSentenceStore = defineStore('sentence', () => {
@@ -7,7 +8,7 @@ export const useSentenceStore = defineStore('sentence', () => {
   const time = ref(['pastSimple', 'presentSimple', 'futureSimple'])
   const subject = ref(['I', 'you', 'we', 'they', 'he', 'she', 'it'])
   const verb = ref(['expect', 'love'])
-  
+
   const pattern: { [k: string]: { ru: string, en: string } } = {
     'affirmative pastSimple': { ru: '{subject} {verb}.', en: '{subject} {verb}.' },
     'affirmative presentSimple': { ru: '{subject} {verb}.', en: '{subject} {verb}.' },
@@ -22,9 +23,10 @@ export const useSentenceStore = defineStore('sentence', () => {
     'question futureSimple': { ru: '{subject} {быть} {verb}?', en: 'Will {subject} {verb}?' },
   }
 
-
+  
 
   const tth = ref(random(true))
+  const verbs = ref(dbVerb)
 
 
 
@@ -39,10 +41,9 @@ export const useSentenceStore = defineStore('sentence', () => {
       time: randList(time.value),
       subject: randList(subject.value),
       verb: randList(verb.value),
-      pattern: {ru: '', en: ''},
+      pattern: { ru: '', en: '' },
     }
     set.pattern = pattern[`${set.sentence} ${set.time}`]
-
 
     if (def) return set
     tth.value = set
@@ -51,7 +52,7 @@ export const useSentenceStore = defineStore('sentence', () => {
 
   function Letter(str: string) {
     return str.charAt(0).toUpperCase() + str.slice(1);
-}
+  }
 
 
   return {

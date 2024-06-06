@@ -1,4 +1,4 @@
-export default {
+export const be = {
   'ru infinitive': 'быть',
   
   'ru I presentSimple': 'буду',
