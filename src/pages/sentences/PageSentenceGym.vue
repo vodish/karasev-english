@@ -1,8 +1,17 @@
 <script setup lang="ts">
-// sdvsd
+import {useSentenceStore} from '@/stores/store.sentence'
+
+const sentence = useSentenceStore()
 </script>
 
 <template>
+  <button @click="sentence.random()">Еще</button>
+
+  <h4>Задание</h4>
+  <p>{{ sentence.tth }}</p>
+
+  <br><br><br><br>
+
   <div>Фильтр глаголов: </div>
 
   <ol>
@@ -32,5 +41,4 @@
       <td>...</td>
     </tr>
   </table>
-  
 </template>

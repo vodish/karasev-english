@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 const route = useRoute()
 
@@ -9,10 +8,17 @@ const enPastSimple = ['expected', 'expected', 'expected', 'expected', 'expected'
 const enPresentSimple = ['expect', 'expect', 'expect', 'expect', 'expects', 'expects', 'expects']
 
 
-function change(e?: any) {
-  console.log('change')
-  console.log((e.target as HTMLTableCellElement).textContent)
+function rand() {
+  const sentence = ['affirmative', 'negative', 'question']
+  const time = ['affirmative', 'negative', 'question']
+  const subject = ['I', 'you', 'we', 'they', 'hi', 'shi', 'it']
+
 }
+
+// function change(e?: any) {
+//   console.log('change')
+//   console.log((e.target as HTMLTableCellElement).textContent)
+// }
 
 
 
@@ -21,12 +27,7 @@ function change(e?: any) {
 </script>
 
 <template>
-  <h2>
-    <RouterLink to="/verb/admin">back</RouterLink>
-    .
-    <RouterLink to="/verb/admin/expect">expect</RouterLink>
-  </h2>
-
+  
   <table>
     <thead>
       <td colspan="2">Past simple</td>
@@ -35,11 +36,19 @@ function change(e?: any) {
     </thead>
     <tbody>
       <tr v-for="(subj, i) in subject" :key="subj + route.params.verb">
-        <td><div contenteditable="plaintext-only" :tabindex="10 + i">{{ enPastSimple[i] }}</div></td>
-        <td><div contenteditable="plaintext-only" :tabindex="20 + i">ожидал</div></td>
+        <td>
+          <div contenteditable="plaintext-only" :tabindex="10 + i">{{ enPastSimple[i] }}</div>
+        </td>
+        <td>
+          <div contenteditable="plaintext-only" :tabindex="20 + i">ожидал</div>
+        </td>
         <td class="subj">{{ subj }}</td>
-        <td><div contenteditable="plaintext-only" :tabindex="30 + i">{{ enPresentSimple[i] }}</div></td>
-        <td><div contenteditable="plaintext-only" :tabindex="40 + i">ожидаю</div></td>
+        <td>
+          <div contenteditable="plaintext-only" :tabindex="30 + i">{{ enPresentSimple[i] }}</div>
+        </td>
+        <td>
+          <div contenteditable="plaintext-only" :tabindex="40 + i">ожидаю</div>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -66,5 +75,4 @@ td {
 
 .subj {
   padding: 3px 5ch;
-}
-</style>
+}</style>

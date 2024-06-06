@@ -45,7 +45,7 @@ export const useMenuStore = defineStore('menu', () => {
     const el = routes[key]
 
     if (!el) return;
-    console.log(path)
+    // console.log(path)
 
     points.value = catList[el.category];
     category.value = categoryList.get(el.category) || el.category

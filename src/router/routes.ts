@@ -22,7 +22,7 @@ export const routes: TRoute[] = [
     title: 'Список глаголов',
   },
   {
-    path: '/verb/admin/:verb?',
+    path: '/verb/admin',
     src: '../pages/verbs/PageVerbAdmin.vue',
     url: '/verb/admin',
     category: 'page',
