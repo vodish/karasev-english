@@ -13,48 +13,14 @@ const sentence = useSentenceStore()
       <p>Предложение: {{ sentence.tth?.sentence }}</p>
       <p>Время: {{ sentence.tth?.time }}</p>
       <p>Глагол: {{ sentence.tth?.verb }}</p>
-      <p>Мод: {{ sentence.tth?.mod }}</p>
-      <p>Всп: {{ sentence.tth?.aux }}</p>
     </div>
     <div>
-      <p>Шаблон: <span style="font-size: 1.4em;">{{ sentence.tth?.pattern }}</span></p>
-      <p>Русский: <span style="font-size: 1.4em;">...</span></p>
-      <p>Английский: <span style="font-size: 1.4em;">...</span></p>
+      <p>Русский: <span style="font-size: 1.4em;">{{ sentence.tth?.pattern.ru }}</span></p>
+      <p>Английский: <span style="font-size: 1.4em;">{{ sentence.tth?.pattern.en }}</span></p>
     </div>
   </div>
   
-
-  <br><br><br><br>
-
-  <div>Фильтр глаголов: </div>
-
-  <ol>
-    <li>Один правильный глагол expect</li>
-    <li>Три правильных глагола: expect, do, love</li>
-    <li>Десять правильных глаголов: </li>
-    <li>Три неправильных глагола: </li>
-    <li>Десять неправильных глаголов: </li>
-    <li>Свои настройки: </li>
-  </ol>
-
-  <p>
-    Глаголы: <span title="ожидать">expect</span>
-  </p>
-
-  <table>
-    <tr>
-      <td>Предложение:</td>
-      <td>Я ожидаю.</td>
-    </tr>
-    <tr>
-      <td>Перевод:</td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td>Подсказка</td>
-      <td>...</td>
-    </tr>
-  </table>
+  
 </template>
 
 

@@ -6,20 +6,19 @@ export const useSentenceStore = defineStore('sentence', () => {
   const time = ref(['pastSimple', 'presentSimple', 'futureSimple'])
   const subject = ref(['I', 'you', 'we', 'they', 'he', 'she', 'it'])
   const verb = ref(['expect', 'love'])
-  const aux = ref(['do'])
-  const mod = ref(['will'])
+  
   const pattern: { [k: string]: { ru: string, en: string } } = {
-    'affirmative pastSimple': { ru: '...', en: 'subject verb.' },
-    'affirmative presentSimple': { ru: '...', en: 'subject verb.' },
-    'affirmative futureSimple': { ru: '...', en: 'subject mod verb.' },
+    'affirmative pastSimple': { ru: '{subject} {verb}.', en: '{subject} {verb}.' },
+    'affirmative presentSimple': { ru: '{subject} {verb}.', en: '{subject} {verb}.' },
+    'affirmative futureSimple': { ru: '{subject} {mod:быть} {verb}.', en: '{subject} will {verb}.' },
 
-    'negative pastSimple': { ru: '...', en: 'subject aux not verb.' },
-    'negative presentSimple': { ru: '...', en: 'subject aux not verb.' },
-    'negative futureSimple': { ru: '...', en: 'subject mod not verb.' },
+    'negative pastSimple': { ru: '{subject} не {verb}', en: '{subject} {aux:do} not {verb}.' },
+    'negative presentSimple': { ru: '{subject} не {verb}', en: '{subject} {aux:do} not {verb}.' },
+    'negative futureSimple': { ru: '{subject} не {mod:быть} {verb}', en: '{subject} will not {verb}.' },
 
-    'question pastSimple': { ru: '...', en: 'aux subject verb?' },
-    'question presentSimple': { ru: '...', en: 'aux subject verb?' },
-    'question futureSimple': { ru: '...', en: 'mod subject verb?' },
+    'question pastSimple': { ru: '{subject} {verb}?', en: '{aux:do} {subject} {verb}?' },
+    'question presentSimple': { ru: '{subject} {verb}?', en: '{aux:do} {subject} {verb}?' },
+    'question futureSimple': { ru: '{subject} {mod:быть} {verb}?', en: 'Will {subject} {verb}?' },
   }
 
 
@@ -39,8 +38,6 @@ export const useSentenceStore = defineStore('sentence', () => {
       time: randList(time.value),
       subject: randList(subject.value),
       verb: randList(verb.value),
-      aux: randList(aux.value),
-      mod: randList(mod.value),
       pattern: {ru: '', en: ''},
     }
     set.pattern = pattern[`${set.sentence} ${set.time}`]
@@ -52,7 +49,7 @@ export const useSentenceStore = defineStore('sentence', () => {
 
 
   return {
-    sentence, time, subject, verb, mod, aux,
+    sentence, time, subject, verb,
     tth,
     random,
   }
