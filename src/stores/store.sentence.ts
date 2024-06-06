@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { dbVerb } from '@/db/verb'
+import { verbs } from '@/db/verb'
 
 
 export const useSentenceStore = defineStore('sentence', () => {
@@ -24,9 +24,10 @@ export const useSentenceStore = defineStore('sentence', () => {
   }
 
   
+  console.log(verbs)
 
   const tth = ref(random(true))
-  const verbs = ref(dbVerb)
+  // const verbs = ref(dbVerb)
 
 
 
@@ -44,6 +45,7 @@ export const useSentenceStore = defineStore('sentence', () => {
       pattern: { ru: '', en: '' },
     }
     set.pattern = pattern[`${set.sentence} ${set.time}`]
+
 
     if (def) return set
     tth.value = set

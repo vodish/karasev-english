@@ -56,7 +56,7 @@ type TDbVevb = {
   }
 }
 
-export const dbVerb: TDbVevb = {
+export const verbs: TDbVevb = {
   do: _do,
   be,
   expect,
