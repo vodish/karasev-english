@@ -1,5 +1,5 @@
 
-const expect = {
+const _do = {
     'ru infinitive': 'делать',
     
     'ru I presentSimple': 'делаю',
@@ -37,4 +37,4 @@ const expect = {
     'en it pastSimple': 'did',
   }
   
-export default expect;
+export default _do;

@@ -1,5 +1,5 @@
 
-const expect = {
+const be = {
     'ru infinitive': 'быть',
     
     'ru I presentSimple': 'буду',
@@ -45,4 +45,4 @@ const expect = {
     'en it pastSimple': 'was',
   }
   
-export default expect;
+export default be;
