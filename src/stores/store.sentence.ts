@@ -24,10 +24,10 @@ export const useSentenceStore = defineStore('sentence', () => {
   }
 
   
-  console.log(verbs)
-
+  
   const tth = ref(random(true))
-  // const verbs = ref(dbVerb)
+  
+  // console.log(verbs)
 
 
 
