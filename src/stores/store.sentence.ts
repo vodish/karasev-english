@@ -31,7 +31,7 @@ export const useSentenceStore = defineStore('sentence', () => {
 
 
   // генератор задачи
-  function setTack() {
+  function genTask() {
     param.value = {
       sentence: myRand(listSentence),
       time: myRand(listTime),
@@ -49,7 +49,7 @@ export const useSentenceStore = defineStore('sentence', () => {
   }
 
 
-  return { param, ru, en, setVerbList, setTack, }
+  return { param, ru, en, setVerbList, genTask }
 })
 
 
