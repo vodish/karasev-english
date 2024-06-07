@@ -37,6 +37,7 @@ export const useSentenceStore = defineStore('sentence', () => {
   // console.log(verbs)
 
   // генератор задачи
+  gen();
 
   function gen() {
     sentence.value = rand(listSentence)
@@ -67,49 +68,36 @@ export const useSentenceStore = defineStore('sentence', () => {
       if (ruVerb) ru = ru.replace(/{verb}/, ruVerb);
     }
 
-    
+
     // подставить английские глаголы
-    if ( /will/.test(en) ) {
+    if (/will/.test(en)) {
       const enVerb = getVerbInfinitive('en', verb.value as TVerb)
-      if ( enVerb ) en = en.replace(/{verb}/, enVerb)
+      if (enVerb) en = en.replace(/{verb}/, enVerb)
     }
-    else if (/{do}/.test(en) ) {
+    else if (/{do}/.test(en)) {
       const enAux = getVerbForm('en', 'do')
-      if ( enAux ) en = en.replace(/{do}/, enAux)
+      if (enAux) en = en.replace(/{do}/, enAux)
 
       const enVerb = getVerbInfinitive('en', verb.value as TVerb)
-      if ( enVerb ) en = en.replace(/{verb}/, enVerb)
+      if (enVerb) en = en.replace(/{verb}/, enVerb)
     }
     else {
       const enVerb = getVerbForm('en', verb.value as TVerb)
-      if ( enVerb ) en = en.replace(/{verb}/, enVerb)
+      if (enVerb) en = en.replace(/{verb}/, enVerb)
     }
-
-
 
 
     goalRu.value = startUp(ru)
     goalEn.value = startUp(en)
   }
 
-  gen();
 
-  // function patternToGoal(set) {
-  //   let ru = ''
-  //   let en = ''
 
-  //   return {ru, en}
-  // }
 
   function rand(list: string[]) {
     const rand = Math.floor(Math.random() * list.length)
     return list[rand]
   }
-
-  function startUp(str: string) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
 
   function getVerbInfinitive(lang: 'ru' | 'en', word: TVerb) {
     const verb1 = verbs[word as TVerb]
@@ -117,7 +105,6 @@ export const useSentenceStore = defineStore('sentence', () => {
 
     return verb1[`${lang} infinitive` as TVerbKey]
   }
-
 
   function getVerbForm(lang: 'ru' | 'en', word: TVerb) {
     const infinitive = getVerbInfinitive(lang, word)
@@ -127,6 +114,10 @@ export const useSentenceStore = defineStore('sentence', () => {
     const key1 = `${lang} ${subject.value} ${time.value}` as TVerbKey
 
     return verb1[key1]
+  }
+
+  function startUp(str: string) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
 
