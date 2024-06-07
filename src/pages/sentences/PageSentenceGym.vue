@@ -2,22 +2,22 @@
 import { useSentenceStore } from '@/stores/store.sentence'
 
 const sentence = useSentenceStore()
-sentence.gen();
+sentence.setTack();
 </script>
 
 <template>
   <div class="flex">
     <div>
-      <p class="sel">Задание <button @click="sentence.gen()">Еще</button></p>
+      <p class="sel">Задание <button @click="sentence.setTack()">Еще</button></p>
       <br />
-      <p>Субъект: {{ sentence.subject }}</p>
-      <p>Предложение: {{ sentence.sentence }}</p>
-      <p>Время: {{ sentence.time }}</p>
-      <p>Глагол: {{ sentence.verb }}</p>
+      <p>Субъект: {{ sentence.param.subject }}</p>
+      <p>Предложение: {{ sentence.param.sentence }}</p>
+      <p>Время: {{ sentence.param.time }}</p>
+      <p>Глагол: {{ sentence.param.verb }}</p>
     </div>
     <div>
-      <p>GoalRu: <span style="font-size: 1.4em;">{{ sentence.goalRu }}</span></p>
-      <p>GoalEn: <span style="font-size: 1.4em;">{{ sentence.goalEn }}</span></p>
+      <p>Ru: <span style="font-size: 1.4em;">{{ sentence.ru }}</span></p>
+      <p>En: <span style="font-size: 1.4em;">{{ sentence.en }}</span></p>
     </div>
   </div>
   

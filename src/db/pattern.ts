@@ -1,4 +1,4 @@
-export type TPatternKey = 'affirmative pastSimple'
+export type TpatternKey = 'affirmative pastSimple'
   | 'affirmative presentSimple'
   | 'affirmative futureSimple'
 
@@ -11,7 +11,7 @@ export type TPatternKey = 'affirmative pastSimple'
   | 'question futureSimple'
 
 
-export const patterns: { [k in TPatternKey]: { ru: string, en: string } } = {
+export const patterns: { [k in TpatternKey]: { ru: string, en: string } } = {
   'affirmative pastSimple': { ru: '{subject} {verb}.', en: '{subject} {verb}.' },
   'affirmative presentSimple': { ru: '{subject} {verb}.', en: '{subject} {verb}.' },
   'affirmative futureSimple': { ru: '{subject} {быть} {verb}.', en: '{subject} will {verb}.' },

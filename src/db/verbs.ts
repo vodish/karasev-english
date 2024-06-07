@@ -3,19 +3,19 @@ import { be } from './verb/verb.be'
 import { expect } from './verb/verb.expect'
 
 
-export const verbs: TDbVevb = {
+export const verbs: TdbVevb = {
   do: _do,
   be,
   expect,
 }
 
-export type TVerb = 'be'
+export type Tverb = 'be'
   | 'do'
   | 'expect'
 
 
-type TDbVevb = {
-  [k in TVerb]: {
+type TdbVevb = {
+  [k in Tverb]: {
     'ru infinitive': string,
 
     'ru I presentSimple': string,
@@ -64,7 +64,7 @@ type TDbVevb = {
 }
 
 
-export type TVerbKey = 'ru infinitive'
+export type TverbKey = 'ru infinitive'
   | 'ru I presentSimple'
   | 'ru you presentSimple'
   | 'ru we presentSimple'
