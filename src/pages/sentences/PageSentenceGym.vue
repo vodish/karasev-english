@@ -9,11 +9,15 @@ sentence.genTask()
 <template>
   <p><button @click="sentence.genTask()">Еще</button> {{ sentence.param }} </p>
   <br>
-  <p>Ru: <span style="font-size: 1.4em;">{{ sentence.ru }}</span></p>
-  <p>En: <span style="font-size: 1.4em;">{{ sentence.en }}</span></p>
+  <p class="big">{{ sentence.ru }}</p>
+  <p class="big">{{ sentence.en }}</p>
 
-  
+
 </template>
 
 
-<style scoped></style>
+<style scoped>
+.big {
+  font-size: 1.4em;
+}
+</style>

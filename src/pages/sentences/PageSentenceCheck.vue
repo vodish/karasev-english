@@ -15,7 +15,6 @@ const enPresentSimple = ['expect', 'expect', 'expect', 'expect', 'expects', 'exp
 </script>
 
 <template>
-
   <h3>Показать таблицу предложений с глаголами.</h3>
   <h3>Все варианты для проверки: Время, Предлложение, Субъект</h3>
 
