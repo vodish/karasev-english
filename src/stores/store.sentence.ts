@@ -1,7 +1,8 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { verbs, type Tverb, type TverbKey } from '@/db/verbs'
-import { patterns, type TpatternKey } from '@/db/pattern'
+import { verbs, type Tverb, type TverbObj, type TverbFld } from '@/db/db.verbs'
+import { patterns, type TpatternKey } from '@/db/db.pattern'
+
 
 export { verbs };
 export { patterns };
@@ -121,24 +122,23 @@ function transForm(param: TtranslateParam) {
 
 
 function getVerbInfinitive(lang: 'ru' | 'en', word: Tverb) {
-  const verb1 = verbs[word as Tverb]
-  if (!verb1) return undefined;
+  const verb = verbs[word]
+  if (!verb) return undefined;
 
-  return verb1[`${lang} infinitive` as TverbKey]
+  return verb[`${lang} infinitive`]
 }
 
 
 
-function getVerbForm(word: Tverb, lang: 'ru' | 'en', subject: string, time: string,) {
+function getVerbForm(word: Tverb, lang: 'ru' | 'en', subject: string, time: string) {
   const infinitive = getVerbInfinitive(lang, word)
   if (!infinitive) return null;
 
-  const verb1 = verbs[word as Tverb]
-  const key1 = `${lang} ${subject} ${time}` as TverbKey
+  
+  const verb = verbs[word] as TverbObj
 
-  return verb1[key1]
+  return verb[`${lang} ${subject} ${time}` as TverbFld]
 }
-
 
 
 function myRand(list: string[]) {
