@@ -7,20 +7,20 @@ const sentence = useSentenceStore()
 <template>
   <div class="flex">
     <div>
-      <p class="sel">Задание <button @click="sentence.random()">Еще</button></p>
+      <p class="sel">Задание <button @click="sentence.gen()">Еще</button></p>
       <br />
-      <p>Субъект: {{ sentence.tth?.subject }}</p>
-      <p>Предложение: {{ sentence.tth?.sentence }}</p>
-      <p>Время: {{ sentence.tth?.time }}</p>
-      <p>Глагол: {{ sentence.tth?.verb }}</p>
+      <p>Субъект: {{ sentence.subject }}</p>
+      <p>Предложение: {{ sentence.sentence }}</p>
+      <p>Время: {{ sentence.time }}</p>
+      <p>Глагол: {{ sentence.verb }}</p>
     </div>
     <div>
-      <p>Русский: <span style="font-size: 1.4em;">{{ sentence.tth?.pattern.ru }}</span></p>
-      <p>Английский: <span style="font-size: 1.4em;">{{ sentence.tth?.pattern.en }}</span></p>
+      <p>GoalRu: <span style="font-size: 1.4em;">{{ sentence.goalRu }}</span></p>
+      <p>GoalEn: <span style="font-size: 1.4em;">{{ sentence.goalEn }}</span></p>
     </div>
   </div>
   
-  
+
 </template>
 
 

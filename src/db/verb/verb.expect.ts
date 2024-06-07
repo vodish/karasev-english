@@ -1,14 +1,6 @@
 export const expect = {
   'ru infinitive': 'ожидать',
 
-  'ru I pastSimple': 'ожидал',
-  'ru you pastSimple': 'ожидали',
-  'ru we pastSimple': 'ожидали',
-  'ru they pastSimple': 'ожидали',
-  'ru he pastSimple': 'ожидал',
-  'ru she pastSimple': 'ожидала',
-  'ru it pastSimple': 'ожидало',
-
   'ru I presentSimple': 'ожидаю',
   'ru you presentSimple': 'ожидаете',
   'ru we presentSimple': 'ожидаем',
@@ -17,16 +9,15 @@ export const expect = {
   'ru she presentSimple': 'ожидет',
   'ru it presentSimple': 'ожидает',
 
-  
-  'en infinitive': 'expect',
+  'ru I pastSimple': 'ожидал',
+  'ru you pastSimple': 'ожидали',
+  'ru we pastSimple': 'ожидали',
+  'ru they pastSimple': 'ожидали',
+  'ru he pastSimple': 'ожидал',
+  'ru she pastSimple': 'ожидала',
+  'ru it pastSimple': 'ожидало',
 
-  'en I pastSimple': 'expected',
-  'en you pastSimple': 'expected',
-  'en we pastSimple': 'expected',
-  'en they pastSimple': 'expected',
-  'en he pastSimple': 'expected',
-  'en she pastSimple': 'expected',
-  'en it pastSimple': 'expected',
+  'en infinitive': 'expect',
 
   'en I presentSimple': 'expect',
   'en you presentSimple': 'expect',
@@ -35,4 +26,12 @@ export const expect = {
   'en he presentSimple': 'expects',
   'en she presentSimple': 'expects',
   'en it presentSimple': 'expects',
+
+  'en I pastSimple': 'expected',
+  'en you pastSimple': 'expected',
+  'en we pastSimple': 'expected',
+  'en they pastSimple': 'expected',
+  'en he pastSimple': 'expected',
+  'en she pastSimple': 'expected',
+  'en it pastSimple': 'expected',
 }
