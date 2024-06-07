@@ -69,16 +69,23 @@ export const useSentenceStore = defineStore('sentence', () => {
 
     
     // подставить английские глаголы
-    
+    if ( /will/.test(en) ) {
+      const enVerb = getVerbInfinitive('en', verb.value as TVerb)
+      if ( enVerb ) en = en.replace(/{verb}/, enVerb)
+    }
+    else if (/{do}/.test(en) ) {
+      const enAux = getVerbForm('en', 'do')
+      if ( enAux ) en = en.replace(/{do}/, enAux)
 
-    // if ( /not/.test(en) || /will/.test(en) ) {
-    //   const verbEn = getVerbForm('en', verb.value as TVerb)
-    // }
+      const enVerb = getVerbInfinitive('en', verb.value as TVerb)
+      if ( enVerb ) en = en.replace(/{verb}/, enVerb)
+    }
+    else {
+      const enVerb = getVerbForm('en', verb.value as TVerb)
+      if ( enVerb ) en = en.replace(/{verb}/, enVerb)
+    }
 
-    const enAux = getVerbForm('en', 'do')
-    if (enAux) en = en.replace(/{do}/, enAux);
 
-    // console.log(verbForm)
 
 
     goalRu.value = startUp(ru)
