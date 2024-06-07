@@ -79,29 +79,29 @@ function transform(param: TTranslateParam) {
     if (ruMod) ru = ru.replace(/{быть}/, ruMod)
 
     const ruVerb = getVerbInfinitive('ru', param.verb as TVerb)
-    if (ruVerb) ru = ru.replace(/{verb}/, ruVerb)
+    ru = ru.replace(/{verb}/, ruVerb || `{${param.verb}}`)
   }
   else {
     const ruVerb = getVerbForm(param.verb as TVerb, 'ru', param.subject, param.time)
-    if (ruVerb) ru = ru.replace(/{verb}/, ruVerb);
+    ru = ru.replace(/{verb}/, ruVerb || `{${param.verb}}`);
   }
 
 
   // подставить английские глаголы
   if (/will/.test(en)) {
     const enVerb = getVerbInfinitive('en', param.verb as TVerb)
-    if (enVerb) en = en.replace(/{verb}/, enVerb)
+    en = en.replace(/{verb}/, enVerb || `{${param.verb}}`)
   }
   else if (/{do}/.test(en)) {
     const enAux = getVerbForm('do', 'en', param.subject, param.time)
     if (enAux) en = en.replace(/{do}/, enAux)
 
     const enVerb = getVerbInfinitive('en', param.verb as TVerb)
-    if (enVerb) en = en.replace(/{verb}/, enVerb)
+    en = en.replace(/{verb}/, enVerb || `{${param.verb}}`)
   }
   else {
     const enVerb = getVerbForm(param.verb as TVerb, 'en', param.subject, param.time)
-    if (enVerb) en = en.replace(/{verb}/, enVerb)
+    en = en.replace(/{verb}/, enVerb || `{${param.verb}}`)
   }
 
 
