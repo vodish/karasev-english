@@ -6,7 +6,7 @@ import { patterns, type TPatternKey } from '@/db/pattern'
 
 const listSentence = ['affirmative', 'negative', 'question']
 const listTime = ['pastSimple', 'presentSimple', 'futureSimple']
-const listSubjectRu = ['я', 'вы', 'мы', 'они', 'он', 'она', 'это']
+const listSubjectRu = ['я', 'вы', 'мы', 'они', 'он', 'она', 'что-то']
 const listSubject = ['I', 'you', 'we', 'they', 'he', 'she', 'it']
 const listVerb = ['expect']
 
