@@ -7,14 +7,14 @@ export { verbs };
 export { patterns };
 export const listSentence = ['affirmative', 'negative', 'question']
 export const listTime = ['pastSimple', 'presentSimple', 'futureSimple']
-export const listSubjectRu = ['я', 'вы', 'мы', 'они', 'он', 'она', 'это']
 export const listSubject = ['I', 'you', 'we', 'they', 'he', 'she', 'it']
-const listVerb = ['expect']
+export const listSubjectRu = ['я', 'вы', 'мы', 'они', 'он', 'она', 'это']
 
 
 
 
 export const useSentenceStore = defineStore('sentence', () => {
+  const verbList = ref(['expect'])
   const param = ref({
     sentence: '',
     time: '',
@@ -25,13 +25,18 @@ export const useSentenceStore = defineStore('sentence', () => {
   const en = ref('')
 
 
+  function setVerbList(list: string[]) {
+    verbList.value = list
+  }
+
+
   // генератор задачи
   function setTack() {
     param.value = {
       sentence: myRand(listSentence),
       time: myRand(listTime),
       subject: myRand(listSubject),
-      verb: myRand(listVerb),
+      verb: myRand(verbList.value),
     }
 
     const { ruForm, enForm } = transForm({
@@ -44,7 +49,7 @@ export const useSentenceStore = defineStore('sentence', () => {
   }
 
 
-  return { param, ru, en, setTack, }
+  return { param, ru, en, setVerbList, setTack, }
 })
 
 
