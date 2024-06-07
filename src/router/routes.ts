@@ -28,6 +28,12 @@ export const routes: TRoute[] = [
     category: 'page',
     title: 'Проверка предложений',
   },
+  {
+    path: '/:url(.*)*',
+    src: '../pages/PageNotFound.vue',
+    category: 'pages',
+    title: '404',
+  },
 
   {
     path: '/subjects/what',
@@ -165,6 +171,5 @@ export const routes: TRoute[] = [
     title: 'Тренажер глаголов',
     isPipe: true,
   },
-
 
 ]
