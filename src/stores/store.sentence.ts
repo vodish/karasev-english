@@ -34,11 +34,9 @@ export const useSentenceStore = defineStore('sentence', () => {
   const goalRu = ref('')
   const goalEn = ref('')
 
-  // console.log(verbs)
-
+  
+  
   // генератор задачи
-  gen();
-
   function gen() {
     sentence.value = rand(listSentence)
     time.value = rand(listTime)

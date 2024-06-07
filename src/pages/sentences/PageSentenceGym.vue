@@ -2,6 +2,7 @@
 import { useSentenceStore } from '@/stores/store.sentence'
 
 const sentence = useSentenceStore()
+sentence.gen();
 </script>
 
 <template>
