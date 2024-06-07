@@ -18,7 +18,7 @@ const list = menu.filterCategory(props.category)
     <div class="name">{{ props.name }}</div>
     <div>
       <RouterLink v-for="page in list" :key="page.path" :to="page.url || page.path" @click="menu.show = false" activeClass="active">
-        {{ page.title }}
+        {{ page.menu || page.title }}
       </RouterLink>
     </div>
   </div>

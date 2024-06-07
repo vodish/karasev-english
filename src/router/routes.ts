@@ -1,9 +1,10 @@
 export type TRoute = {
   src: string
   path: string
-  url?: string
   category: string
   title: string
+  menu?: string
+  url?: string
   isPipe?: boolean
 }
 
@@ -13,19 +14,20 @@ export const routes: TRoute[] = [
     src: '../pages/PageMain.vue',
     category: 'page',
     title: 'Тренажер по английскому',
+    menu: 'Главная',
     isPipe: true,
   },
   {
     path: '/verb/list',
     src: '../pages/verbs/PageVerbSearch.vue',
     category: 'page',
-    title: 'Список глаголов',
+    title: 'Глаголы',
   },
   {
     path: '/sentence/check',
     src: '../pages/sentences/PageSentenceCheck.vue',
     category: 'page',
-    title: 'Проверка предложений',
+    title: 'Предложения',
   },
   {
     path: '/:url(.*)*',
