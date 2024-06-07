@@ -26,7 +26,7 @@ export const routes: TRoute[] = [
     src: '../pages/verbs/PageVerbAdmin.vue',
     url: '/verb/admin',
     category: 'page',
-    title: 'Админка глаголов',
+    title: 'Проверка предложений',
   },
 
   {
