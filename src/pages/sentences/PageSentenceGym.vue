@@ -11,6 +11,8 @@ sentence.genTask()
   <br>
   <p>Ru: <span style="font-size: 1.4em;">{{ sentence.ru }}</span></p>
   <p>En: <span style="font-size: 1.4em;">{{ sentence.en }}</span></p>
+
+  
 </template>
 
 

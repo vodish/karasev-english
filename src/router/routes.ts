@@ -22,9 +22,8 @@ export const routes: TRoute[] = [
     title: 'Список глаголов',
   },
   {
-    path: '/verb/admin',
-    src: '../pages/verbs/PageVerbAdmin.vue',
-    url: '/verb/admin',
+    path: '/sentence/check',
+    src: '../pages/sentences/PageSentenceCheck.vue',
     category: 'page',
     title: 'Проверка предложений',
   },
