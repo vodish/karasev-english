@@ -7,12 +7,16 @@ sentence.genTask()
 </script>
 
 <template>
-  <p><button @click="sentence.genTask()">Еще</button> {{ sentence.param }} </p>
+  <p>
+    Тренажер для запоминания порядка слов в предложении вместе со смысловыми глаголами.
+  </p>
+
+
   <br>
   <p class="big">{{ sentence.ru }}</p>
   <p class="big">{{ sentence.en }}</p>
 
-
+  <p><button @click="sentence.genTask()">Еще</button></p>
 </template>
 
 

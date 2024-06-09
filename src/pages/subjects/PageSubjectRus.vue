@@ -14,7 +14,7 @@ const subject = [
   <p>
     Кстати, в&nbsp;английском &laquo;я&raquo; всегда пишется с&nbsp;заглавной буквы&nbsp;&mdash; <span
       style="font-family: Times;">I</span>. <br />
-    Впиши русское слово в&nbsp;третью колонку &laquo;по-русски&raquo;.
+      Впиши субъкта &laquo;по-русски&raquo;, в&nbsp;третью колонку.
   </p>
 
   <table class="col1 tbl1">

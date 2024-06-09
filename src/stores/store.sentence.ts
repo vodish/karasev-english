@@ -1,7 +1,8 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { verbs, type Tverb, type TverbObj, type TverbFld } from '@/db/db.verbs'
+import { verbs } from '@/db/db.verbs'
 import { patterns, type TpatternKey } from '@/db/db.pattern'
+import type { Tverb, TverbFld, TverbObj } from '@/db/db.verbs.type';
 
 
 export { verbs };
@@ -117,7 +118,6 @@ function transForm(param: TtranslateParam) {
 
   return { ruForm, enForm }
 }
-
 
 
 
