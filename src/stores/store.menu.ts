@@ -1,7 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { routes } from '../router/routes'
-import { useLink, useRouter, type RouteLocationNormalized } from 'vue-router'
 
 
 const categoryList = new Map
