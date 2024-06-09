@@ -18,14 +18,14 @@ export const routes: TRoute[] = [
     isPipe: true,
   },
   {
-    path: '/verb/list',
-    src: '../pages/verbs/PageVerbSearch.vue',
+    path: '/verbs',
+    src: '../pages/PageVerbs.vue',
     category: 'page',
     title: 'Глаголы',
   },
   {
-    path: '/sentence/check',
-    src: '../pages/sentences/PageSentenceCheck.vue',
+    path: '/sentences',
+    src: '../pages/PageSentences.vue',
     category: 'page',
     title: 'Предложения',
   },
