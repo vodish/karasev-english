@@ -17,7 +17,8 @@ const list = menu.filterCategory(props.category)
   <div>
     <div class="name">{{ props.name }}</div>
     <div>
-      <RouterLink v-for="page in list" :key="page.path" :to="page.url || page.path" @click="menu.show = false" activeClass="active">
+      <RouterLink v-for="page in list" :key="page.path" :to="page.url || page.path" @click="menu.show = false"
+        :class="{ active: $route.matched[0]?.path === page.path }" activeClass="active">
         {{ page.menu || page.title }}
       </RouterLink>
     </div>

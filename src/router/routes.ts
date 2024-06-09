@@ -24,15 +24,16 @@ export const routes: TRoute[] = [
     title: 'Глаголы',
   },
   {
-    path: '/sentences',
+    path: '/sentences/:verb?',
     src: '../pages/PageSentences.vue',
+    url: '/sentences',
     category: 'page',
     title: 'Предложения',
   },
   {
     path: '/:url(.*)*',
     src: '../pages/PageNotFound.vue',
-    category: 'pages',
+    category: 'tech',
     title: '404',
   },
 

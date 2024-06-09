@@ -14,6 +14,6 @@ const router = createRouter({
 })
 
 // обработчик навигации
-router.beforeEach(to => useMenuStore().click(to.fullPath))
+router.beforeEach(to => useMenuStore().click(to.matched[0].path))
 
 export default router 
