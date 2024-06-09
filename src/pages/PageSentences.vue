@@ -1,17 +1,22 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-const route = useRoute()
+import { listSentence } from '@/stores/store.sentence';
+import { listTime } from '@/stores/store.sentence';
+import { listSubject } from '@/stores/store.sentence';
 
-// const verb = ref(route.params.verb);
-const subject = ['I', 'you', 'we', 'they', 'hi', 'shi', 'it']
-const enPastSimple = ['expected', 'expected', 'expected', 'expected', 'expected', 'expected', 'expected']
-const enPresentSimple = ['expect', 'expect', 'expect', 'expect', 'expects', 'expects', 'expects']
+const route = useRoute()
 
 </script>
 
 <template>
   <p>Проверка тренажёра предложений.</p>
-    
+  
+  <div>Глаголы: [ выбрать ]</div>
+  <div>{{ listSentence }}</div>
+  <div>{{ listTime }}</div>
+  <div>{{ listSubject }}</div>
+
+
 </template>
 
 
