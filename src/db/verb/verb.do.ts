@@ -1,21 +1,21 @@
 export const _do = {
   'ru infinitive': 'делать',
 
-  'ru I pastSimple': 'ожидал',
-  'ru you pastSimple': 'ожидали',
-  'ru we pastSimple': 'ожидали',
-  'ru they pastSimple': 'ожидали',
-  'ru he pastSimple': 'ожидал',
-  'ru she pastSimple': 'ожидала',
-  'ru it pastSimple': 'ожидало',
+  'ru I pastSimple': 'делал',
+  'ru you pastSimple': 'делали',
+  'ru we pastSimple': 'делали',
+  'ru they pastSimple': 'делали',
+  'ru he pastSimple': 'делал',
+  'ru she pastSimple': 'делала',
+  'ru it pastSimple': 'делало',
 
   'ru I presentSimple': 'делаю',
   'ru you presentSimple': 'делаете',
-  'ru we presentSimple': 'ожидаем',
-  'ru they presentSimple': 'ожидают',
-  'ru he presentSimple': 'ожидет',
-  'ru she presentSimple': 'ожидет',
-  'ru it presentSimple': 'ожидает',
+  'ru we presentSimple': 'делаем',
+  'ru they presentSimple': 'делают',
+  'ru he presentSimple': 'делает',
+  'ru she presentSimple': 'делает',
+  'ru it presentSimple': 'делает',
 
   
   'en infinitive': 'do',

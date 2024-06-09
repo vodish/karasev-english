@@ -10,7 +10,7 @@ export { patterns };
 export const listSentence = ['affirmative', 'negative', 'question']
 export const listTime = ['pastSimple', 'presentSimple', 'futureSimple']
 export const listSubject = ['I', 'you', 'we', 'they', 'he', 'she', 'it']
-export const listSubjectRu = ['я', 'вы', 'мы', 'они', 'он', 'она', 'это']
+export const listSubjectRu = ['я', 'вы', 'мы', 'они', 'он', 'она', 'оно']
 
 
 

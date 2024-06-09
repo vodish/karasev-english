@@ -6,7 +6,7 @@ const subject = [
   { en: 'they', ru: 'они' },
   { en: 'he', ru: 'он' },
   { en: 'she', ru: 'она' },
-  { en: 'it', ru: 'это' },
+  { en: 'it', ru: 'оно' },
 ]
 </script>
 
