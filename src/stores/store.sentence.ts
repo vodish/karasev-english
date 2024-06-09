@@ -14,7 +14,6 @@ export const listSubjectRu = ['я', 'вы', 'мы', 'они', 'он', 'она', 
 
 
 
-
 export const useSentenceStore = defineStore('sentence', () => {
   const verbList = ref(['expect'])
   const param = ref({
@@ -40,15 +39,13 @@ export const useSentenceStore = defineStore('sentence', () => {
       subject: myRand(listSubject),
       verb: myRand(verbList.value),
     }
+    const pattern = patterns[`${param.value.sentence} ${param.value.time}` as TpatternKey]
 
-    const { ruForm, enForm } = transForm({
-      ...param.value,
-      pattern: patterns[`${param.value.sentence} ${param.value.time}` as TpatternKey],
-    })
-
+    const { ruForm, enForm } = transForm({ ...param.value, pattern })
     ru.value = ruForm;
     en.value = enForm;
   }
+
 
 
   return { param, ru, en, setVerbList, genTask }
@@ -69,7 +66,7 @@ type TtranslateParam = {
 }
 
 
-function transForm(param: TtranslateParam) {
+export function transForm(param: TtranslateParam) {
   let { ru, en } = param.pattern
 
 
@@ -134,7 +131,7 @@ function getVerbForm(word: Tverb, lang: 'ru' | 'en', subject: string, time: stri
   const infinitive = getVerbInfinitive(lang, word)
   if (!infinitive) return null;
 
-  
+
   const verb = verbs[word] as TverbObj
 
   return verb[`${lang} ${subject} ${time}` as TverbFld]
