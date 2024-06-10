@@ -18,17 +18,11 @@ export const routes: TRoute[] = [
     isPipe: true,
   },
   {
-    path: '/verbs',
+    path: '/verbs/:verb?',
     src: '../pages/PageVerbs.vue',
+    url: '/verbs',
     category: 'page',
-    title: 'Глаголы',
-  },
-  {
-    path: '/sentences/:verb?',
-    src: '../pages/PageSentences.vue',
-    url: '/sentences',
-    category: 'page',
-    title: 'Предложения',
+    title: 'Cписок глаголов',
   },
   {
     path: '/:url(.*)*',
