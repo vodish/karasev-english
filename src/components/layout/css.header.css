@@ -48,6 +48,13 @@ header .points>a.router-link-exact-active {
     cursor: default;
 }
 
+header > .menu {
+    flex-grow: 1;
+    text-align: right;
+    padding: 2px 10px 2px 10px;
+    margin-left: 2ch;
+}
+
 nav {
     width: 100%;
     display: flex;

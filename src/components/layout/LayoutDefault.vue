@@ -25,7 +25,9 @@ const menu = useMenuStore()
         <RouterLink v-for="{ path, title } in menu.points" :key="path" :to="path" :title="title" />
       </div>
     </template>
-    <IconMenu :class="['iconmenu', menu.show ? 'active' : '']" @click="menu.show = !menu.show" />
+    <div class="menu" @click="menu.show = !menu.show">
+      <IconMenu :class="['iconmenu', menu.show ? 'active' : '']" />
+    </div>
   </header>
 
   <nav v-if="menu.show">
