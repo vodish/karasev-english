@@ -2,33 +2,23 @@
 import { ref } from 'vue'
 import IconStar from '@/components/icon/IconStar.vue'
 import IconWarning from '@/components/icon/IconWarning.vue'
-import IconCheck from '@/components/icon/IconCheck.vue'
 import IconCheckCircle from '@/components/icon/IconCheckCircle.vue'
+import { compareStr } from '@/stores/store.sentence'
 
 const subject = ref([
-  { en: 'I', ru: 'я', input: '', check: false },
-  { en: 'you', ru: 'ты', input: '', check: false },
-  { en: 'we', ru: 'мы', input: '', check: false },
-  { en: 'they', ru: 'они', input: '', check: false },
-  { en: 'he', ru: 'он', input: '', check: false },
-  { en: 'she', ru: 'она', input: '', check: false },
-  { en: 'it', ru: 'оно', input: '', check: false },
+  { en: 'I', ru: 'я', input: '', compare: 'wait' },
+  { en: 'you', ru: 'ты', input: '', compare: 'wait' },
+  { en: 'we', ru: 'мы', input: '', compare: 'wait' },
+  { en: 'they', ru: 'они', input: '', compare: 'wait' },
+  { en: 'he', ru: 'он', input: '', compare: 'wait' },
+  { en: 'she', ru: 'она', input: '', compare: 'wait' },
+  { en: 'it', ru: 'оно', input: '', compare: 'wait' },
 ])
 
 function check1(value, k) {
   subject.value[k].input = value
   const { ru, input } = subject.value[k]
-  subject.value[k].check = ru.toLowerCase() === input.toLowerCase()
-}
-
-function compareStr(srt: string, type: string) {
-  if (type === '') return 'wait'
-
-  const str1 = srt.toLowerCase()
-  const type1 = type.toLowerCase()
-
-  if (str1 === type1) return 'done'
-
+  subject.value[k].compare = compareStr(ru, input)
 }
 
 </script>
@@ -52,20 +42,19 @@ function compareStr(srt: string, type: string) {
         <td></td>
       </tr>
       <tbody>
-        <template v-for="({ en, ru, input, check }, k) in subject" :key="ru">
+        <template v-for="({ en, ru, compare }, k) in subject" :key="ru">
           <tr>
             <td>{{ en }}</td>
             <td>{{ ru }}</td>
             <td><input type="text" class="subject" maxlength="3" @input="event => check1(event.target.value, k)" /></td>
             <td class="check">
-              <span v-if="input === ''">...</span>
-              <IconStar v-else-if="check" />
-              <IconWarning v-else />
+              <span v-if="compare === 'wait' || compare === 'type'">...</span>
+              <IconStar v-else-if="compare==='done'" />
+              <IconWarning v-else-if="compare==='err'" />
 
-              <span>...</span>
-              <IconStar :size="20" />
-              <IconWarning :size="20" />
-
+              <!-- <span>...</span>
+              <IconStar :size="24" />
+              <IconWarning :size="24" /> -->
             </td>
           </tr>
         </template>
@@ -75,6 +64,8 @@ function compareStr(srt: string, type: string) {
       <IconCheckCircle :size="200" />
     </div>
   </div>
+
+  {{ subject }}
 </template>
 
 

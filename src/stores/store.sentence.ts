@@ -147,3 +147,20 @@ function myRand(list: string[]) {
 function startUp(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+
+export type TCompare = 'wait' | 'type' | 'err' | 'done'
+
+export function compareStr(srt: string, type: string): TCompare {
+  let check: TCompare = 'wait';
+
+  if (type === '') return check
+
+  const str1 = srt.toLowerCase()
+  const type1 = type.toLowerCase()
+
+  check = str1.substring(0, type1.length) === type1 ? 'type' : 'err'
+  check = str1.length === type1.length && check === 'type' ? 'done' : check
+
+  return check
+}
