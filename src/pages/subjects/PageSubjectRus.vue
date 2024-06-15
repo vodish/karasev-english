@@ -12,13 +12,19 @@ const subject = ref([
   { en: 'they', ru: 'они', input: '', compare: 'wait' },
   { en: 'he', ru: 'он', input: '', compare: 'wait' },
   { en: 'she', ru: 'она', input: '', compare: 'wait' },
-  { en: 'it', ru: 'оно', input: '', compare: 'wait' },
+  { en: 'it', ru: 'это', input: '', compare: 'wait' },
 ])
+
+const done = ref(0)
 
 function check1(value, k) {
   subject.value[k].input = value
   const { ru, input } = subject.value[k]
   subject.value[k].compare = compareStr(ru, input)
+
+  done.value = subject.value.reduce((res, el) => {
+    return res = res + (el.compare==='done'? 1: 0)
+  }, 0)
 }
 
 </script>
@@ -46,31 +52,29 @@ function check1(value, k) {
           <tr>
             <td>{{ en }}</td>
             <td>{{ ru }}</td>
-            <td><input type="text" class="subject" maxlength="3" @input="event => check1(event.target.value, k)" /></td>
+            <td><input type="text" class="subject" maxlength="3" @input="e => check1(e.target.value, k)" /></td>
             <td class="check">
-              <span v-if="compare === 'wait' || compare === 'type'">...</span>
-              <IconStar v-else-if="compare==='done'" />
-              <IconWarning v-else-if="compare==='err'" />
-
-              <!-- <span>...</span>
-              <IconStar :size="24" />
-              <IconWarning :size="24" /> -->
+              <div>
+                <span v-if="compare === 'wait'">...</span>
+                <span v-else-if="compare === 'type'">..</span>
+                <IconStar v-else-if="compare === 'done'" :size="24" />
+                <IconWarning v-else-if="compare === 'err'" :size="24" />
+              </div>
             </td>
           </tr>
         </template>
       </tbody>
     </table>
     <div class="done">
-      <IconCheckCircle :size="200" />
+      <IconCheckCircle :size="200" v-if="subject.length === done" />
     </div>
   </div>
 
-  {{ subject }}
 </template>
 
 
 <style scoped>
-td.check {
+td.check > div {
   display: flex;
   align-items: center;
 }
