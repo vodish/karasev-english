@@ -22,10 +22,12 @@ const subject = ref<TTaskList[]>([
   { task: 'it', pass: 'это', input: '', compare: 'wait' },
 ])
 
-function genSbject(min: number = 1) {
+const min = ref(1)
+
+function genSbject() {
   const rand = (max: number) => Math.floor(Math.random() * max);
   const shuffle = (array: number[]) => array.sort(() => Math.random() - 0.5);
-
+  
   const list = [
     { en: 'I', ru: 'я' },
     { en: 'you', ru: 'ты' },
@@ -36,7 +38,7 @@ function genSbject(min: number = 1) {
     { en: 'it', ru: 'это' },
   ]
 
-  const listRand = min + rand(list.length - 1 - min)
+  const listRand = min.value + rand(list.length - 1 - min.value)
   let listShuffle = shuffle(Array.from(list.keys()))
   listShuffle = listShuffle.slice(0, listRand)
   // console.log(listShuffle)
@@ -79,7 +81,7 @@ function check1(value: string, k: number) {
 <template>
   <p>
     Тренажер для запоминания субъектов. Нужно пройти 30 уровней, чтобы легко двигаться дальше.
-    <button @click="genSbject(1)">genSbject</button>
+    <button @click="genSbject">genSbject</button>
   </p>
 
   <div class="flex">
