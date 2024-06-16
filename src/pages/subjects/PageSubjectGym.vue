@@ -22,6 +22,7 @@ const subject = ref<TTaskList[]>([
   { task: 'it', pass: 'это', input: '', compare: 'wait' },
 ])
 
+const level = ref(1)
 const min = ref(1)
 
 function genSbject() {
@@ -45,6 +46,9 @@ function genSbject() {
 
   let newSubject: TTaskList[] = []
   listShuffle.forEach(i => {
+    // десятка = с английского на русский
+    // двадцатка = с русского на английский
+    // далее = и так и сяк
     newSubject.push({
       task: startUp(list[i].ru),
       pass: list[i].en,
