@@ -17,7 +17,7 @@ const subject = ref([
 
 const done = ref(0)
 
-function check1(value, k) {
+function check1(value: string, k: number) {
   subject.value[k].input = value
   const { en, input } = subject.value[k]
   subject.value[k].compare = compareStr(en, input)
@@ -50,7 +50,7 @@ function check1(value, k) {
           <tr>
             <td>{{ ru }}</td>
             <td>{{ en }}</td>
-            <td><input type="text" class="subject" maxlength="4" @input="e => check1(e.target.value, k)" /></td>
+            <td><input type="text" class="subject" maxlength="4" @input="e => check1((e.target as HTMLInputElement).value, k)" /></td>
             <td class="check">
               <div>
                 <span v-if="compare === 'wait'">...</span>
