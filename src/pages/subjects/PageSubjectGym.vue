@@ -1,22 +1,18 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import { compareStr, startUp } from '@/stores/store.sentence';
 import IconCheckCircle from '@/components/icon/IconCheckCircle.vue';
 import IconStar from '@/components/icon/IconStar.vue';
 import IconWarning from '@/components/icon/IconWarning.vue';
-import { compareStr } from '@/stores/store.sentence';
-import { ref } from 'vue';
-
-const subj = [
-  { en: 'I', ru: 'я' },
-  { en: 'you', ru: 'ты' },
-  { en: 'we', ru: 'мы' },
-  { en: 'they', ru: 'они' },
-  { en: 'he', ru: 'он' },
-  { en: 'she', ru: 'она' },
-  { en: 'it', ru: 'это' },
-]
 
 
-const subject = ref([
+type TTaskList = {
+  task: string
+  pass: string
+  input: string
+  compare: string
+}
+const subject = ref<TTaskList[]>([
   { task: 'I', pass: 'я', input: '', compare: 'wait' },
   { task: 'you', pass: 'ты', input: '', compare: 'wait' },
   { task: 'we', pass: 'мы', input: '', compare: 'wait' },
@@ -25,6 +21,46 @@ const subject = ref([
   { task: 'she', pass: 'она', input: '', compare: 'wait' },
   { task: 'it', pass: 'это', input: '', compare: 'wait' },
 ])
+
+function genSbject(min: number = 1) {
+  const rand = (max: number) => Math.floor(Math.random() * max);
+  const shuffle = (array: number[]) => array.sort(() => Math.random() - 0.5);
+
+  const list = [
+    { en: 'I', ru: 'я' },
+    { en: 'you', ru: 'ты' },
+    { en: 'we', ru: 'мы' },
+    { en: 'they', ru: 'они' },
+    { en: 'he', ru: 'он' },
+    { en: 'she', ru: 'она' },
+    { en: 'it', ru: 'это' },
+  ]
+
+  const listRand = min + rand(list.length - 1 - min)
+  let listShuffle = shuffle(Array.from(list.keys()))
+  listShuffle = listShuffle.slice(0, listRand)
+  // console.log(listShuffle)
+
+  let newSubject: TTaskList[] = []
+  listShuffle.forEach(i => {
+    newSubject.push({
+      task: startUp(list[i].ru),
+      pass: list[i].en,
+      input: '',
+      compare: 'wait',
+    })
+  })
+
+  // console.log(newSubject)
+
+  subject.value = newSubject
+
+}
+genSbject()
+
+
+
+
 
 const done = ref(0)
 
@@ -43,6 +79,7 @@ function check1(value: string, k: number) {
 <template>
   <p>
     Тренажер для запоминания субъектов. Нужно пройти 30 уровней, чтобы легко двигаться дальше.
+    <button @click="genSbject(1)">genSbject</button>
   </p>
 
   <div class="flex">
@@ -88,6 +125,8 @@ td.check > div {
 .flex {
   display: flex;
   gap: 5%;
+  min-height: 300px;
+  align-items: flex-start;
 }
 .flex > .done {
   margin-top: 5em;
