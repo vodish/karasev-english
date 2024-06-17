@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { compareStr, startUp } from '@/stores/store.sentence';
 import IconCheckCircle from '@/components/icon/IconCheckCircle.vue';
 import IconStar from '@/components/icon/IconStar.vue';
@@ -13,12 +13,9 @@ type TSubject = { task: string; pass: string; input: string; compare: string }
 const round = ref(0)
 const subject = ref<TSubject[]>([])
 const done = ref(false)
-// const listref = ref<HTMLInputElement | null>(null)
 
 //генерация задания
 setRound();
-
-
 
 
 
@@ -58,8 +55,8 @@ function setRound() {
   })
 
   setTimeout(() => {
-    document.getElementById('listref')?.getElementsByTagName('input')[0].focus()
-  }, 0)
+    document.getElementById('table')?.getElementsByTagName('input')[0].focus()
+  }, 3)
 }
 
 
@@ -75,9 +72,18 @@ function handleType(value: string, k: number) {
     return res = res + (el.compare === 'done' ? 1 : 0)
   }, 0)
 
+  // console.log(subject.value[k].compare)
+
   if (score === subject.value.length) {
     setTimeout(() => { done.value = true }, 200)
     setTimeout(setRound, 1500)
+  }
+  else if (subject.value[k].compare === 'done') {
+    console.log(k + 1)
+    setTimeout(() => {
+      // console.log(document.getElementById('table')?.getElementsByTagName('input'))
+      document.getElementById('table')?.getElementsByTagName('input')[k + 1].focus()
+    }, 3)
   }
 }
 
@@ -98,11 +104,11 @@ function handleType(value: string, k: number) {
       <tr>
         <td></td>
       </tr>
-      <tbody>
+      <tbody id="table">
         <template v-for="({ task, compare }, k) in subject" :key="task + round">
           <tr>
             <td>{{ task }}</td>
-            <td id="listref">
+            <td>
               <input type="text" class="subject" maxlength="4"
                 @input="e => handleType((e.target as HTMLInputElement).value, k)" />
             </td>
