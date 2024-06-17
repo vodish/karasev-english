@@ -5,14 +5,13 @@ import IconCheckCircle from '@/components/icon/IconCheckCircle.vue';
 import IconStar from '@/components/icon/IconStar.vue';
 import IconWarning from '@/components/icon/IconWarning.vue';
 
+const round = ref(0) // текущий уровень
+const target = ref(0) // всего уровней
 
-type TTaskList = {
-  task: string
-  pass: string
-  input: string
-  compare: string
-}
-const subject = ref<TTaskList[]>([
+// текущее задание
+type TSubject = { task: string; pass: string; input: string; compare: string }
+
+const subject = ref<TSubject[]>([
   { task: 'I', pass: 'я', input: '', compare: 'wait' },
   { task: 'you', pass: 'ты', input: '', compare: 'wait' },
   { task: 'we', pass: 'мы', input: '', compare: 'wait' },
@@ -22,45 +21,49 @@ const subject = ref<TTaskList[]>([
   { task: 'it', pass: 'это', input: '', compare: 'wait' },
 ])
 
-const level = ref(1)
-const min = ref(1)
 
+//генерация задания
 function genSbject() {
-  const rand = (max: number) => Math.floor(Math.random() * max);
-  const shuffle = (array: number[]) => array.sort(() => Math.random() - 0.5);
-  
-  const list = [
-    { en: 'I', ru: 'я' },
-    { en: 'you', ru: 'ты' },
-    { en: 'we', ru: 'мы' },
-    { en: 'they', ru: 'они' },
-    { en: 'he', ru: 'он' },
-    { en: 'she', ru: 'она' },
-    { en: 'it', ru: 'это' },
-  ]
+  round.value++;
 
-  const listRand = min.value + rand(list.length - 1 - min.value)
-  let listShuffle = shuffle(Array.from(list.keys()))
-  listShuffle = listShuffle.slice(0, listRand)
-  // console.log(listShuffle)
+  const shuffle = <T>(array: T[]) => array.sort(() => Math.random() - 0.5);
 
-  let newSubject: TTaskList[] = []
-  listShuffle.forEach(i => {
-    // десятка = с английского на русский
-    // двадцатка = с русского на английский
-    // далее = и так и сяк
-    newSubject.push({
-      task: startUp(list[i].ru),
-      pass: list[i].en,
+  // список строк, перемешанный
+  const list = shuffle([
+    ['I', 'я'],
+    ['you', 'ты'],
+    ['we', 'мы'],
+    ['they', 'они'],
+    ['he', 'он'],
+    ['she', 'она'],
+    ['it', 'это'],
+  ])
+
+  // рандомное число строк, зависит от раунда
+  // ограниченное число строк, зависит от раунда
+  const offset = round.value < 20 ? 4 : 5;
+  const slice = list.slice(0, offset)
+
+  const subj1 = slice.map(el => {
+    let task = 1
+    let pass = 0
+    if (round.value < 20) {
+      task = 0
+      pass = 1
+    } else {
+      el = shuffle(el)
+    }
+
+    return {
+      task: startUp(el[task]),
+      pass: el[pass],
       input: '',
       compare: 'wait',
-    })
+    }
   })
 
-  // console.log(newSubject)
 
-  subject.value = newSubject
-
+  subject.value = subj1
 }
 genSbject()
 
@@ -117,6 +120,7 @@ function check1(value: string, k: number) {
       </tbody>
     </table>
     <div class="done">
+      <div>{{ round }} / {{ target }}</div>
       <IconCheckCircle :size="200" v-if="subject.length === done" />
     </div>
   </div>
