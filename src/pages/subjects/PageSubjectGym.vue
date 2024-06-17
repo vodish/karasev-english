@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { compareStr, startUp } from '@/stores/store.sentence';
 import IconCheckCircle from '@/components/icon/IconCheckCircle.vue';
 import IconStar from '@/components/icon/IconStar.vue';
@@ -13,13 +13,18 @@ type TSubject = { task: string; pass: string; input: string; compare: string }
 const round = ref(0)
 const subject = ref<TSubject[]>([])
 const done = ref(false)
+// const listref = ref<HTMLInputElement | null>(null)
 
 //генерация задания
-setRound()
+setRound();
+
+
+
 
 
 function setRound() {
   const shuffle = <T>(array: T[]) => array.sort(() => Math.random() - 0.5);
+
 
   round.value++;  // добавить раунд
   done.value = false
@@ -34,7 +39,7 @@ function setRound() {
     ['it', 'это'],
   ])
 
-  const offset = round.value < 20 ? 1 : 6;  // рандомное число строк, зависит от раунда
+  const offset = round.value < 20 ? 4 : 6;  // рандомное число строк, зависит от раунда
   const slice = list.slice(0, offset);  // ограниченное число строк, зависит от раунда
 
 
@@ -52,7 +57,9 @@ function setRound() {
     }
   })
 
-  // document.getElementById('form.newType').focus();
+  setTimeout(() => {
+    document.getElementById('listref')?.getElementsByTagName('input')[0].focus()
+  }, 0)
 }
 
 
@@ -95,8 +102,10 @@ function handleType(value: string, k: number) {
         <template v-for="({ task, compare }, k) in subject" :key="task + round">
           <tr>
             <td>{{ task }}</td>
-            <td><input type="text" class="subject" maxlength="4"  v-focus
-                @input="e => handleType((e.target as HTMLInputElement).value, k)" /></td>
+            <td id="listref">
+              <input type="text" class="subject" maxlength="4"
+                @input="e => handleType((e.target as HTMLInputElement).value, k)" />
+            </td>
             <td class="check">
               <div>
                 <span v-if="compare === 'wait'">...</span>
