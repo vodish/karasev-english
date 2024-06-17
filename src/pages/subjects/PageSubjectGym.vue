@@ -10,8 +10,10 @@ type TSubject = { task: string; pass: string; input: string; compare: string }
 
 // текущий уровень
 // текущее задание
-const round = ref(0) 
+const round = ref(0)
 const subject = ref<TSubject[]>([])
+const done = ref(0)
+
 
 //генерация задания
 function setRound() {
@@ -61,7 +63,7 @@ setRound()
 
 
 
-const done = ref(0)
+
 
 function handleType(value: string, k: number) {
   subject.value[k].input = value
