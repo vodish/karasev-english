@@ -5,24 +5,16 @@ import IconCheckCircle from '@/components/icon/IconCheckCircle.vue';
 import IconStar from '@/components/icon/IconStar.vue';
 import IconWarning from '@/components/icon/IconWarning.vue';
 
-const round = ref(0) // текущий уровень
-
-// текущее задание
 type TSubject = { task: string; pass: string; input: string; compare: string }
 
-const subject = ref<TSubject[]>([
-  { task: 'I', pass: 'я', input: '', compare: 'wait' },
-  { task: 'you', pass: 'ты', input: '', compare: 'wait' },
-  { task: 'we', pass: 'мы', input: '', compare: 'wait' },
-  { task: 'they', pass: 'они', input: '', compare: 'wait' },
-  { task: 'he', pass: 'он', input: '', compare: 'wait' },
-  { task: 'she', pass: 'она', input: '', compare: 'wait' },
-  { task: 'it', pass: 'это', input: '', compare: 'wait' },
-])
 
+// текущий уровень
+// текущее задание
+const round = ref(0) 
+const subject = ref<TSubject[]>([])
 
 //генерация задания
-function genSbject() {
+function setRound() {
   round.value++;
 
   const shuffle = <T>(array: T[]) => array.sort(() => Math.random() - 0.5);
@@ -42,11 +34,9 @@ function genSbject() {
   const slice = list.slice(0, offset);  // ограниченное число строк, зависит от раунда
 
   const subj1 = slice.map(el => {
-    let task = 1
-    let pass = 0
+    let task = 1, pass = 0;
     if (round.value < 10) {
-      task = 0
-      pass = 1
+      task = 0, pass = 1;
     }
     if (round.value > 20) {
       el = shuffle(el)
@@ -63,7 +53,9 @@ function genSbject() {
 
   subject.value = subj1
 }
-genSbject()
+
+//генерация задания
+setRound()
 
 
 
@@ -71,7 +63,7 @@ genSbject()
 
 const done = ref(0)
 
-function check1(value: string, k: number) {
+function handleType(value: string, k: number) {
   subject.value[k].input = value
   const { pass, input } = subject.value[k]
   subject.value[k].compare = compareStr(pass, input)
@@ -86,7 +78,7 @@ function check1(value: string, k: number) {
 <template>
   <p>
     Тренажер для запоминания субъектов. Нужно пройти 30 уровней, чтобы легко двигаться дальше.
-    <button @click="genSbject">genSbject</button>
+    <button @click="setRound">genSbject</button>
   </p>
 
   <div class="flex">
@@ -104,7 +96,7 @@ function check1(value: string, k: number) {
           <tr>
             <td>{{ task }}</td>
             <td><input type="text" class="subject" maxlength="4"
-                @input="e => check1((e.target as HTMLInputElement).value, k)" /></td>
+                @input="e => handleType((e.target as HTMLInputElement).value, k)" /></td>
             <td class="check">
               <div>
                 <span v-if="compare === 'wait'">...</span>
@@ -117,7 +109,7 @@ function check1(value: string, k: number) {
         </template>
       </tbody>
     </table>
-    <div class="done">
+    <div class="score">
       <div>{{ round }}</div>
       <IconCheckCircle :size="200" v-if="subject.length === done" />
     </div>
@@ -136,7 +128,7 @@ td.check > div {
   min-height: 300px;
   align-items: flex-start;
 }
-.flex > .done {
+.flex > .score {
   margin-top: 5em;
 }
 </style>
