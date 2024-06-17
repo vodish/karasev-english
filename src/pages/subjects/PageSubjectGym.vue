@@ -52,6 +52,7 @@ function setRound() {
     }
   })
 
+  // document.getElementById('form.newType').focus();
 }
 
 
@@ -94,7 +95,7 @@ function handleType(value: string, k: number) {
         <template v-for="({ task, compare }, k) in subject" :key="task + round">
           <tr>
             <td>{{ task }}</td>
-            <td><input type="text" class="subject" maxlength="4"
+            <td><input type="text" class="subject" maxlength="4"  v-focus
                 @input="e => handleType((e.target as HTMLInputElement).value, k)" /></td>
             <td class="check">
               <div>
