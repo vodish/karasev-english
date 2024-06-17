@@ -74,7 +74,7 @@ function handleType(value: string, k: number) {
   if (score === subject.value.length) {
     setTimeout(setRound, 600)
     setTimeout(() => { done.value = true }, 200)
-    setTimeout(() => { done.value = false }, 1500)
+    setTimeout(() => { done.value = false }, 1100)
   }
   else if (subject.value[k].compare === 'done') {
     console.log(k + 1)
