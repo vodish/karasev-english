@@ -22,10 +22,11 @@ function setRound() {
   const shuffle = <T>(array: T[]) => array.sort(() => Math.random() - 0.5);
 
   round.value++;  // добавить раунд
+  done.value = false
 
   const list = shuffle([  // список строк, перемешанный
     ['I', 'я'],
-    ['you', 'ты'],
+    ['you', 'вы'],
     ['we', 'мы'],
     ['they', 'они'],
     ['he', 'он'],
@@ -33,7 +34,7 @@ function setRound() {
     ['it', 'это'],
   ])
 
-  const offset = round.value < 20 ? 4 : 6;  // рандомное число строк, зависит от раунда
+  const offset = round.value < 20 ? 2 : 6;  // рандомное число строк, зависит от раунда
   const slice = list.slice(0, offset);  // ограниченное число строк, зависит от раунда
 
 
@@ -62,11 +63,14 @@ function handleType(value: string, k: number) {
   const { pass, input } = subject.value[k]
   subject.value[k].compare = compareStr(pass, input)
 
-  // done.value = subject.value.reduce((res, el) => {
-  //   return res = res + (el.compare === 'done' ? 1 : 0)
-  // }, 0)
-  done.value = true
-  setTimeout(()=>{done.value = false}, 1000)
+  const score = subject.value.reduce((res, el) => {
+    return res = res + (el.compare === 'done' ? 1 : 0)
+  }, 0)
+
+  if (score === subject.value.length) {
+    setTimeout(() => { done.value = true }, 500)
+    setTimeout(setRound, 1500)
+  }
 }
 
 </script>
@@ -88,7 +92,7 @@ function handleType(value: string, k: number) {
         <td></td>
       </tr>
       <tbody>
-        <template v-for="({ task, compare }, k) in subject" :key="task">
+        <template v-for="({ task, compare }, k) in subject" :key="task + round">
           <tr>
             <td>{{ task }}</td>
             <td><input type="text" class="subject" maxlength="4"
