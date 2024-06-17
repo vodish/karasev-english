@@ -22,10 +22,7 @@ setRound();
 function setRound() {
   const shuffle = <T>(array: T[]) => array.sort(() => Math.random() - 0.5);
 
-
   round.value++;  // добавить раунд
-  done.value = false
-
   const list = shuffle([  // список строк, перемешанный
     ['I', 'я'],
     ['you', 'вы'],
@@ -75,8 +72,9 @@ function handleType(value: string, k: number) {
   // console.log(subject.value[k].compare)
 
   if (score === subject.value.length) {
+    setTimeout(setRound, 600)
     setTimeout(() => { done.value = true }, 200)
-    setTimeout(setRound, 1500)
+    setTimeout(() => { done.value = false }, 1500)
   }
   else if (subject.value[k].compare === 'done') {
     console.log(k + 1)
