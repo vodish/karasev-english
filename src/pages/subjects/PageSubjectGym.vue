@@ -34,7 +34,7 @@ function setRound() {
     ['it', 'это'],
   ])
 
-  const offset = round.value < 20 ? 2 : 6;  // рандомное число строк, зависит от раунда
+  const offset = round.value < 20 ? 1 : 6;  // рандомное число строк, зависит от раунда
   const slice = list.slice(0, offset);  // ограниченное число строк, зависит от раунда
 
 
@@ -68,7 +68,7 @@ function handleType(value: string, k: number) {
   }, 0)
 
   if (score === subject.value.length) {
-    setTimeout(() => { done.value = true }, 500)
+    setTimeout(() => { done.value = true }, 200)
     setTimeout(setRound, 1500)
   }
 }
@@ -77,8 +77,7 @@ function handleType(value: string, k: number) {
 
 <template>
   <p>
-    Тренажер для запоминания субъектов. Нужно пройти 30 уровней, чтобы легко двигаться дальше.
-    <button @click="setRound">genSbject</button>
+    Тренажер для запоминания субъектов. Нужно пройти больше 30 уровней, чтобы легко двигаться дальше.
   </p>
 
   <div class="flex">
@@ -110,25 +109,40 @@ function handleType(value: string, k: number) {
       </tbody>
     </table>
     <div class="score">
-      <div>{{ round }}</div>
-      <IconCheckCircle :size="200" v-if="done" />
+      <div class="round" v-if="!done">{{ round }}</div>
+      <IconCheckCircle :size="200" v-else />
     </div>
   </div>
 </template>
 
 <style scoped>
-td.check > div {
+.flex {
+  display: flex;
+  gap: 8%;
+  min-height: 300px;
+  align-items: flex-start;
+}
+.score {
+  margin-top: 3em;
+}
+
+.check > div {
   display: flex;
   align-items: center;
 }
 
-.flex {
+.round {
+  width: 160px;
+  height: 160px;
+  color: #f19e39;
+  border: solid 13px #be9f79;
+  border-radius: 100%;
+  line-height: 0;
   display: flex;
-  gap: 5%;
-  min-height: 300px;
-  align-items: flex-start;
-}
-.flex > .score {
-  margin-top: 5em;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  font-size: 76px;
+  margin: 20px;
 }
 </style>
