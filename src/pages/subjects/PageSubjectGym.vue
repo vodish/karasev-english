@@ -6,7 +6,6 @@ import IconStar from '@/components/icon/IconStar.vue';
 import IconWarning from '@/components/icon/IconWarning.vue';
 
 const round = ref(0) // текущий уровень
-const target = ref(0) // всего уровней
 
 // текущее задание
 type TSubject = { task: string; pass: string; input: string; compare: string }
@@ -39,18 +38,17 @@ function genSbject() {
     ['it', 'это'],
   ])
 
-  // рандомное число строк, зависит от раунда
-  // ограниченное число строк, зависит от раунда
-  const offset = round.value < 20 ? 4 : 5;
-  const slice = list.slice(0, offset)
+  const offset = round.value < 20 ? 4 : 6; // рандомное число строк, зависит от раунда
+  const slice = list.slice(0, offset);  // ограниченное число строк, зависит от раунда
 
   const subj1 = slice.map(el => {
     let task = 1
     let pass = 0
-    if (round.value < 20) {
+    if (round.value < 10) {
       task = 0
       pass = 1
-    } else {
+    }
+    if (round.value > 20) {
       el = shuffle(el)
     }
 
@@ -120,7 +118,7 @@ function check1(value: string, k: number) {
       </tbody>
     </table>
     <div class="done">
-      <div>{{ round }} / {{ target }}</div>
+      <div>{{ round }}</div>
       <IconCheckCircle :size="200" v-if="subject.length === done" />
     </div>
   </div>
