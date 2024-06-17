@@ -12,17 +12,18 @@ type TSubject = { task: string; pass: string; input: string; compare: string }
 // текущее задание
 const round = ref(0)
 const subject = ref<TSubject[]>([])
-const done = ref(0)
-
+const done = ref(false)
 
 //генерация задания
-function setRound() {
-  round.value++;
+setRound()
 
+
+function setRound() {
   const shuffle = <T>(array: T[]) => array.sort(() => Math.random() - 0.5);
 
-  // список строк, перемешанный
-  const list = shuffle([
+  round.value++;  // добавить раунд
+
+  const list = shuffle([  // список строк, перемешанный
     ['I', 'я'],
     ['you', 'ты'],
     ['we', 'мы'],
@@ -32,17 +33,15 @@ function setRound() {
     ['it', 'это'],
   ])
 
-  const offset = round.value < 20 ? 4 : 6; // рандомное число строк, зависит от раунда
+  const offset = round.value < 20 ? 4 : 6;  // рандомное число строк, зависит от раунда
   const slice = list.slice(0, offset);  // ограниченное число строк, зависит от раунда
 
-  const subj1 = slice.map(el => {
+
+  // установить новое задание
+  subject.value = slice.map(el => {
     let task = 1, pass = 0;
-    if (round.value < 10) {
-      task = 0, pass = 1;
-    }
-    if (round.value > 20) {
-      el = shuffle(el)
-    }
+    if (round.value < 10) task = 0, pass = 1;
+    if (round.value > 20) el = shuffle(el);
 
     return {
       task: startUp(el[task]),
@@ -52,27 +51,22 @@ function setRound() {
     }
   })
 
-
-  subject.value = subj1
 }
 
-//генерация задания
-setRound()
 
 
-
-
-
-
+// проверка ввода
 
 function handleType(value: string, k: number) {
   subject.value[k].input = value
   const { pass, input } = subject.value[k]
   subject.value[k].compare = compareStr(pass, input)
 
-  done.value = subject.value.reduce((res, el) => {
-    return res = res + (el.compare === 'done' ? 1 : 0)
-  }, 0)
+  // done.value = subject.value.reduce((res, el) => {
+  //   return res = res + (el.compare === 'done' ? 1 : 0)
+  // }, 0)
+  done.value = true
+  setTimeout(()=>{done.value = false}, 1000)
 }
 
 </script>
@@ -113,7 +107,7 @@ function handleType(value: string, k: number) {
     </table>
     <div class="score">
       <div>{{ round }}</div>
-      <IconCheckCircle :size="200" v-if="subject.length === done" />
+      <IconCheckCircle :size="200" v-if="done" />
     </div>
   </div>
 </template>
