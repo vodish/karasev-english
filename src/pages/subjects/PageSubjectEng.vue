@@ -31,7 +31,8 @@ function check1(value: string, k: number) {
 
 <template>
   <p>
-    Задание наоборот. Впиши субъекта &laquo;по-английски&raquo;, третью колонку.
+    Задание наоборот. <br />
+    Впиши субъекта &laquo;по-английски&raquo;, третью колонку.
   </p>
 
   <div class="flex">

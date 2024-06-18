@@ -40,8 +40,9 @@ function setRound() {
   // установить новое задание
   subject.value = slice.map(el => {
     let task = 1, pass = 0;
-    if (round.value < 10) task = 0, pass = 1;
-    if (round.value > 20) el = shuffle(el);
+    if (round.value < 10 || (round.value > 20 && round.value % 2)) {
+      task = 0, pass = 1;
+    }
 
     return {
       task: startUp(el[task]),
@@ -89,7 +90,8 @@ function handleType(value: string, k: number) {
 
 <template>
   <p>
-    Тренажер для запоминания субъектов. Нужно пройти больше 30 уровней, чтобы легко двигаться дальше.
+    Тренажер для запоминания субъектов.
+    Нужно пройти 50 уровней, чтобы легко двигаться дальше.
   </p>
 
   <div class="flex">
