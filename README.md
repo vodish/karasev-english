@@ -3,7 +3,7 @@
 1. Изучение субъектов + тренажер
 2. Изучение глаголов и предложений + тренажер
 
-Front: vue3 + typescript
+Front: vue3 + pinia + typescript
 
 Сайт https://english.karasev.ru/
 
