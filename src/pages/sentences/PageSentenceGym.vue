@@ -8,35 +8,47 @@ import IconWarning from '@/components/icon/IconWarning.vue';
 const sentence = useSentenceStore()
 sentence.setVerbList(['expect'])
 // sentence.setVerbList(['do'])
-sentence.genTask()
 
 
+
+const question = ref('')
+const answer = ref('')
 const type = ref('')
-const type1 = computed(()=>{
-  return type.value.charAt(0).toUpperCase() + type.value.slice(1)
-})
+const type1 = computed(() => type.value.charAt(0).toUpperCase() + type.value.slice(1))
 const compare = ref('wait')
+refresh();
 
-function handleType(e: Event) {
-  type.value = (e.target as HTMLInputElement).value
-  compare.value = compareStr(sentence.en, type.value)
-  // win.value = type.value.length ? 1: 0
+
+function refresh() {
+  type.value = ''
+  compare.value = 'wait'
+  const form = sentence.getTask()
+  question.value = form.ruForm
+  answer.value = form.enForm
 }
+
+
+
+function handleType(e: KeyboardEvent) {
+  type.value = (e.target as HTMLInputElement).value
+  compare.value = compareStr(answer.value, type.value)
+
+  if ( e.code == 'Enter' ) refresh()
+}
+
+
 
 </script>
 
 <template>
-  <div class="task">{{ sentence.ru }}</div>
+  <div class="task">{{ question }}</div>
   <div class="res sel">{{ type1 }}</div>
 
   <div class="type">
-    <input :value="type" @input="handleType" placeholder="Пиши здесь" />
+    <input @keyup="handleType" placeholder="Пиши здесь" v-model="type" />
     <div class="check">
-      <!-- <span v-if="compare === 'wait'">...</span> -->
-      <!-- <span v-else-if="compare === 'type'">..</span> -->
-      <!-- <span v-if="compare === 'type'">..</span> -->
-      <IconStar v-if="compare === 'done'" :size="24" />
       <IconWarning v-if="compare === 'err'" :size="24" />
+      <IconStar v-if="compare === 'done'" :size="24" />
     </div>
 
   </div>
@@ -45,9 +57,9 @@ function handleType(e: Event) {
 
   <p class="descr">
     Тренажер для запоминания порядка слов в предложении вместе со смысловыми глаголами.
-    <a href="" @click.prevent="sentence.genTask()">Refresh</a>
+    <a href="" @click.prevent="refresh">Enter</a>
   </p>
-  <div class="answer">{{ sentence.en.charAt(0).toUpperCase() + sentence.en.slice(1) }} </div>
+  <div class="answer">{{ answer }} </div>
 </template>
 
 
@@ -73,7 +85,7 @@ div.res {
   font-family: "Merienda", "Times New Roman", cursive;
   font-optical-sizing: auto;
   line-height: 1.2em;
-  
+
 }
 
 @media (max-width: 768px) {

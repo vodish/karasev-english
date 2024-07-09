@@ -32,7 +32,7 @@ export const useSentenceStore = defineStore('sentence', () => {
 
 
   // генератор задачи
-  function genTask() {
+  function getTask() {
     param.value = {
       sentence: myRand(listSentence),
       time: myRand(listTime),
@@ -41,14 +41,14 @@ export const useSentenceStore = defineStore('sentence', () => {
     }
     const pattern = patterns[`${param.value.sentence} ${param.value.time}` as TpatternKey]
 
-    const { ruForm, enForm } = transForm({ ...param.value, pattern })
-    ru.value = ruForm;
-    en.value = enForm;
+    const form = transForm({ ...param.value, pattern })
+    
+    return form
   }
 
 
 
-  return { param, ru, en, setVerbList, genTask }
+  return { param, setVerbList, getTask }
 })
 
 
@@ -157,6 +157,7 @@ export function compareStr(srt: string, type: string): TCompare {
 
   const str1 = srt.toLowerCase()
   const type1 = type.toLowerCase()
+  // console.log(str1, type1)
 
   check = str1.substring(0, type1.length) === type1 ? 'type' : 'err'
   check = str1.length === type1.length && check === 'type' ? 'done' : check
