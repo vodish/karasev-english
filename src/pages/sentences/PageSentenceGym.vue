@@ -1,23 +1,34 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, nextTick, onMounted, ref } from 'vue'
 import { compareStr, useSentenceStore } from '@/stores/store.sentence'
 import IconStar from '@/components/icon/IconStar.vue';
 import IconWarning from '@/components/icon/IconWarning.vue';
 
+// фокус на поле ввода, атрибут ссылка ref="tagInput"
+const tagInput = ref();
+onMounted(() => {
+  nextTick(() => {
+    tagInput.value.focus();
+  });
+});
+
+
+// переменные
 
 const sentence = useSentenceStore()
 sentence.setVerbList(['expect'])
 // sentence.setVerbList(['do'])
-
-
 
 const question = ref('')
 const answer = ref('')
 const type = ref('')
 const type1 = computed(() => type.value.charAt(0).toUpperCase() + type.value.slice(1))
 const compare = ref('wait')
+
 refresh();
 
+
+// обработчики
 
 function refresh() {
   type.value = ''
@@ -33,7 +44,7 @@ function handleType(e: KeyboardEvent) {
   type.value = (e.target as HTMLInputElement).value
   compare.value = compareStr(answer.value, type.value)
 
-  if ( e.code == 'Enter' ) refresh()
+  if (e.key == 'Enter') refresh()
 }
 
 
@@ -45,7 +56,7 @@ function handleType(e: KeyboardEvent) {
   <div class="res sel">{{ type1 }}</div>
 
   <div class="type">
-    <input @keyup="handleType" placeholder="Пиши здесь" v-model="type" />
+    <input @keyup="handleType" placeholder="Пиши здесь" v-model="type" ref="tagInput" />
     <div class="check">
       <IconWarning v-if="compare === 'err'" :size="24" />
       <IconStar v-if="compare === 'done'" :size="24" />

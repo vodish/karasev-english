@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
-    "deploy": "npm run build && scp -Сr ./dist/* root@karasev:/var/www/fastuser/data/www/english.karasev.ru/front",
+    "deploy": "npm run build && pscp -r ./dist/* root@karasev:/var/www/fastuser/data/www/english.karasev.ru/front",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
