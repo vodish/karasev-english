@@ -114,10 +114,10 @@ function handleType(value: string, k: number) {
             </td>
             <td class="check">
               <div>
-                <span v-if="compare === 'wait'">...</span>
-                <span v-else-if="compare === 'type'">..</span>
+                <!-- <span v-if="compare === 'wait'">...</span> -->
+                <!-- <span v-else-if="compare === 'type'">..</span> -->
+                <IconWarning v-if="compare === 'err'" :size="24" />
                 <IconStar v-else-if="compare === 'done'" :size="24" />
-                <IconWarning v-else-if="compare === 'err'" :size="24" />
               </div>
             </td>
           </tr>

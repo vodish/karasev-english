@@ -46,3 +46,17 @@ const menu = useMenuStore()
     <RouterLink :to="menu.next" class="btn next" v-if="menu.next">Дальше &rarr;</RouterLink>
   </footer>
 </template>
+
+<style scoped>
+@media (max-width: 768px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .points {
+    display: none;
+  }
+}
+</style>

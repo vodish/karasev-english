@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { compareStr, useSentenceStore } from '@/stores/store.sentence'
 import IconStar from '@/components/icon/IconStar.vue';
+import IconWarning from '@/components/icon/IconWarning.vue';
 
 
 const sentence = useSentenceStore()
@@ -11,6 +12,9 @@ sentence.genTask()
 
 
 const type = ref('')
+const type1 = computed(()=>{
+  return type.value.charAt(0).toUpperCase() + type.value.slice(1)
+})
 const compare = ref('wait')
 
 function handleType(e: Event) {
@@ -23,25 +27,27 @@ function handleType(e: Event) {
 
 <template>
   <div class="task">{{ sentence.ru }}</div>
-  <div class="res sel">{{ type }}</div>
+  <div class="res sel">{{ type1 }}</div>
 
-  <div>
-    <input class="type" :value="type" @input="handleType" placeholder="Пиши здесь" />
+  <div class="type">
+    <input :value="type" @input="handleType" placeholder="Пиши здесь" />
+    <div class="check">
+      <!-- <span v-if="compare === 'wait'">...</span> -->
+      <!-- <span v-else-if="compare === 'type'">..</span> -->
+      <!-- <span v-if="compare === 'type'">..</span> -->
+      <IconStar v-if="compare === 'done'" :size="24" />
+      <IconWarning v-if="compare === 'err'" :size="24" />
+    </div>
+
   </div>
 
-  <div class="win">
-    {{ compare }}
-    <!-- <IconStar :size="24" />
-    <IconStar :size="24" />
-    <IconStar :size="24" /> -->
-  </div>
 
 
   <p class="descr">
     Тренажер для запоминания порядка слов в предложении вместе со смысловыми глаголами.
     <a href="" @click.prevent="sentence.genTask()">Refresh</a>
   </p>
-  <div class="answer">{{ sentence.en }} </div>
+  <div class="answer">{{ sentence.en.charAt(0).toUpperCase() + sentence.en.slice(1) }} </div>
 </template>
 
 
@@ -66,23 +72,32 @@ div.res {
   font-size: 3em;
   font-family: "Merienda", "Times New Roman", cursive;
   font-optical-sizing: auto;
+  line-height: 1.2em;
+  
 }
 
-.win {
-  display: flex;
-  justify-content: center;
-  gap: 1ch;
-  height: 3em;
-  /* border: solid 1px red; */
+@media (max-width: 768px) {
+  div.res {
+    min-height: 1.3em;
+    margin-bottom: 0.8em;
+  }
 }
-
 
 .type {
-  width: 100%;
-  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 1ch;
+}
+.type .input {
+  flex-basis: 300px;
   text-align: center;
   display: block;
   margin: 1em auto;
+}
+.type .check svg {
+  position: absolute;
+  margin-top: -18px;
 }
 
 .descr {
