@@ -11,8 +11,8 @@ type TSubject = { task: string; pass: string; input: string; compare: string }
 // текущий уровень
 // текущее задание
 const round = ref(0)
-const subject = ref<TSubject[]>([])
 const done = ref(false)
+const subject = ref<TSubject[]>([])
 
 //генерация задания
 setRound();
