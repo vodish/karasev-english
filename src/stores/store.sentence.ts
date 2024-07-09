@@ -10,7 +10,7 @@ export { patterns };
 export const listSentence = ['affirmative', 'negative', 'question']
 export const listTime = ['pastSimple', 'presentSimple', 'futureSimple']
 export const listSubject = ['I', 'you', 'we', 'they', 'he', 'she', 'it']
-export const listSubjectRu = ['я', 'вы', 'мы', 'они', 'он', 'она', 'оно']
+export const listSubjectRu = ['я', 'вы', 'мы', 'они', 'он', 'она', 'это']
 
 
 
@@ -153,7 +153,6 @@ export type TCompare = 'wait' | 'type' | 'err' | 'done'
 
 export function compareStr(srt: string, type: string): TCompare {
   let check: TCompare = 'wait';
-
   if (type === '') return check
 
   const str1 = srt.toLowerCase()
