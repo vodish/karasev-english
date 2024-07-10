@@ -10,6 +10,9 @@ const router = createRouter({
 })
 
 // обработчик навигации
-router.beforeEach(to => useMenuStore().click(to.matched[0].path))
+router.beforeEach(to => {
+  window.scrollTo(0, 0);
+  useMenuStore().click(to.matched[0].path)
+})
 
 export default router 
