@@ -1,14 +1,20 @@
-import type { Tirregular } from "./db.verbs.type.irregular"
-import type { Tregular } from "./db.verbs.type.regular"
+import type { Tirregular } from "./db.verbsIrregular"
+import type { Tregular } from "./db.verbsRegular"
 
 
 export type Tverbs = { [k in Tverb]?: TverbObj }
 
 export type Tverb = Tregular | Tirregular
 
-export type TverbObj = { [f in TverbFld]?: string }
+export type TverbObj = {
+  pastSimple: string[]
+  presentSimple: string[]
+} & {
+  [f in TverbFld]?: string
+}
 
-export type TverbFld = 'ru infinitive'
+export type TverbFld =
+  'ru infinitive'
   | 'ru I presentSimple'
   | 'ru you presentSimple'
   | 'ru we presentSimple'

@@ -1,20 +1,23 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import type { TpatternKey } from '@/db/db.pattern';
 import { listSentence, listTime, listSubject, patterns, transForm } from '@/stores/store.sentence';
+
 
 const sentenсeRu: { [k: string]: string } = { 'affirmative': 'Утверждение', 'negative': 'Отрицание', 'question': 'Вопрос' }
 
 
 const route = useRoute()
 const verb = computed(() => route.params.verb)
+
 const form = computed(() => {
   let table: { [k: string]: string } = {}
-
+  
   listSentence.forEach(sentence => {
     listTime.forEach(time => {
       listSubject.forEach(subject => {
+        
         const form = transForm({
           pattern: patterns[`${sentence} ${time}` as TpatternKey],
           sentence,
@@ -35,13 +38,14 @@ const form = computed(() => {
 <template>
   <div>
     Глаголы:
+    <!-- <RouterLink to="/verbs/be">be</RouterLink> | -->
     <RouterLink to="/verbs/expect">expect</RouterLink> |
     <RouterLink to="/verbs/do">do</RouterLink>
   </div>
 
   <div v-show="verb">
-    <br><br><br>
-    <h3>Предложения в тренажёре</h3>
+    <br />
+    <h4>Предложения в тренажёре</h4>
     <div class="tbl2" v-if="verb">
       <div class="top">
         <div class="time"></div>

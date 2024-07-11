@@ -5,6 +5,7 @@ export type TRoute = {
   menu?: string
   url?: string
   isPipe?: boolean
+  name: string
   component?: any
 }
 
@@ -15,6 +16,7 @@ export const routes: TRoute[] = [
     title: 'Тренажер по английскому',
     menu: 'Главная',
     isPipe: true,
+    name: 'PageMain',
     component: () => import('../pages/PageMain.vue'),
   },
   {
@@ -22,12 +24,14 @@ export const routes: TRoute[] = [
     url: '/verbs',
     category: 'page',
     title: 'Cписок глаголов',
+    name: 'PageVerbs',
     component: () => import('../pages/PageVerbs.vue'),
   },
   {
     path: '/:url(.*)*',
     category: 'tech',
     title: '404',
+    name: 'PageNotFound',
     component: () => import('../pages/PageNotFound.vue'),
   },
 
@@ -36,6 +40,7 @@ export const routes: TRoute[] = [
     category: 'subject',
     title: 'Кто такие субъекты',
     isPipe: true,
+    name: 'PageSubjectWhat',
     component: () => import('../pages/subjects/PageSubjectWhat.vue'),
   },
   {
@@ -43,6 +48,7 @@ export const routes: TRoute[] = [
     category: 'subject',
     title: 'Русские субъекты',
     isPipe: true,
+    name: 'PageSubjectRus',
     component: () => import('../pages/subjects/PageSubjectRus.vue'),
   },
   {
@@ -50,6 +56,7 @@ export const routes: TRoute[] = [
     category: 'subject',
     title: 'Английские переводы',
     isPipe: true,
+    name: 'PageSubjectEng',
     component: () => import('../pages/subjects/PageSubjectEng.vue'),
   },
   {
@@ -57,6 +64,7 @@ export const routes: TRoute[] = [
     category: 'subject',
     title: 'Тренажер субъектов',
     isPipe: true,
+    name: 'PageSubjectGym',
     component: () => import('../pages/subjects/PageSubjectGym.vue'),
   },
 
@@ -65,6 +73,7 @@ export const routes: TRoute[] = [
     category: 'verb',
     title: 'Что такое глаголы',
     isPipe: true,
+    name: 'PageVerbWhat',
     component: () => import('../pages/verbs/PageVerbWhat.vue'),
   },
   {
@@ -72,6 +81,7 @@ export const routes: TRoute[] = [
     category: 'verb',
     title: 'Что такое действие',
     isPipe: true,
+    name: 'PageVerbAction',
     component: () => import('../pages/verbs/PageVerbAction.vue'),
   },
   {
@@ -79,6 +89,7 @@ export const routes: TRoute[] = [
     category: 'verb',
     title: 'Смысловой глагол',
     isPipe: true,
+    name: 'PageVerbSense',
     component: () => import('../pages/verbs/PageVerbSense.vue'),
   },
   {
@@ -86,6 +97,7 @@ export const routes: TRoute[] = [
     category: 'verb',
     title: 'Модальный глагол',
     isPipe: true,
+    name: 'PageVerbModal',
     component: () => import('../pages/verbs/PageVerbModal.vue'),
   },
   {
@@ -93,6 +105,7 @@ export const routes: TRoute[] = [
     category: 'verb',
     title: 'Утверждение',
     isPipe: true,
+    name: 'PageVerbAffirm',
     component: () => import('../pages/verbs/PageVerbAffirm.vue'),
   },
   {
@@ -100,6 +113,7 @@ export const routes: TRoute[] = [
     category: 'verb',
     title: 'Отрицание',
     isPipe: true,
+    name: 'PageVerbNegative',
     component: () => import('../pages/verbs/PageVerbNegative.vue'),
   },
   {
@@ -107,6 +121,7 @@ export const routes: TRoute[] = [
     category: 'verb',
     title: 'Вопрос',
     isPipe: true,
+    name: 'PageVerbQuestion',
     component: () => import('../pages/verbs/PageVerbQuestion.vue'),
   },
 
@@ -116,6 +131,7 @@ export const routes: TRoute[] = [
     category: 'sentence',
     title: 'Строгий порядок слов',
     isPipe: true,
+    name: 'PageSentenceOrder',
     component: () => import('../pages/sentences/PageSentenceOrder.vue'),
   },
   {
@@ -123,6 +139,7 @@ export const routes: TRoute[] = [
     category: 'sentence',
     title: 'Таблица времени',
     isPipe: true,
+    name: 'PageSentenceTable',
     component: () => import('../pages/sentences/PageSentenceTable.vue'),
   },
   {
@@ -130,6 +147,7 @@ export const routes: TRoute[] = [
     category: 'sentence',
     title: 'Английское предложение',
     isPipe: true,
+    name: 'PageSentenceRule',
     component: () => import('../pages/sentences/PageSentenceRule.vue'),
   },
   {
@@ -137,6 +155,7 @@ export const routes: TRoute[] = [
     category: 'sentence',
     title: 'Английское утверждение',
     isPipe: true,
+    name: 'PageSentenceAffirm',
     component: () => import('../pages/sentences/PageSentenceAffirm.vue'),
   },
   {
@@ -144,6 +163,7 @@ export const routes: TRoute[] = [
     category: 'sentence',
     title: 'Вспомогательный глагол',
     isPipe: true,
+    name: 'PageSentenceAux',
     component: () => import('../pages/sentences/PageSentenceAux.vue'),
   },
   {
@@ -151,6 +171,7 @@ export const routes: TRoute[] = [
     category: 'sentence',
     title: 'Английское отрицание',
     isPipe: true,
+    name: 'PageSentenceNegative',
     component: () => import('../pages/sentences/PageSentenceNegative.vue'),
   },
   {
@@ -158,6 +179,7 @@ export const routes: TRoute[] = [
     category: 'sentence',
     title: 'Английский вопрос',
     isPipe: true,
+    name: 'PageSentenceQuestion',
     component: () => import('../pages/sentences/PageSentenceQuestion.vue'),
   },
   {
@@ -165,6 +187,7 @@ export const routes: TRoute[] = [
     category: 'sentence',
     title: 'Тренажер глаголов',
     isPipe: true,
+    name: 'PageSentenceGym',
     component: () => import('../pages/sentences/PageSentenceGym.vue'),
   },
 

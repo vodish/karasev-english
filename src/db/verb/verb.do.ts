@@ -1,4 +1,6 @@
-export const _do = {
+import type { TverbObj } from "../db.verbs.type";
+
+export const _do: TverbObj = {
   'ru infinitive': 'делать',
 
   'ru I pastSimple': 'делал',
@@ -20,6 +22,8 @@ export const _do = {
   
   'en infinitive': 'do',
 
+  pastSimple: ['did'],
+
   'en I pastSimple': 'did',
   'en you pastSimple': 'did',
   'en we pastSimple': 'did',
@@ -27,6 +31,8 @@ export const _do = {
   'en he pastSimple': 'did',
   'en she pastSimple': 'did',
   'en it pastSimple': 'did',
+
+  presentSimple: ['do', 'does'],
 
   'en I presentSimple': 'do',
   'en you presentSimple': 'do',

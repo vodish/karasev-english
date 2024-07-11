@@ -1,4 +1,6 @@
-export const expect = {
+import type { TverbObj } from "../db.verbs.type";
+
+export const expect: TverbObj = {
   'ru infinitive': 'ожидать',
 
   'ru I pastSimple': 'ожидал',
@@ -17,7 +19,10 @@ export const expect = {
   'ru she presentSimple': 'ожидает',
   'ru it presentSimple': 'ожидает',
 
+
   'en infinitive': 'expect',
+
+  presentSimple: ['expect', 'expects'],
 
   'en I presentSimple': 'expect',
   'en you presentSimple': 'expect',
@@ -26,6 +31,8 @@ export const expect = {
   'en he presentSimple': 'expects',
   'en she presentSimple': 'expects',
   'en it presentSimple': 'expects',
+
+  pastSimple: ['expected'],
 
   'en I pastSimple': 'expected',
   'en you pastSimple': 'expected',

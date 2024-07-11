@@ -24,29 +24,25 @@ export const useSentenceStore = defineStore('sentence', () => {
   })
 
 
-  function setVerbList(list: string[]) {
-    verbList.value = list
-  }
-
-
+  
   // генератор задачи
-  function getTask() {
+  function getTask(verbList: string) {
     param.value = {
       sentence: myRand(listSentence),
       time: myRand(listTime),
       subject: myRand(listSubject),
-      verb: myRand(verbList.value),
+      verb: myRand(verbList.split('|')),
     }
     const pattern = patterns[`${param.value.sentence} ${param.value.time}` as TpatternKey]
 
     const form = transForm({ ...param.value, pattern })
-    
+
     return form
   }
 
 
 
-  return { param, setVerbList, getTask }
+  return { param, getTask }
 })
 
 
@@ -67,11 +63,9 @@ type TtranslateParam = {
 export function transForm(param: TtranslateParam) {
   let { ru, en } = param.pattern
 
-
   // подставить субъекта
   ru = ru.replace(/{subject}/, listSubjectRu[listSubject.indexOf(param.subject)])
   en = en.replace(/{subject}/, param.subject)
-
 
 
   // подставить русские глаголы
@@ -79,7 +73,9 @@ export function transForm(param: TtranslateParam) {
     const ruMod = getVerbForm('be', 'ru', param.subject, param.time)
     if (ruMod) ru = ru.replace(/{быть}/, ruMod)
 
-    const ruVerb = getVerbInfinitive('ru', param.verb as Tverb)
+    let ruVerb = getVerbInfinitive('ru', param.verb as Tverb)
+
+    // отдельно для глагола быть
     ru = ru.replace(/{verb}/, ruVerb || `{${param.verb}}`)
   }
   else {
@@ -104,6 +100,15 @@ export function transForm(param: TtranslateParam) {
     const enVerb = getVerbForm(param.verb as Tverb, 'en', param.subject, param.time)
     en = en.replace(/{verb}/, enVerb || `{${param.verb}}`)
   }
+
+
+
+  // отдельно для глагола быть
+  if (param.verb == 'be') {
+    console.log('отдельный перевод для be')
+  }
+
+
 
 
   // предложение с большой буквы

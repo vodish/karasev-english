@@ -3,42 +3,40 @@ import { computed, nextTick, onMounted, ref } from 'vue'
 import { compareStr, useSentenceStore } from '@/stores/store.sentence'
 import IconStar from '@/components/icon/IconStar.vue';
 import IconWarning from '@/components/icon/IconWarning.vue';
+import { useRoute } from 'vue-router';
 
-// фокус на поле ввода, атрибут ссылка ref="tagInput"
-const tagInput = ref();
-onMounted(() => {
-  nextTick(() => {
-    tagInput.value.focus();
-  });
-});
+const route = useRoute()
 
 
-// переменные
+// настройки тренажёра
+const tagInput = ref()
+const options = ref(true)
+// const options = ref(true)
+// const verbSelect = computed(() => route.query.verb || 'expect');
+
+
+// тренажёр
 
 const sentence = useSentenceStore()
-sentence.setVerbList(['expect'])
-// sentence.setVerbList(['do'])
-
 const question = ref('')
 const answer = ref('')
 const type = ref('')
 const type1 = computed(() => type.value.charAt(0).toUpperCase() + type.value.slice(1))
 const compare = ref('wait')
 
-refresh();
+
 
 
 // обработчики
-
+refresh();
 function refresh() {
   type.value = ''
   compare.value = 'wait'
-  const form = sentence.getTask()
+  const form = sentence.getTask('expect')
   question.value = form.ruForm
   answer.value = form.enForm
+
 }
-
-
 
 function handleType(e: KeyboardEvent) {
   type.value = (e.target as HTMLInputElement).value
@@ -49,38 +47,79 @@ function handleType(e: KeyboardEvent) {
 
 
 
+
+// установить курсор в поле ввода
+
+onMounted(() => {
+  nextTick(() => {
+    tagInput.value.focus();
+  });
+});
+
+
+
+
+const verbsRegular = ['expect'];
+const verbsIrregular = ['do'];
+
 </script>
 
 <template>
-  <div class="task">{{ question }}</div>
-  <div class="res sel">{{ type1 }}</div>
+  <div class="center">
+    <div class="task">{{ question }}</div>
+    <div class="res sel">{{ type1 }}</div>
 
-  <div class="type">
-    <input @keyup="handleType" placeholder="Пиши здесь" v-model="type" ref="tagInput" />
-    <div class="check">
-      <IconWarning v-if="compare === 'err'" :size="24" />
-      <IconStar v-if="compare === 'done'" :size="24" />
+    <div class="type">
+      <input @keyup="handleType" placeholder="Пиши перевод" v-model="type" ref="tagInput" />
+      <div class="check">
+        <IconWarning v-if="compare === 'err'" :size="24" />
+        <IconStar v-if="compare === 'done'" :size="24" />
+      </div>
     </div>
 
+
+    <p class="descr">
+      Тренажер для запоминания порядка слов в предложении вместе со смысловыми глаголами.
+      <a href="" @click.prevent="refresh">Enter</a>
+    </p>
+    <div class="answer">(expected), (expect, expects) | {{ answer }} </div>
+
+
+
+
+    <a href="" @click.prevent="options = !options">Настройки</a>
+    <div class="options" v-if="options">
+      <div>
+        {{ route.query.verb }}
+      </div>
+
+      <ul class="verbs">
+        <li>Правильные</li>
+        <li v-for="v in verbsRegular">
+          <RouterLink :to="{ path: '/sentence/gym', query: { verb: v } }" :class="{ active: route.query.verb == v }">
+            {{ v }}
+          </RouterLink>
+        </li>
+      </ul>
+      <ul class="verbs">
+        <li>Неправильные</li>
+        <li v-for="v in verbsIrregular">
+          <RouterLink :to="{ path: '/sentence/gym', query: { verb: v } }" :class="{ active: route.query.verb == v }">
+            {{ v }}
+          </RouterLink>
+        </li>
+      </ul>
+    </div>
   </div>
-
-
-
-  <p class="descr">
-    Тренажер для запоминания порядка слов в предложении вместе со смысловыми глаголами.
-    <a href="" @click.prevent="refresh">Enter</a>
-  </p>
-  <div class="answer">{{ answer }} </div>
 </template>
 
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
 
-* {
+.center {
   text-align: center;
 }
-
 p {
   width: 100%;
 }
@@ -110,17 +149,14 @@ div.res {
   display: flex;
   justify-content: center;
   align-items: baseline;
-  gap: 1ch;
 }
-.type .input {
-  flex-basis: 300px;
+.type input {
+  /* flex-basis: 200px; */
   text-align: center;
-  display: block;
-  margin: 1em auto;
 }
 .type .check svg {
   position: absolute;
-  margin-top: -18px;
+  margin: -18px 0 0 1ch;
 }
 
 .descr {
@@ -130,5 +166,26 @@ div.res {
 .answer {
   opacity: 0.2;
   margin: 1em 0;
+}
+
+
+.options {
+  text-align: left;
+}
+
+.verbs {
+  list-style: none;
+  margin: 2em 0 0 0;
+  padding: 0;
+  text-align: left;
+  columns: 90px auto;
+  column-gap: 1ch;
+}
+.verbs > *:first-child {
+  font-size: 0.8em;
+  margin: 0.3em 0 0.2em 0;
+}
+.verbs a.active {
+  color: inherit;
 }
 </style>
