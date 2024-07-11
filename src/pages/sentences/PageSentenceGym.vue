@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router';
 import { compareStr, useSentenceStore } from '@/stores/store.sentence'
 import IconStar from '@/components/icon/IconStar.vue';
 import IconWarning from '@/components/icon/IconWarning.vue';
-import { useRoute } from 'vue-router';
+import { verbs } from '@/db/db.verbs';
 
 const route = useRoute()
 
@@ -36,6 +37,7 @@ function refresh() {
   question.value = form.ruForm
   answer.value = form.enForm
 
+  console.log(sentence.param.verb)
 }
 
 function handleType(e: KeyboardEvent) {
