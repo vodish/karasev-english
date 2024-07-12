@@ -4,20 +4,19 @@ import { useRoute } from 'vue-router';
 import { compareStr, useSentenceStore } from '@/stores/store.sentence'
 import IconStar from '@/components/icon/IconStar.vue';
 import IconWarning from '@/components/icon/IconWarning.vue';
-import { verbs } from '@/db/db.verbs';
+
 
 const route = useRoute()
 
 
-// настройки тренажёра
+// настройки
+const verbsRegular = ['expect'];
+const verbsIrregular = ['do'];
 const tagInput = ref()
 const options = ref(true)
-// const options = ref(true)
-// const verbSelect = computed(() => route.query.verb || 'expect');
 
 
 // тренажёр
-
 const sentence = useSentenceStore()
 const question = ref('')
 const answer = ref('')
@@ -27,9 +26,15 @@ const compare = ref('wait')
 
 
 
-
 // обработчики
-refresh();
+// установить курсор в поле ввода
+onMounted(() => {
+  refresh()
+  nextTick(() => tagInput.value.focus())
+})
+
+
+
 function refresh() {
   type.value = ''
   compare.value = 'wait'
@@ -50,19 +55,7 @@ function handleType(e: KeyboardEvent) {
 
 
 
-// установить курсор в поле ввода
 
-onMounted(() => {
-  nextTick(() => {
-    tagInput.value.focus();
-  });
-});
-
-
-
-
-const verbsRegular = ['expect'];
-const verbsIrregular = ['do'];
 
 </script>
 
