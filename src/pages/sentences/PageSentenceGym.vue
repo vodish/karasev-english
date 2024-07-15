@@ -6,15 +6,26 @@ import IconStar from '@/components/icon/IconStar.vue';
 import IconWarning from '@/components/icon/IconWarning.vue';
 
 
+
 const route = useRoute()
-
-
+const router = useRouter()
 
 // настройки
-const verbsRegular = ['expect'];
-const verbsIrregular = ['do'];
+const verbsRegular = ['expect']
+const verbsIrregular = ['do']
+const queryVerb = computed(() => {
+  // console.log(route.query.verb)
+  if (!route.query.verb) {
+    router.push({ path: '/sentence/gym', query: { verb: 'expect' }, replace: true })
+  }
+  return route.query.verb || ''
+})
 const tagInput = ref()
 const options = ref(true)
+
+
+
+
 
 
 // тренажёр
@@ -54,7 +65,7 @@ function handleType(e: KeyboardEvent) {
 }
 
 
-function queryVerb(e: Event) {
+function handlerQueryVerb(e: Event) {
   const target = e.target as HTMLAnchorElement
 
   console.log(target.href)
@@ -68,7 +79,8 @@ function queryVerb(e: Event) {
 </script>
 
 <template>
-  <pre>{{ route.params }}</pre>
+  <pre>{{ queryVerb }}</pre>
+  <pre>{{ route.query }}</pre>
 
   <div class="center">
     <div class="task">{{ question }}</div>
@@ -101,13 +113,19 @@ function queryVerb(e: Event) {
       <ul class="verbs">
         <li>Правильные</li>
         <li v-for="v in verbsRegular">
-          <a :href="v" @click.prevent="queryVerb" :class="{ active: route.query.verb == v }">{{ v }}</a>
+          <a href=""></a>
+          <RouterLink :to="{ path: '/sentence/gym', query: { verb: v } }" :class="{ active: route.query.verb == v }">
+            {{ v }}
+          </RouterLink>
         </li>
       </ul>
       <ul class="verbs">
         <li>Неправильные</li>
         <li v-for="v in verbsIrregular">
-          <a :href="v" @click.prevent="queryVerb" :class="{ active: route.query.verb == v }">{{ v }}</a>
+          <RouterLink :to="{ path: '/sentence/gym', query: { verb: v } }" :class="{ active: route.query.verb == v }"
+            :click="handlerQueryVerb">
+            {{ v }}
+          </RouterLink>
         </li>
       </ul>
     </div>
