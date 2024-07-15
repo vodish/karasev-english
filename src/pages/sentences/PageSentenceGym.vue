@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router';
+import { ref, computed, nextTick, onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router';
 import { compareStr, useSentenceStore } from '@/stores/store.sentence'
 import IconStar from '@/components/icon/IconStar.vue';
 import IconWarning from '@/components/icon/IconWarning.vue';
 
 
 const route = useRoute()
+
 
 
 // настройки
@@ -42,7 +43,7 @@ function refresh() {
   question.value = form.ruForm
   answer.value = form.enForm
 
-  console.log(sentence.param.verb)
+  // console.log(sentence.param.verb)
 }
 
 function handleType(e: KeyboardEvent) {
@@ -53,6 +54,13 @@ function handleType(e: KeyboardEvent) {
 }
 
 
+function queryVerb(e: Event) {
+  const target = e.target as HTMLAnchorElement
+
+  console.log(target.href)
+}
+
+
 
 
 
@@ -60,6 +68,8 @@ function handleType(e: KeyboardEvent) {
 </script>
 
 <template>
+  <pre>{{ route.params }}</pre>
+
   <div class="center">
     <div class="task">{{ question }}</div>
     <div class="res sel">{{ type1 }}</div>
@@ -91,17 +101,13 @@ function handleType(e: KeyboardEvent) {
       <ul class="verbs">
         <li>Правильные</li>
         <li v-for="v in verbsRegular">
-          <RouterLink :to="{ path: '/sentence/gym', query: { verb: v } }" :class="{ active: route.query.verb == v }">
-            {{ v }}
-          </RouterLink>
+          <a :href="v" @click.prevent="queryVerb" :class="{ active: route.query.verb == v }">{{ v }}</a>
         </li>
       </ul>
       <ul class="verbs">
         <li>Неправильные</li>
         <li v-for="v in verbsIrregular">
-          <RouterLink :to="{ path: '/sentence/gym', query: { verb: v } }" :class="{ active: route.query.verb == v }">
-            {{ v }}
-          </RouterLink>
+          <a :href="v" @click.prevent="queryVerb" :class="{ active: route.query.verb == v }">{{ v }}</a>
         </li>
       </ul>
     </div>
