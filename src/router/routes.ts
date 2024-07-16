@@ -13,7 +13,7 @@ export const routes: TRoute[] = [
   {
     path: '/',
     category: 'page',
-    title: 'Тренажер по английскому',
+    title: 'Тренажер по&nbsp;английскому',
     menu: 'Главная',
     isPipe: true,
     name: 'PageMain',
@@ -38,7 +38,7 @@ export const routes: TRoute[] = [
   {
     path: '/subjects/what',
     category: 'subject',
-    title: 'Кто такие субъекты',
+    title: 'Кто&nbsp;такие субъекты',
     isPipe: true,
     name: 'PageSubjectWhat',
     component: () => import('../pages/subjects/PageSubjectWhat.vue'),
@@ -71,7 +71,7 @@ export const routes: TRoute[] = [
   {
     path: '/verb/what',
     category: 'verb',
-    title: 'Что такое глаголы',
+    title: 'Что&nbsp;такое глаголы',
     isPipe: true,
     name: 'PageVerbWhat',
     component: () => import('../pages/verbs/PageVerbWhat.vue'),
@@ -79,7 +79,7 @@ export const routes: TRoute[] = [
   {
     path: '/verb/action',
     category: 'verb',
-    title: 'Что такое действие',
+    title: 'Что&nbsp;такое действие',
     isPipe: true,
     name: 'PageVerbAction',
     component: () => import('../pages/verbs/PageVerbAction.vue'),

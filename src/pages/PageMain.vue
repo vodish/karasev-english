@@ -19,6 +19,7 @@
 iframe {
   display: block;
   margin: 0 auto;
+  max-width: 100%;
   width: 560px;
   height: 315px;
 }
