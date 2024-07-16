@@ -1,30 +1,43 @@
 <script setup lang="ts">
-import { ref, computed, nextTick, onMounted } from 'vue'
+import { ref, computed, nextTick, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router';
 import { compareStr, useSentenceStore } from '@/stores/store.sentence'
 import IconStar from '@/components/icon/IconStar.vue';
 import IconWarning from '@/components/icon/IconWarning.vue';
-
-
-
-const route = useRoute()
-const router = useRouter()
+import { verbs } from '@/db/db.verbs'
+import type { Tverb, TverbObj } from '@/db/db.verbs.type';
 
 // настройки
+const route = useRoute()
+const router = useRouter()
 const verbsRegular = ['expect']
 const verbsIrregular = ['do']
-const queryVerb = computed(() => {
-  // console.log(route.query.verb)
+const tagInput = ref()
+const options = ref(false)
+
+
+// редирект на глагол по-умолчанию
+watch(
+  () => route.query.verb,
+  () => {
+    queryVerbDefault()
+    refresh()
+  }
+)
+
+
+function queryVerbDefault() {
   if (!route.query.verb) {
     router.push({ path: '/sentence/gym', query: { verb: 'expect' }, replace: true })
   }
-  return route.query.verb || ''
+}
+
+// установить курсор в поле ввода
+onMounted(() => {
+  queryVerbDefault()
+  refresh()
+  nextTick(() => tagInput.value.focus())
 })
-const tagInput = ref()
-const options = ref(true)
-
-
-
 
 
 
@@ -35,26 +48,21 @@ const answer = ref('')
 const type = ref('')
 const type1 = computed(() => type.value.charAt(0).toUpperCase() + type.value.slice(1))
 const compare = ref('wait')
+const verbObj = ref<TverbObj>()
 
-
-
-// обработчики
-// установить курсор в поле ввода
-onMounted(() => {
-  refresh()
-  nextTick(() => tagInput.value.focus())
-})
 
 
 
 function refresh() {
+  if ( !route.query.verb ) return;
+
   type.value = ''
   compare.value = 'wait'
-  const form = sentence.getTask('expect')
+  const form = sentence.getTask(route.query.verb as string)
   question.value = form.ruForm
   answer.value = form.enForm
 
-  // console.log(sentence.param.verb)
+  verbObj.value = verbs[sentence.param.verb as Tverb]
 }
 
 function handleType(e: KeyboardEvent) {
@@ -79,9 +87,6 @@ function handlerQueryVerb(e: Event) {
 </script>
 
 <template>
-  <pre>{{ queryVerb }}</pre>
-  <pre>{{ route.query }}</pre>
-
   <div class="center">
     <div class="task">{{ question }}</div>
     <div class="res sel">{{ type1 }}</div>
@@ -99,20 +104,20 @@ function handlerQueryVerb(e: Event) {
       Тренажер для запоминания порядка слов в предложении вместе со смысловыми глаголами.
       <a href="" @click.prevent="refresh">Enter</a>
     </p>
-    <div class="answer">(expected), (expect, expects) | {{ answer }} </div>
+    <div class="answer">
+      ({{ verbObj?.pastSimple.join(', ') }}),
+      ({{ verbObj?.presentSimple.join(', ') }}).
+      {{ answer }}
+    </div>
 
 
 
 
     <a href="" @click.prevent="options = !options">Настройки</a>
     <div class="options" v-if="options">
-      <div>
-        {{ route.query.verb }}
-      </div>
-
       <ul class="verbs">
         <li>Правильные</li>
-        <li v-for="v in verbsRegular">
+        <li v-for="v in verbsRegular" :key="v">
           <a href=""></a>
           <RouterLink :to="{ path: '/sentence/gym', query: { verb: v } }" :class="{ active: route.query.verb == v }">
             {{ v }}
@@ -121,7 +126,7 @@ function handlerQueryVerb(e: Event) {
       </ul>
       <ul class="verbs">
         <li>Неправильные</li>
-        <li v-for="v in verbsIrregular">
+        <li v-for="v in verbsIrregular" :key="v">
           <RouterLink :to="{ path: '/sentence/gym', query: { verb: v } }" :class="{ active: route.query.verb == v }"
             :click="handlerQueryVerb">
             {{ v }}

@@ -5,7 +5,7 @@ import type { Tverbs } from './db.verbs.type'
 
 
 export const verbs: Tverbs = {
-  do: _do,
   be,
+  do: _do,
   expect,
 }
