@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { verbsRegular } from '@/db/db.verbsRegular';
+import { verbsIrregular } from '@/db/db.verbsIrregular';
 import type { TpatternKey } from '@/db/db.pattern';
 import { listSentence, listTime, listSubject, patterns, transForm } from '@/stores/store.sentence';
 
@@ -13,11 +15,11 @@ const verb = computed(() => route.params.verb)
 
 const form = computed(() => {
   let table: { [k: string]: string } = {}
-  
+
   listSentence.forEach(sentence => {
     listTime.forEach(time => {
       listSubject.forEach(subject => {
-        
+
         const form = transForm({
           pattern: patterns[`${sentence} ${time}` as TpatternKey],
           sentence,
@@ -36,16 +38,22 @@ const form = computed(() => {
 </script>
 
 <template>
-  <div>
-    Глаголы:
-    <!-- <RouterLink to="/verbs/be">be</RouterLink> | -->
-    <RouterLink to="/verbs/expect">expect</RouterLink> |
-    <RouterLink to="/verbs/do">do</RouterLink>
+  <div class="list">
+    <div>Правильные:</div>
+    <RouterLink v-for="v in verbsRegular" :key="v" :to="`/verbs/${v}`" :class="{ active: route.path.includes(v) }">
+      {{ v }}
+    </RouterLink>
+  </div>
+  <div class="list">
+    Неправильные:
+    <RouterLink v-for="v in verbsIrregular" :key="v" :to="`/verbs/${v}`" :class="{ active: route.path.includes(v) }">
+      {{ v }}
+    </RouterLink>
   </div>
 
   <div v-show="verb">
-    <br />
-    <h4>Предложения в тренажёре</h4>
+    <br>
+    <p>Предложения в тренажёре</p>
     <div class="tbl2" v-if="verb">
       <div class="top">
         <div class="time"></div>
@@ -70,6 +78,15 @@ const form = computed(() => {
 
 
 <style scoped>
+a.active {
+  color: inherit;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1ch;
+}
 .row {
   margin-top: 30px;
 }

@@ -5,13 +5,13 @@ import { compareStr, useSentenceStore } from '@/stores/store.sentence'
 import IconStar from '@/components/icon/IconStar.vue';
 import IconWarning from '@/components/icon/IconWarning.vue';
 import { verbs } from '@/db/db.verbs'
+import { verbsRegular } from '@/db/db.verbsRegular'
+import { verbsIrregular } from '@/db/db.verbsIrregular'
 import type { Tverb, TverbObj } from '@/db/db.verbs.type';
 
 // настройки
 const route = useRoute()
 const router = useRouter()
-const verbsRegular = ['expect']
-const verbsIrregular = ['do']
 const tagInput = ref()
 const options = ref(false)
 
@@ -54,7 +54,7 @@ const verbObj = ref<TverbObj>()
 
 
 function refresh() {
-  if ( !route.query.verb ) return;
+  if (!route.query.verb) return;
 
   type.value = ''
   compare.value = 'wait'
@@ -127,8 +127,8 @@ function handlerQueryVerb(e: Event) {
       <ul class="verbs">
         <li>Неправильные</li>
         <li v-for="v in verbsIrregular" :key="v">
-          <RouterLink :to="{ path: '/sentence/gym', query: { verb: v } }" :class="{ active: route.query.verb == v }"
-            :click="handlerQueryVerb">
+          <RouterLink v-if="v != 'be'" :to="{ path: '/sentence/gym', query: { verb: v } }"
+            :class="{ active: route.query.verb == v }" :click="handlerQueryVerb">
             {{ v }}
           </RouterLink>
         </li>
