@@ -1,7 +1,7 @@
 import type { TverbObj } from "../db.verbs.type";
 
 export const say: TverbObj = {
-  'ru infinitive': 'сказать',
+  'ru infinitive': 'говорить',
 
   'ru I pastSimple': 'сказал',
   'ru you pastSimple': 'сказали',
@@ -11,13 +11,13 @@ export const say: TverbObj = {
   'ru she pastSimple': 'сказала',
   'ru it pastSimple': 'сказало',
 
-  'ru I presentSimple': 'рассказываю',
-  'ru you presentSimple': 'рассказываете',
-  'ru we presentSimple': 'рассказываем',
-  'ru they presentSimple': 'рассказывают',
-  'ru he presentSimple': 'рассказывает',
-  'ru she presentSimple': 'рассказывает',
-  'ru it presentSimple': 'рассказывает',
+  'ru I presentSimple': 'говорю',
+  'ru you presentSimple': 'говорите',
+  'ru we presentSimple': 'говорим',
+  'ru they presentSimple': 'говорят',
+  'ru he presentSimple': 'говорит',
+  'ru she presentSimple': 'говорит',
+  'ru it presentSimple': 'говорит',
 
 
   'en infinitive': 'say',
