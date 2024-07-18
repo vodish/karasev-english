@@ -13,7 +13,7 @@ import type { Tverb, TverbObj } from '@/db/db.verbs.type';
 const route = useRoute()
 const router = useRouter()
 const tagInput = ref()
-const options = ref(true)
+const options = ref(false)
 const optionsVerb = computed(() => {
   if (!route.query.verb) return [];
   return (route.query.verb as string).split('|')
@@ -66,7 +66,10 @@ const verbObj = ref<TverbObj>()
 function refresh() {
   if (!route.query.verb) return;
 
-  const verbList = optionsVerb.value.filter(el => !['', 'all'].includes(el))
+  let verbList = optionsVerb.value.filter(el => !['', 'all'].includes(el))
+  if (optionsMod.value === 'all') {
+    verbList = [...verbsRegular, ...verbsIrregular.filter(el => el !=='be')]
+  }
 
   type.value = ''
   compare.value = 'wait'
@@ -99,10 +102,10 @@ function setMod(mod: string) {
 function setVerb(newVerb: string) {
   let newList = optionsVerb.value.filter(el => !['', 'all'].includes(el))
 
-  if (optionsMod.value === 'many' ) {
-    if ( newList.includes(newVerb) )  newList = newList.filter( el => el != newVerb )
-    else {newList.push(newVerb)};
-    
+  if (optionsMod.value === 'many') {
+    if (newList.includes(newVerb)) newList = newList.filter(el => el != newVerb)
+    else { newList.push(newVerb) };
+
     return { query: { verb: newList.join('|') + '|' } }
   }
 
@@ -141,7 +144,8 @@ function setVerb(newVerb: string) {
 
 
 
-    <a href="" @click.prevent="options = !options">Настройки</a>
+    <p><a href="" @click.prevent="options = !options">Настройки</a></p>
+
     <div class="options" v-if="options">
       <div class="mod">
         Глаголы:
@@ -155,7 +159,7 @@ function setVerb(newVerb: string) {
           Все
         </RouterLink>
       </div>
-      
+
       <ul class="verbs">
         <li>Правильные</li>
         <li v-for="v in verbsRegular" :key="v">
