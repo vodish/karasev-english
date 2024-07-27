@@ -1,23 +1,23 @@
 import type { TverbObj } from "../db.verbs.type";
 
 export const talk: TverbObj = {
-  'ru infinitive': 'разговаривать',
+  'ru infinitive': 'болтать',
 
-  'ru I pastSimple': 'разговаривал',
-  'ru you pastSimple': 'разговаривали',
-  'ru we pastSimple': 'разговаривали',
-  'ru they pastSimple': 'разговаривали',
-  'ru he pastSimple': 'разговаривал',
-  'ru she pastSimple': 'разговаривала',
-  'ru it pastSimple': 'разговаривало',
+  'ru I pastSimple': 'болтал',
+  'ru you pastSimple': 'болтали',
+  'ru we pastSimple': 'болтали',
+  'ru they pastSimple': 'болтали',
+  'ru he pastSimple': 'болтал',
+  'ru she pastSimple': 'болтала',
+  'ru it pastSimple': 'болтало',
 
-  'ru I presentSimple': 'разговариваю',
-  'ru you presentSimple': 'разговариваете',
-  'ru we presentSimple': 'разговариваем',
-  'ru they presentSimple': 'разговаривают',
-  'ru he presentSimple': 'разговаривает',
-  'ru she presentSimple': 'разговаривает',
-  'ru it presentSimple': 'разговаривает',
+  'ru I presentSimple': 'болтаю',
+  'ru you presentSimple': 'болтаете',
+  'ru we presentSimple': 'болтаем',
+  'ru they presentSimple': 'болтают',
+  'ru he presentSimple': 'болтает',
+  'ru she presentSimple': 'болтает',
+  'ru it presentSimple': 'болтает',
 
 
   'en infinitive': 'talk',

@@ -10,7 +10,7 @@ export const verbsIrregular = [
   // , 'buy'
   // , 'catch'
   // , 'choose'
-  // , 'come'
+  , 'come'
   // , 'cost'
   // , 'cut'
   , 'do'
