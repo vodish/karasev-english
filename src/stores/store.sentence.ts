@@ -157,9 +157,9 @@ export type TCompare = 'wait' | 'type' | 'err' | 'done'
 export function compareStr(srt: string, type: string): TCompare {
   let check: TCompare = 'wait';
   if (type === '') return check
-
-  const str1 = srt.trim().toLowerCase()
-  const type1 = type.trim().toLowerCase()
+  
+  const str1 = srt.replace(/[ |.|?]+$/, '').toLowerCase()
+  const type1 = type.replace(/[ |.|?]+$/, '').toLowerCase()
   // console.log(str1, type1)
 
   check = str1.substring(0, type1.length) === type1 ? 'type' : 'err'

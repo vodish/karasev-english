@@ -14,6 +14,16 @@ const route = useRoute()
 const router = useRouter()
 const tagInput = ref()
 const options = ref(false)
+const optionsVerb = computed(() => {
+  if (!route.query.verb) return [];
+  return (route.query.verb as string).split('|')
+})
+const optionsMod = computed(() => {
+  if (!route.query.verb) return ''
+  if (optionsVerb.value.length === 1) return 'one'
+  if (optionsVerb.value.includes('all')) return 'all'
+  return 'many'
+})
 
 
 // редирект на глагол по-умолчанию
@@ -27,8 +37,8 @@ watch(
 
 
 function queryVerbDefault() {
-  if (!route.query.verb) {
-    router.push({ path: '/sentence/gym', query: { verb: 'expect' }, replace: true })
+  if (Object.keys(route.query).length == 0) {
+    router.push({ query: { verb: 'expect' }, replace: true })
   }
 }
 
@@ -56,9 +66,14 @@ const verbObj = ref<TverbObj>()
 function refresh() {
   if (!route.query.verb) return;
 
+  let verbList = optionsVerb.value.filter(el => !['', 'all'].includes(el))
+  if (optionsMod.value === 'all') {
+    verbList = [...verbsRegular, ...verbsIrregular.filter(el => el !=='be')]
+  }
+
   type.value = ''
   compare.value = 'wait'
-  const form = sentence.getTask(route.query.verb as string)
+  const form = sentence.getTask(verbList.join('|'))
   question.value = form.ruForm
   answer.value = form.enForm
 
@@ -73,13 +88,29 @@ function handleType(e: KeyboardEvent) {
 }
 
 
-function handlerQueryVerb(e: Event) {
-  const target = e.target as HTMLAnchorElement
+// установка опций
 
-  console.log(target.href)
+function setMod(mod: string) {
+  const newVerb = optionsVerb.value.filter(e => !['', 'all'].includes(e))
+
+  if (mod == 'one') return { query: { verb: newVerb[0] || 'expect' } };
+  if (mod == 'many') return { query: { verb: newVerb.join('|') + '|' } };
+  newVerb.push('all')
+  return { query: { verb: newVerb.join('|') } }
 }
 
+function setVerb(newVerb: string) {
+  let newList = optionsVerb.value.filter(el => !['', 'all'].includes(el))
 
+  if (optionsMod.value === 'many') {
+    if (newList.includes(newVerb)) newList = newList.filter(el => el != newVerb)
+    else { newList.push(newVerb) };
+
+    return { query: { verb: newList.join('|') + '|' } }
+  }
+
+  return { query: { verb: newVerb } }
+}
 
 
 
@@ -113,13 +144,27 @@ function handlerQueryVerb(e: Event) {
 
 
 
-    <a href="" @click.prevent="options = !options">Настройки</a>
+    <p><a href="" @click.prevent="options = !options">Настройки</a></p>
+
     <div class="options" v-if="options">
+      <div class="mod">
+        Глаголы:
+        <RouterLink :to="setMod('one')" :class="{ active: optionsMod == 'one' }">
+          Один
+        </RouterLink>
+        <RouterLink :to="setMod('many')" :class="{ active: optionsMod == 'many' }">
+          Выбранные
+        </RouterLink>
+        <RouterLink :to="setMod('all')" :class="{ active: optionsMod == 'all' }">
+          Все
+        </RouterLink>
+      </div>
+
       <ul class="verbs">
         <li>Правильные</li>
         <li v-for="v in verbsRegular" :key="v">
           <a href=""></a>
-          <RouterLink :to="{ path: '/sentence/gym', query: { verb: v } }" :class="{ active: route.query.verb == v }">
+          <RouterLink :to="setVerb(v)" :class="{ active: optionsVerb.includes(v) }">
             {{ v }}
           </RouterLink>
         </li>
@@ -127,8 +172,7 @@ function handlerQueryVerb(e: Event) {
       <ul class="verbs">
         <li>Неправильные</li>
         <li v-for="v in verbsIrregular" :key="v">
-          <RouterLink v-if="v != 'be'" :to="{ path: '/sentence/gym', query: { verb: v } }"
-            :class="{ active: route.query.verb == v }" :click="handlerQueryVerb">
+          <RouterLink v-if="v != 'be'" :to="setVerb(v)" :class="{ active: optionsVerb.includes(v) }">
             {{ v }}
           </RouterLink>
         </li>
@@ -196,8 +240,12 @@ div.res {
 .options {
   text-align: left;
 }
+.options .mod {
+  display: flex;
+  gap: 2ch;
+}
 
-.verbs {
+.options .verbs {
   list-style: none;
   margin: 2em 0 0 0;
   padding: 0;
@@ -205,11 +253,11 @@ div.res {
   columns: 90px auto;
   column-gap: 1ch;
 }
-.verbs > *:first-child {
+.options .verbs > *:first-child {
   font-size: 0.8em;
   margin: 0.3em 0 0.2em 0;
 }
-.verbs a.active {
+.options a.active {
   color: inherit;
 }
 </style>
