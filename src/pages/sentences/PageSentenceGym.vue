@@ -9,22 +9,18 @@ import { verbsRegular } from '@/db/db.verbsRegular'
 import { verbsIrregular } from '@/db/db.verbsIrregular'
 import type { Tverb, TverbObj } from '@/db/db.verbs.type';
 
-// настройки
+
+// вспомогательны объекты
+
 const route = useRoute()
 const router = useRouter()
 const tagInput = ref()
-const options = ref(false)
-const optionsVerb = computed(() => {
-  if (!route.query.verb) return [];
-  return (route.query.verb as string).split('|')
-})
-const optionsMod = computed(() => {
-  if (!route.query.verb) return ''
-  if (optionsVerb.value.length === 1) return 'one'
-  if (optionsVerb.value.includes('all')) return 'all'
-  return 'many'
-})
 
+function queryVerbDefault() {
+  if (Object.keys(route.query).length == 0) {
+    router.push({ query: { verb: 'expect' }, replace: true })
+  }
+}
 
 // редирект на глагол по-умолчанию
 watch(
@@ -35,19 +31,13 @@ watch(
   }
 )
 
-
-function queryVerbDefault() {
-  if (Object.keys(route.query).length == 0) {
-    router.push({ query: { verb: 'expect' }, replace: true })
-  }
-}
-
 // установить курсор в поле ввода
 onMounted(() => {
   queryVerbDefault()
   refresh()
   nextTick(() => tagInput.value.focus())
 })
+
 
 
 
@@ -93,7 +83,19 @@ function handleType(e: KeyboardEvent) {
 }
 
 
-// установка опций
+// настройки тренажера
+
+const options = ref(false)
+const optionsVerb = computed(() => {
+  if (!route.query.verb) return [];
+  return (route.query.verb as string).split('|')
+})
+const optionsMod = computed(() => {
+  if (!route.query.verb) return ''
+  if (optionsVerb.value.length === 1) return 'one'
+  if (optionsVerb.value.includes('all')) return 'all'
+  return 'many'
+})
 
 function setMod(mod: string) {
   const newVerb = optionsVerb.value.filter(e => !['', 'all'].includes(e))
