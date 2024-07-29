@@ -119,10 +119,9 @@ function setVerb(newVerb: string) {
   return { query: { verb: newVerb } }
 }
 
-
-
-
 </script>
+
+
 
 <template>
   <div class="center">
@@ -188,6 +187,9 @@ function setVerb(newVerb: string) {
     </div>
   </div>
 </template>
+
+
+
 
 
 <style scoped>
