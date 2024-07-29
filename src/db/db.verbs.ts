@@ -4,6 +4,7 @@ import { come } from './verb/verb.come'
 import { have } from './verb/verb.have'
 import { say } from './verb/verb.say'
 
+import { assign } from './verb/verb.assign'
 import { expect } from './verb/verb.expect'
 import { talk } from './verb/verb.talk'
 import { deny } from './verb/verb.deny'
@@ -19,6 +20,7 @@ export const verbs: Tverbs = {
   have,
   say,
 
+  assign,
   expect,
   deny,
   determine,

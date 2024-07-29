@@ -11,6 +11,7 @@ export const verbsRegular = [
   // , 'approve'
   // , 'arrive'
   // , 'ask'
+  , 'assign'
   // , 'attack'
   // , 'believe'
   // , 'borrow'
