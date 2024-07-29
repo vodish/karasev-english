@@ -52,6 +52,7 @@ onMounted(() => {
 
 
 // тренажёр
+const count = ref(0)
 const sentence = useSentenceStore()
 const question = ref('')
 const answer = ref('')
@@ -68,9 +69,10 @@ function refresh() {
 
   let verbList = optionsVerb.value.filter(el => !['', 'all'].includes(el))
   if (optionsMod.value === 'all') {
-    verbList = [...verbsRegular, ...verbsIrregular.filter(el => el !=='be')]
+    verbList = [...verbsRegular, ...verbsIrregular.filter(el => el !== 'be')]
   }
 
+  count.value = count.value + 1
   type.value = ''
   compare.value = 'wait'
   const form = sentence.getTask(verbList.join('|'))
@@ -84,7 +86,10 @@ function handleType(e: KeyboardEvent) {
   type.value = (e.target as HTMLInputElement).value
   compare.value = compareStr(answer.value, type.value)
 
-  if (e.key == 'Enter') refresh()
+  if (e.key == 'Enter') {
+    if (compare.value !== 'done') return
+    refresh()
+  }
 }
 
 
@@ -123,6 +128,7 @@ function setVerb(newVerb: string) {
     <div class="res sel">{{ type1 }}</div>
 
     <div class="type">
+      <div class="count">{{ count }}</div>
       <input @keyup="handleType" placeholder="Пиши перевод" v-model="type" ref="tagInput" />
       <div class="check">
         <IconWarning v-if="compare === 'err'" :size="24" />
@@ -215,16 +221,19 @@ div.res {
 
 .type {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: baseline;
+  width: 280px;
+  margin: 0 auto;
 }
+
 .type input {
   /* flex-basis: 200px; */
   text-align: center;
 }
 .type .check svg {
   position: absolute;
-  margin: -18px 0 0 1ch;
+  margin: -16px 0 0 -1ch;
 }
 
 .descr {

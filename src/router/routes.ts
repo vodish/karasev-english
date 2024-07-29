@@ -185,7 +185,7 @@ export const routes: TRoute[] = [
   {
     path: '/sentence/gym',
     category: 'sentence',
-    title: 'Тренажер глаголов',
+    title: 'Тренажер предложений',
     isPipe: true,
     name: 'PageSentenceGym',
     component: () => import('../pages/sentences/PageSentenceGym.vue'),
