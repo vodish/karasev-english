@@ -50,7 +50,7 @@ const type = ref('')
 const type1 = computed(() => type.value.charAt(0).toUpperCase() + type.value.slice(1))
 const compare = ref('wait')
 const verbObj = ref<TverbObj>()
-
+const questionOpacity = computed(() => type.value.length > 0 ? 0 : 1)
 
 
 
@@ -111,7 +111,7 @@ function setVerb(newVerb: string) {
 
   if (optionsMod.value === 'many') {
     if (newList.includes(newVerb)) newList = newList.filter(el => el != newVerb)
-    else { newList.push(newVerb) };
+    else { newList.push(newVerb) }
 
     return { query: { verb: newList.join('|') + '|' } }
   }
@@ -119,14 +119,18 @@ function setVerb(newVerb: string) {
   return { query: { verb: newVerb } }
 }
 
+
+
 </script>
 
 
 
 <template>
   <div class="center">
-    <div class="task">{{ question }}</div>
-    <div class="res sel">{{ type1 }}</div>
+    <div class="words">
+      <div class="task" :style="{ display: questionOpacity? 'block': 'none' }">{{ question }}</div>
+      <div class="res sel">{{ type1 }}</div>
+    </div>
 
     <div class="type">
       <div class="count">{{ count }}</div>
@@ -202,13 +206,20 @@ p {
   width: 100%;
 }
 
-.task {
-  font-size: 1.4em;
-  margin: 2em 0 1em 0;
+.words {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 1em;
 }
 
-div.res {
-  min-height: 2em;
+.words .task {
+  font-size: 1.4em;
+  flex-grow: 1;
+}
+
+.words .res {
   font-size: 3em;
   font-family: "Merienda", "Times New Roman", cursive;
   font-optical-sizing: auto;
@@ -217,9 +228,8 @@ div.res {
 }
 
 @media (max-width: 768px) {
-  div.res {
+  .res {
     min-height: 1.3em;
-    margin-bottom: 0.8em;
   }
 }
 
